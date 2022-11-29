@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<Asset>() {
             @Override
             public void onResponse(Call<Asset> call, Response<Asset> response) {
-                Log.d ("API CALL ASSET", response.body()+ "");
+                Log.d ("APkkkI CALL ASSET", response.body()+ "");
             }
 
             @Override
