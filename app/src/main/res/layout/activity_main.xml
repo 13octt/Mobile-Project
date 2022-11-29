@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    tools:context=".MainActivity">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="get asset"
+        android:id="@+id/btn_get_asset"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="get info"
+        android:layout_below="@id/btn_get_asset"
+        android:id="@+id/btn_get_info"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_get_info"
+        android:text="get flow"
+        android:id="@+id/btn_get_flow"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_get_flow"
+        android:text="get user"
+        android:id="@+id/btn_get_user"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_get_user"
+        android:text="get asset descriptors"
+        android:id="@+id/btn_get_asset_descriptors"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_get_asset_descriptors"
+        android:text="get realm accessible"
+        android:id="@+id/btn_get_realm_accessible"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_get_realm_accessible"
+        android:text="get user roles"
+        android:id="@+id/btn_get_user_roles"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_get_user_roles"
+        android:text="get map"
+        android:id="@+id/btn_get_map"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="get asset user current"
+        android:id="@+id/btn_get_asset_user_current"
+        android:layout_below="@id/btn_get_map"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_get_asset_user_current"
+        android:text="get value descriptor"
+        android:id="@+id/btn_get_value_descriptor"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_get_value_descriptor"
+        android:text="get meta item descriptor"
+        android:id="@+id/btn_get_meta_item_descriptor"
+        />
+
+</RelativeLayout>
