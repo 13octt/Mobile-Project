@@ -39,7 +39,7 @@ public class InfoActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Info> call, Throwable t) {
-                Log.d("API CALL INFO", t.getMessage());
+                Log.d("API CALLa INFO", t.getMessage());
             }
         });
 
