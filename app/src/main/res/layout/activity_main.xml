@@ -92,4 +92,12 @@
         android:id="@+id/btn_get_meta_item_descriptor"
         />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_get_meta_item_descriptor"
+        android:text="Home Page"
+        android:id="@+id/layout_home_screen"
+        />
+
 </RelativeLayout>

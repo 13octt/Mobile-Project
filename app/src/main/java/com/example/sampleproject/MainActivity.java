@@ -256,5 +256,14 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(getMetaItemDescriptor);
             }
         });
+
+        Button btnHomeScreen = (Button) findViewById(R.id.layout_home_screen);
+        btnHomeScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent homeScreen = new Intent(MainActivity.this, HomeActivity.class);
+                startActivity(homeScreen);
+            }
+        });
     }
 }
