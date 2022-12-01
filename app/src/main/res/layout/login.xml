@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="280dp"
+    app:cardBackgroundColor="@color/one"
+    app:cardCornerRadius="50dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log in"
+        android:textSize="50dp"
+        android:textColor="@color/two"
+        android:fontFamily="@font/mulish_extrabold"
+        android:layout_gravity="center"
+        android:layout_marginBottom="170dp"
+        >
+    </TextView>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:background="@drawable/textbackground"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="20dp"
+        >
+        <EditText
+            android:id="@+id/usernametext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="20dp"
+            android:hint="Your username"
+            android:background="@drawable/textborder"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="20dp">
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/passwordtext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:background="@drawable/textborder"
+            android:hint="Your password"
+            android:layout_marginTop="30dp"
+            android:layout_marginHorizontal="20dp"
+            android:padding="20dp"
+            android:layout_below="@id/usernametext">
+
+        </EditText>
+    </RelativeLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/signinbuttonbg"
+        android:layout_gravity="center"
+        android:text="Continue"
+        android:fontFamily="@font/mulish_light"
+        android:textSize="25dp"
+        android:layout_marginTop="160dp"
+        >
+
+    </Button>
+</androidx.cardview.widget.CardView>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:paddingLeft="100dp"
+        android:src="@drawable/back"
+        android:background=""
+        >
+    </ImageView>
+
+</RelativeLayout>

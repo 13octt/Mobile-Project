@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="250dp"
+    app:cardBackgroundColor="@color/one"
+    app:cardCornerRadius="50dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textSize="50dp"
+        android:textColor="@color/two"
+        android:fontFamily="@font/mulish_extrabold"
+        android:layout_gravity="center"
+        android:layout_marginBottom="200dp"
+        >
+    </TextView>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="310dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/textbackground">
+
+        <EditText
+            android:id="@+id/usernametext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/textborder"
+            android:hint="Your username"
+            android:inputType="text"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="20dp">
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/emailtext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/usernametext"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/textborder"
+            android:hint="Email right here !"
+            android:inputType="text"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="20dp">
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/passwordtext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emailtext"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/textborder"
+            android:hint="And password"
+            android:inputType="text"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="20dp">
+
+        </EditText>
+
+        <EditText
+            android:id="@+id/retypepasswordtext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/passwordtext"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/textborder"
+            android:hint="Still password..."
+            android:inputType="text"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="20dp">
+
+        </EditText>
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/signinbuttonbg"
+        android:layout_gravity="center"
+        android:text="Continue"
+        android:fontFamily="@font/mulish_light"
+        android:textSize="25dp"
+        android:layout_marginTop="200dp"
+        >
+
+    </Button>
+</androidx.cardview.widget.CardView>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:paddingLeft="100dp"
+        android:src="@drawable/back">
+    </ImageView>
+
+</RelativeLayout>
