@@ -1,10 +1,7 @@
 package com.example.sampleproject.Model;
 
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import java.util.Arrays;
 
 public class Map {
     @SerializedName("options")
@@ -25,64 +22,48 @@ public class Map {
     @SerializedName("layers")
     @Expose
     public Object layers[];
-
-    public Object getOptions() {
+    public Object getoptions() {
         return options;
     }
-
-    public void setOptions(Object options) {
+    public void setoptions(Object options) {
         this.options = options;
     }
 
-    public Integer getVersion() {
+    public Integer getversion() {
         return version;
     }
-
-    public void setVersion(Integer version) {
+    public void setversion(Integer version) {
         this.version = version;
     }
 
-    public Object getSources() {
+    public Object getsources() {
         return sources;
     }
-
-    public void setSources(Object sources) {
+    public void setsources(Object sources) {
         this.sources = sources;
     }
 
-    public String getSprite() {
+    public String getsprite() {
         return sprite;
     }
-
-    public void setSprite(String sprite) {
+    public void setsprite(String sprite) {
         this.sprite = sprite;
     }
 
-    public String getGlyphs() {
+    public String getglyphs() {
         return glyphs;
     }
-
-    public void setGlyphs(String glyphs) {
+    public void setglyphs(String glyphs) {
         this.glyphs = glyphs;
-    }
-
-    public Object[] getLayers() {
-        return layers;
-    }
-
-    public void setLayers(Object[] layers) {
-        this.layers = layers;
     }
 
     @Override
     public String toString() {
-        return "Map{" +
-                "options=" + options +
-                ", version=" + version +
-                ", sources=" + sources +
-                ", sprite='" + sprite + '\'' +
-                ", glyphs='" + glyphs + '\'' +
-                ", layers=" + Arrays.toString(layers) +
-                '}';
+        return "Map: " +
+                "option ='" + options + '\'' +
+                "\n version =" + version +
+                "\n sources =" + sources +
+                "\n sprite ='" + sprite + '\'' +
+                "\n glyphs =" + glyphs;
     }
 }

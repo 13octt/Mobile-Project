@@ -7,7 +7,7 @@
 <ImageButton
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:src="@drawable/vector"
+    android:src="@drawable/left"
     android:layout_marginLeft="20dp"
     android:layout_marginTop="20dp">
 </ImageButton>
@@ -73,7 +73,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/vector2"
+        android:src="@drawable/right"
         android:layout_toRightOf="@id/framename"
         android:layout_marginLeft="220dp"
         android:layout_marginTop="25dp">
@@ -108,7 +108,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/vector2"
+        android:src="@drawable/right"
         android:layout_toRightOf="@id/framename"
         android:layout_marginLeft="220dp"
         android:layout_marginTop="25dp">

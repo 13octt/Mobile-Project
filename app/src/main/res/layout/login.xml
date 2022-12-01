@@ -74,7 +74,6 @@
         android:scaleType="centerCrop"
         android:paddingLeft="100dp"
         android:src="@drawable/back"
-        android:background=""
         >
     </ImageView>
 

@@ -44,7 +44,6 @@ public interface APIInterface {
     @GET("api/master/user/user")
     Call<User> getUser();
 
-
     @GET("api/master/asset/{assetID}")
     Call<Asset> getAsset(@Path("assetID") String assetID);//, @Header("Authorization") String auth);
 
