@@ -13,6 +13,7 @@ import com.example.sampleproject.Model.AssetDescriptor;
 import com.example.sampleproject.Model.AssetUserCurrent;
 import com.example.sampleproject.Model.Flow;
 import com.example.sampleproject.Model.Info;
+import com.example.sampleproject.Model.Map;
 import com.example.sampleproject.Model.RealmAccessible;
 import com.example.sampleproject.Model.User;
 import com.example.sampleproject.Model.UserRoles;
@@ -117,18 +118,18 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-//        Call<Map> callMap = apiInterface.getMap();
-//        callMap.enqueue(new Callback<Map>() {
-//            @Override
-//            public void onResponse(Call<Map> call, Response<Map> response) {
-//                Log.d("API CALL MAP", response.body().toString());
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Map> call, Throwable t) {
-//                Log.d("API CALL MAP", t.getMessage());
-//            }
-//        });
+        Call<Map> callMap = apiInterface.getMap();
+        callMap.enqueue(new Callback<Map>() {
+            @Override
+            public void onResponse(Call<Map> call, Response<Map> response) {
+                Log.d("API CALL MAP", response.body().toString());
+            }
+
+            @Override
+            public void onFailure(Call<Map> call, Throwable t) {
+                Log.d("API CALL MAP", t.getMessage());
+            }
+        });
 
 //        Call<List<AssetUserCurrent>> callAssetUserCurrent = apiInterface.getAssetUserCurrent();
 //        callAssetUserCurrent.enqueue(new Callback<List<AssetUserCurrent>>() {

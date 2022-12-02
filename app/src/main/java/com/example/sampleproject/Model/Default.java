@@ -1,4 +1,4 @@
-package com.example.sampleproject;
+package com.example.sampleproject.Model;
 
 public class Default {
     public Float[] center;

@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName;
 
 public class Options {
     @SerializedName("default")
-    public Object defaultOption;
+    public Object _default;
 }
