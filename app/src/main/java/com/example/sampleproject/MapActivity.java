@@ -25,12 +25,13 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MapActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MapActivity extends AppCompatActivity{
 
     APIInterface apiInterface;
     private MapView mapView;
@@ -70,7 +71,7 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
                 mapController.setZoom(20);
                 GeoPoint startPoint = new GeoPoint(latitude, longitude);
                 mapController.setCenter(startPoint);
-                org.osmdroid.views.overlay.Marker marker = new org.osmdroid.views.overlay.Marker(mapView);
+                Marker marker = new org.osmdroid.views.overlay.Marker(mapView);
                 Drawable d = ResourcesCompat.getDrawable(getResources(), R.drawable.cloud, null);
                 Bitmap bitmap = ((BitmapDrawable) d).getBitmap();
                 Drawable dr = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, (int) (13.0f * getResources().getDisplayMetrics().density), (int) (13.0f * getResources().getDisplayMetrics().density), true));
@@ -78,7 +79,7 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
                 marker.setPosition(startPoint);
                 mapView.getOverlays().add(marker);
                 marker.setTitle("Nhà xe Nhân văn :V");
-                marker.setAnchor(org.osmdroid.views.overlay.Marker.ANCHOR_CENTER, org.osmdroid.views.overlay.Marker.ANCHOR_BOTTOM);
+                marker.setAnchor(org.osmdroid.views.overlay.Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
             }
 
             @Override
@@ -88,21 +89,12 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
         });
 
     }
-    public Marker addMarker (GeoPoint p, MapView osm){
-        Marker marker = new Marker(osm);
-        marker.setPosition(p);
-        osm.getOverlays().add(marker);
-        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-        return marker;
-    }
+
     /**
      * Called when an item in the navigation menu is selected.
      *
      * @param item The selected item
      * @return true to display the item as the selected item
      */
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
-    }
+
 }
