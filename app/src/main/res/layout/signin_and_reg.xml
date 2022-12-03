@@ -68,7 +68,7 @@
         >
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/signinbttn"
+            android:id="@+id/signinbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cornerRadius="10dp"
@@ -84,11 +84,11 @@
 
         </com.google.android.material.button.MaterialButton>
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/registerbttn"
+            android:id="@+id/registerbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cornerRadius="10dp"
-            android:layout_toRightOf="@id/signinbttn"
+            android:layout_toRightOf="@id/signinbtn"
             android:paddingVertical="20dp"
             android:paddingHorizontal="50dp"
             android:text="Register"

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".LoginScreenActivity">
+    tools:context=".LoginActivity">
 
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
@@ -15,7 +15,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/log_in"
+        android:text="Log in"
         android:textSize="50dp"
         android:textColor="@color/two"
         android:fontFamily="@font/mulish_extrabold"
@@ -55,7 +55,7 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/textborder"
             android:fontFamily="@font/mulish_extrabold"
-            android:hint="@string/your_password"
+            android:hint="Password"
             android:inputType="text"
             android:padding="20dp"
             android:textColorHint="#757575"
@@ -72,6 +72,7 @@
         android:fontFamily="@font/mulish_light"
         android:textSize="25sp"
         android:layout_marginTop="160dp"
+        android:id="@+id/btn_continue"
         >
 
     </Button>
