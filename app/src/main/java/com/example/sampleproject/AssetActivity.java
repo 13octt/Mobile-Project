@@ -63,7 +63,7 @@ public class AssetActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Asset> call, Throwable t) {
-                Log.d("API CALddsfL ASSET", t.getMessage());
+                Log.d("API CALL ASSET", t.getMessage());
             }
         });
 
