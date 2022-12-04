@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
         TextView username = (TextView) findViewById(R.id.usernametext);
         TextView password = (TextView) findViewById(R.id.passwordtext);
 
-        Button loginbtn = (Button) findViewById(R.id.btn_continue);
+        Button loginbtn = (Button) findViewById(R.id.btncontinue);
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override

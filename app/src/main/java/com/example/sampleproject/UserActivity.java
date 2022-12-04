@@ -24,7 +24,6 @@ public class UserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
-
         Button btnBack = (Button) findViewById(R.id.btn_back_from_user);
 
         TextView realm = (TextView) findViewById(R.id.tv_realm);
