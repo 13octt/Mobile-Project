@@ -6,11 +6,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sampleproject.Model.Main;
 import com.example.sampleproject.Model.Sys;
 import com.example.sampleproject.Model.Weather;
 import com.example.sampleproject.Model.Wind;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,11 +62,14 @@ TextView txtTemp,txtWind, txtHumi, txtSunrise,txtSunset;
                 Wind wind = mydata.getWind();
                 Double winspeed = wind.getSpeed();
                 Integer humidity = main.getHumidity();
+                String sunrise =covertUnixToHour(sys.getSunrise()) ;
+                String sunset = covertUnixToHour(sys.getSunset());
+
 
                 txtTemp.setText(String.valueOf(temperature)+"°C");
                 txtHumi.setText(String.valueOf(humidity)+"%");
-//                txtSunrise.setText(String.valueOf(temperature)+"C");
-//                txtSunset.setText(String.valueOf(temperature)+"C");
+                txtSunrise.setText(String.valueOf(sunset));
+                txtSunset.setText(String.valueOf(sunrise));
                 txtWind.setText(String.valueOf(winspeed)+"km/h");
 
 
@@ -73,5 +83,12 @@ TextView txtTemp,txtWind, txtHumi, txtSunrise,txtSunset;
 
             }
         });
+
+    }
+    public static String covertUnixToHour(int sunrise){
+        Date date = new Date(sunrise* 1000L);
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        String formatted = sdf.format(date);
+        return formatted;
     }
 }
