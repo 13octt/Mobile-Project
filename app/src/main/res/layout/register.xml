@@ -3,12 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<androidx.cardview.widget.CardView
+<com.github.captain_miao.optroundcardview.OptRoundCardView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="250dp"
     app:cardBackgroundColor="@color/one"
-    app:cardCornerRadius="50dp">
+    app:optRoundCardCornerRadius="50dp"
+    app:optRoundCardLeftBottomCorner="false"
+    app:optRoundCardRightBottomCorner="false"
+    >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -90,18 +93,21 @@
     </RelativeLayout>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="@drawable/signinbuttonbg"
         android:layout_gravity="center"
         android:text="Continue"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
         android:fontFamily="@font/mulish_light"
         android:textSize="25dp"
         android:layout_marginTop="200dp"
+
         >
 
     </Button>
-</androidx.cardview.widget.CardView>
+</com.github.captain_miao.optroundcardview.OptRoundCardView>
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
