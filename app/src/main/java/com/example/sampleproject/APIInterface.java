@@ -11,15 +11,20 @@ import com.example.sampleproject.Model.RealmAccessible;
 import com.example.sampleproject.Model.User;
 import com.example.sampleproject.Model.UserRoles;
 import com.example.sampleproject.Model.ValueDescriptor;
+import com.example.sampleproject.Model.Weather;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface APIInterface {
-
+    @GET ("weather")
+    Call<Weather> getweather(@Query("lat") String lat,
+                             @Query("lon") String lon,
+                             @Query("appid") String apikey);
     @GET("api/master/map")
     Call<Map> getMap();
 
@@ -52,5 +57,7 @@ public interface APIInterface {
     
     @GET("api/master/model/metaItemDescriptors")
     Call<List<MetaItemDescriptor>> getMetaItemDescriptor();
+
+
 
 }

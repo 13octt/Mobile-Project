@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -31,93 +32,33 @@
 
             </ImageView>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="City name"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:padding="20dp"
-                android:id="@+id/TVCityName"
-                android:textSize="18sp"
-                android:textColor="@color/white">
-
-            </TextView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/LLEdt"
-                android:layout_below="@id/TVCityName"
-                android:weightSum="5"
-                >
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/TILCity"
-                    android:layout_margin="10dp"
-                    android:layout_weight="4.5"
-                    android:background="@android:color/transparent"
-                    android:hint="Enter city name"
-                    android:padding="5dp"
-                    app:hintTextColor="@color/white"
-                    android:textColorHint="@color/white"
-                    >
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/EditCity"
-                        android:background="@android:color/transparent"
-                        android:importantForAutofill="no"
-                        android:inputType="text"
-                        android:singleLine="true"
-                        android:textColor="@color/white"
-                        android:textSize="14sp">
-
-                    </com.google.android.material.textfield.TextInputEditText>
-
-                </com.google.android.material.textfield.TextInputLayout>
 
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:layout_gravity="center"
-                    android:layout_margin="10dp"
-                    android:id="@+id/IVsearch"
-                    android:background="@android:color/transparent"
-                    app:tint="@color/white"
-                    android:src="@drawable/ic_search">
 
-                </ImageView>
-
-            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/TVTemperature"
-                android:layout_below="@id/LLEdt"
                 android:layout_margin="10dp"
                 android:gravity="center_horizontal"
                 android:padding="5dp"
-                android:text="23"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="70dp">
 
             </TextView>
 
             <ImageView
+                android:id="@+id/IVIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/IVIcon"
                 android:layout_below="@id/TVTemperature"
                 android:layout_centerHorizontal="true"
-                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
                 android:src="@mipmap/ic_launcher">
 
             </ImageView>
