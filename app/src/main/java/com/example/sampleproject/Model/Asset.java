@@ -24,7 +24,7 @@ public class Asset {
     @SerializedName("path")
     public String path[];
     @SerializedName("attributes")
-    public Object attributes;
+    public Attributes attributes;
 
     public String getId() {
         return id;
@@ -98,11 +98,11 @@ public class Asset {
         this.path = path;
     }
 
-    public Object getAttributes() {
+    public Attributes getAttributes() {
         return attributes;
     }
 
-    public void setAttributes(Object attributes) {
+    public void setAttributes(Attributes attributes) {
         this.attributes = attributes;
     }
 

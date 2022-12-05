@@ -14,11 +14,15 @@ import android.view.MenuItem;
 
 import com.example.sampleproject.Model.Asset;
 import com.example.sampleproject.Model.Attributes;
+import com.example.sampleproject.Model.Coord;
 import com.example.sampleproject.Model.Default;
 import com.example.sampleproject.Model.Location;
 import com.example.sampleproject.Model.LocationValue;
+import com.example.sampleproject.Model.Main;
 import com.example.sampleproject.Model.Map;
 import com.example.sampleproject.Model.Options;
+import com.example.sampleproject.Model.Value;
+import com.example.sampleproject.Model.Value__1;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 
@@ -58,13 +62,10 @@ public class MapActivity extends AppCompatActivity{
             @Override
             public void onResponse(Call<Map> call, Response<Map> response) {
                 Map map = response.body();
-                Gson gson = new Gson();
-                String json = gson.toJson(map.options);
+                Options options = map.getoptions();
                 Context ctx = getApplicationContext();
                 Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
-                Options optionsObj = gson.fromJson(json, Options.class);
-                json = gson.toJson(optionsObj._default);
-                Default defaultObj = gson.fromJson(json, Default.class);
+                Default defaultObj = options.get_default();
                 Double zoom = defaultObj.zoom;
                 Float longitude = defaultObj.center[0];
                 Float latitude = defaultObj.center[1];
@@ -75,8 +76,8 @@ public class MapActivity extends AppCompatActivity{
                 mapController.setZoom(20);
                 GeoPoint startPoint = new GeoPoint(latitude, longitude);
                 mapController.setCenter(startPoint);
-                Marker marker = new org.osmdroid.views.overlay.Marker(mapView);
-                Drawable d = ResourcesCompat.getDrawable(getResources(), org.osmdroid.library.R.drawable.marker_default, null);
+                Marker marker = new Marker(mapView);
+                Drawable d = ResourcesCompat.getDrawable(getResources(), R.drawable.map, null);
                 Bitmap bitmap = ((BitmapDrawable) d).getBitmap();
                 Drawable dr = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, (int) (13.0f * getResources().getDisplayMetrics().density), (int) (13.0f * getResources().getDisplayMetrics().density), true));
                 marker.setIcon(dr);
@@ -91,111 +92,38 @@ public class MapActivity extends AppCompatActivity{
                 t.printStackTrace();
             }
         });
-        Call<Asset> assetloca1 = apiInterface.getAsset("6H4PeKLRMea1L0WsRXXWp9");
+
+        addMarker("4cdWlxEvmDRBBDEc2HRsaF","1");
+        addMarker("2UZPM2Mvu11Xyq5jCWNMX1","2");
+        addMarker("6H4PeKLRMea1L0WsRXXWp9","3");
+    }
+    public  void  addMarker(String appid, String s){
+        Call<Asset> assetloca1 = apiInterface.getAsset(appid);
         assetloca1.enqueue(new Callback<Asset>() {
             @Override
             public void onResponse(Call<Asset> call, Response<Asset> response) {
                 Asset asset = response.body();
-                Gson gson = new Gson();
-                String json = gson.toJson(asset.attributes);
-                Attributes attr = gson.fromJson(json,Attributes.class);
-                json = gson.toJson(attr.location);
-                Location location = gson.fromJson(json, Location.class);
-                json = gson.toJson(location.value);
-                LocationValue lvalue = gson.fromJson(json,LocationValue.class);
+                Attributes attributes = asset.getAttributes();
+                Location location = attributes.getLocation();
+                Value__1 value = location.getValue();
+                Double cord[] = value.getCoordinates().toArray(new Double[0]);
 
 
-                float lon =lvalue.coordinates[0];
-                float lat =lvalue.coordinates[1];
+                Double lon =cord[0];
+                Double lat =cord[1];
                 GeoPoint startPoint2 = new GeoPoint(lat, lon);
                 mapView = findViewById(R.id.uitMap);
                 mapController = mapView.getController();
                 mapController.setZoom(20);
                 mapController.setCenter(startPoint2);
-                Marker marker = new org.osmdroid.views.overlay.Marker(mapView);
-                Drawable d = ResourcesCompat.getDrawable(getResources(), org.osmdroid.library.R.drawable.marker_default, null);
+                Marker marker = new Marker(mapView);
+                Drawable d = ResourcesCompat.getDrawable(getResources(), R.drawable.map, null);
                 Bitmap bitmap = ((BitmapDrawable) d).getBitmap();
                 Drawable dr = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, (int) (13.0f * getResources().getDisplayMetrics().density), (int) (13.0f * getResources().getDisplayMetrics().density), true));
                 marker.setIcon(dr);
                 marker.setPosition(startPoint2);
                 mapView.getOverlays().add(marker);
-                marker.setTitle("WeatherAsset1");
-                marker.setAnchor(org.osmdroid.views.overlay.Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-
-            }
-
-            @Override
-            public void onFailure(Call<Asset> call, Throwable t) {
-
-            }
-        });
-        Call<Asset> assetlocal2= apiInterface.getAsset("4cdWlxEvmDRBBDEc2HRsaF");
-        assetlocal2.enqueue(new Callback<Asset>() {
-            @Override
-            public void onResponse(Call<Asset> call, Response<Asset> response) {
-                Asset asset = response.body();
-                Gson gson = new Gson();
-                String json = gson.toJson(asset.attributes);
-                Attributes attr = gson.fromJson(json,Attributes.class);
-                json = gson.toJson(attr.location);
-                Location location = gson.fromJson(json, Location.class);
-                json = gson.toJson(location.value);
-                LocationValue lvalue = gson.fromJson(json,LocationValue.class);
-
-
-                float lon =lvalue.coordinates[0];
-                float lat =lvalue.coordinates[1];
-                GeoPoint startPoint2 = new GeoPoint(lat, lon);
-                mapView = findViewById(R.id.uitMap);
-                mapController = mapView.getController();
-                mapController.setZoom(20);
-                mapController.setCenter(startPoint2);
-                Marker marker = new org.osmdroid.views.overlay.Marker(mapView);
-                Drawable d = ResourcesCompat.getDrawable(getResources(), org.osmdroid.library.R.drawable.marker_default, null);
-                Bitmap bitmap = ((BitmapDrawable) d).getBitmap();
-                Drawable dr = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, (int) (13.0f * getResources().getDisplayMetrics().density), (int) (13.0f * getResources().getDisplayMetrics().density), true));
-                marker.setIcon(dr);
-                marker.setPosition(startPoint2);
-                mapView.getOverlays().add(marker);
-                marker.setTitle("WeatherAsset1");
-                marker.setAnchor(org.osmdroid.views.overlay.Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-
-            }
-
-            @Override
-            public void onFailure(Call<Asset> call, Throwable t) {
-
-            }
-        });
-        Call<Asset> assetlocal3 = apiInterface.getAsset("2UZPM2Mvu11Xyq5jCWNMX1");
-        assetlocal3.enqueue(new Callback<Asset>() {
-            @Override
-            public void onResponse(Call<Asset> call, Response<Asset> response) {
-                Asset asset = response.body();
-                Gson gson = new Gson();
-                String json = gson.toJson(asset.attributes);
-                Attributes attr = gson.fromJson(json,Attributes.class);
-                json = gson.toJson(attr.location);
-                Location location = gson.fromJson(json, Location.class);
-                json = gson.toJson(location.value);
-                LocationValue lvalue = gson.fromJson(json,LocationValue.class);
-
-
-                float lon =lvalue.coordinates[0];
-                float lat =lvalue.coordinates[1];
-                GeoPoint startPoint2 = new GeoPoint(lat, lon);
-                mapView = findViewById(R.id.uitMap);
-                mapController = mapView.getController();
-                mapController.setZoom(20);
-                mapController.setCenter(startPoint2);
-                Marker marker = new org.osmdroid.views.overlay.Marker(mapView);
-                Drawable d = ResourcesCompat.getDrawable(getResources(), org.osmdroid.library.R.drawable.marker_default, null);
-                Bitmap bitmap = ((BitmapDrawable) d).getBitmap();
-                Drawable dr = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, (int) (13.0f * getResources().getDisplayMetrics().density), (int) (13.0f * getResources().getDisplayMetrics().density), true));
-                marker.setIcon(dr);
-                marker.setPosition(startPoint2);
-                mapView.getOverlays().add(marker);
-                marker.setTitle("WeatherAsset1");
+                marker.setTitle("WeatherAsset"+ s);
                 marker.setAnchor(org.osmdroid.views.overlay.Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
 
             }
@@ -206,5 +134,4 @@ public class MapActivity extends AppCompatActivity{
             }
         });
     }
-
 }

@@ -9,24 +9,24 @@ public class Main {
     @SerializedName("temp")
     @Expose
     private Double temp;
-    @SerializedName("feels_like")
-    @Expose
-    private Double feelsLike;
-    @SerializedName("temp_min")
-    @Expose
-    private Double tempMin;
-    @SerializedName("temp_max")
-    @Expose
-    private Double tempMax;
-    @SerializedName("pressure")
-    @Expose
-    private Integer pressure;
     @SerializedName("humidity")
     @Expose
     private Integer humidity;
+    @SerializedName("pressure")
+    @Expose
+    private Integer pressure;
+    @SerializedName("temp_max")
+    @Expose
+    private Double tempMax;
+    @SerializedName("temp_min")
+    @Expose
+    private Double tempMin;
     @SerializedName("sea_level")
     @Expose
     private Integer seaLevel;
+    @SerializedName("feels_like")
+    @Expose
+    private Double feelsLike;
     @SerializedName("grnd_level")
     @Expose
     private Integer grndLevel;
@@ -39,28 +39,12 @@ public class Main {
         this.temp = temp;
     }
 
-    public Double getFeelsLike() {
-        return feelsLike;
+    public Integer getHumidity() {
+        return humidity;
     }
 
-    public void setFeelsLike(Double feelsLike) {
-        this.feelsLike = feelsLike;
-    }
-
-    public Double getTempMin() {
-        return tempMin;
-    }
-
-    public void setTempMin(Double tempMin) {
-        this.tempMin = tempMin;
-    }
-
-    public Double getTempMax() {
-        return tempMax;
-    }
-
-    public void setTempMax(Double tempMax) {
-        this.tempMax = tempMax;
+    public void setHumidity(Integer humidity) {
+        this.humidity = humidity;
     }
 
     public Integer getPressure() {
@@ -71,12 +55,20 @@ public class Main {
         this.pressure = pressure;
     }
 
-    public Integer getHumidity() {
-        return humidity;
+    public Double getTempMax() {
+        return tempMax;
     }
 
-    public void setHumidity(Integer humidity) {
-        this.humidity = humidity;
+    public void setTempMax(Double tempMax) {
+        this.tempMax = tempMax;
+    }
+
+    public Double getTempMin() {
+        return tempMin;
+    }
+
+    public void setTempMin(Double tempMin) {
+        this.tempMin = tempMin;
     }
 
     public Integer getSeaLevel() {
@@ -85,6 +77,14 @@ public class Main {
 
     public void setSeaLevel(Integer seaLevel) {
         this.seaLevel = seaLevel;
+    }
+
+    public Double getFeelsLike() {
+        return feelsLike;
+    }
+
+    public void setFeelsLike(Double feelsLike) {
+        this.feelsLike = feelsLike;
     }
 
     public Integer getGrndLevel() {
