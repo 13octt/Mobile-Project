@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
 
         TextView username = (TextView) findViewById(R.id.usernametext);
         TextView password = (TextView) findViewById(R.id.passwordtext);
-
+        password.setTransformationMethod(new PasswordTransformationMethod());
         Button loginbtn = (Button) findViewById(R.id.btn_continue);
 
         loginbtn.setOnClickListener(new View.OnClickListener() {
@@ -34,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            startActivity(new Intent(LoginActivity.this, CustomActivity.class));
+                            startActivity(new Intent(LoginActivity.this, MapActivity.class));
 
                             finish();
                         }

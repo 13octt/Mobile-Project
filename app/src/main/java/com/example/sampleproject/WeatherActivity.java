@@ -2,6 +2,7 @@ package com.example.sampleproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,11 +31,11 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class WeatherActivity extends AppCompatActivity {
-String apikey="2UZPM2Mvu11Xyq5jCWNMX1";
+String apikey="";
 
 APIInterface apiInterface;
 
-    TextView txtTemp,txtWind, txtHumi, txtSunrise,txtSunset;
+    TextView txtTemp,txtWind, txtHumi, txtSunrise,txtSunset,txtMain,txtDes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +45,11 @@ APIInterface apiInterface;
         txtHumi = (TextView) findViewById(R.id.tvHumi);
         txtSunrise = (TextView) findViewById(R.id.tvSR);
         txtSunset = (TextView) findViewById(R.id.tvSS);
+        txtMain = (TextView) findViewById(R.id.tvMain);
+        txtDes = (TextView) findViewById(R.id.tvDes);
+
+        Intent intent = getIntent();
+        apikey = intent.getStringExtra("Key");
         getweather(apikey);
 
     }
@@ -68,12 +74,17 @@ APIInterface apiInterface;
                 Integer humidity = main.getHumidity();
                 String sunrise =covertUnixToHour(sys.getSunrise()) ;
                 String sunset = covertUnixToHour(sys.getSunset());
-
+                Weather weather1[] = value.getWeather().toArray(new Weather[0]);
+                String str = weather1[0].getDescription();
+                String cap = str.substring(0, 1).toUpperCase() + str.substring(1);
                 txtTemp.setText(String.valueOf(temperature)+"°");
                 txtHumi.setText(String.valueOf(humidity)+"%");
                 txtSunrise.setText(String.valueOf(sunset));
                 txtSunset.setText(String.valueOf(sunrise));
                 txtWind.setText(String.valueOf(winspeed)+"km/h");
+                txtDes.setText(String.valueOf(cap));
+                txtMain.setText(String.valueOf(weather1[0].getMain()));
+
 
 
 

@@ -5,12 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sampleproject.Model.Asset;
 import com.example.sampleproject.Model.Attributes;
@@ -23,6 +31,7 @@ import com.example.sampleproject.Model.Map;
 import com.example.sampleproject.Model.Options;
 import com.example.sampleproject.Model.Value;
 import com.example.sampleproject.Model.Value__1;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 
@@ -33,7 +42,11 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Objects;
+import java.util.TimeZone;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -96,8 +109,10 @@ public class MapActivity extends AppCompatActivity{
         addMarker("4cdWlxEvmDRBBDEc2HRsaF","1");
         addMarker("2UZPM2Mvu11Xyq5jCWNMX1","2");
         addMarker("6H4PeKLRMea1L0WsRXXWp9","3");
+
     }
     public  void  addMarker(String appid, String s){
+
         Call<Asset> assetloca1 = apiInterface.getAsset(appid);
         assetloca1.enqueue(new Callback<Asset>() {
             @Override
@@ -123,15 +138,77 @@ public class MapActivity extends AppCompatActivity{
                 marker.setIcon(dr);
                 marker.setPosition(startPoint2);
                 mapView.getOverlays().add(marker);
-                marker.setTitle("WeatherAsset"+ s);
+                marker.setTitle(asset.getId());
                 marker.setAnchor(org.osmdroid.views.overlay.Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+                marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
+                    @Override
+                    public boolean onMarkerClick(Marker marker, MapView mapView) {
+                        View view = getLayoutInflater().inflate(R.layout.bottom_sheet, null);
+                        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(MapActivity.this);
 
-            }
+                        TextView id = (TextView) view.findViewById(R.id.asset_id);
+                        TextView version = (TextView) view.findViewById(R.id.asset_version);
+                        TextView createdOn = (TextView) view.findViewById(R.id.asset_created_on);
+                        TextView parent_id = (TextView) view.findViewById(R.id.asset_parent_id);
+                        TextView name = (TextView) view.findViewById(R.id.asset_name);
+                        TextView public_read = (TextView) view.findViewById(R.id.asset_access_public_read);
+                        TextView realm = (TextView) view.findViewById(R.id.asset_realm);
+                        TextView type   = (TextView) view.findViewById(R.id.asset_type);
+                        TextView path  = (TextView) view.findViewById(R.id.asset_path);
+                        String crea = formatDate(Long.valueOf(asset.createdOn));
+                        id.setText(asset.getId());
+                        version.setText(String.valueOf(asset.getVersion()));
+                        createdOn.setText(String.valueOf(crea));
+                        parent_id.setText(String.valueOf(asset.parentID));
+                        name.setText(String.valueOf(asset.name));
+                        public_read.setText(String.valueOf(asset.accessPublicRead));
+                        realm.setText(String.valueOf(asset.realm));
+                        type.setText(String.valueOf(asset.type));
+//                        path.setText(String.valueOf(asset.getParentID()));
+
+                        bottomSheetDialog.setContentView(view);
+                        bottomSheetDialog.show();
+                        Button btn_more = (Button) view.findViewById(R.id.btn_more);
+                        btn_more.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                                    Intent intent = new Intent(MapActivity.this, WeatherActivity.class);
+                                    intent.putExtra("Key", appid);
+                                    startActivity(intent);
+                                    finish();
+                            }
+                        });
+                        return true;
+
+
+                    }
+
+            });}
+
+
 
             @Override
             public void onFailure(Call<Asset> call, Throwable t) {
 
             }
         });
+
+
+    }
+    private String formatDate(long milliseconds) /* This is your topStory.getTime()*1000 */ {
+        DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy' 'HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(milliseconds);
+        TimeZone tz = TimeZone.getDefault();
+        sdf.setTimeZone(tz);
+        return sdf.format(calendar.getTime());
+    }
+    void clickOpenBottomSheetDialog(){
+        View view = getLayoutInflater().inflate(R.layout.bottom_sheet, null);
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        bottomSheetDialog.setContentView(view);
+        bottomSheetDialog.show();
     }
 }
