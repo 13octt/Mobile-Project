@@ -90,11 +90,4 @@ public class MapActivity extends AppCompatActivity{
 
     }
 
-    /**
-     * Called when an item in the navigation menu is selected.
-     *
-     * @param item The selected item
-     * @return true to display the item as the selected item
-     */
-
 }

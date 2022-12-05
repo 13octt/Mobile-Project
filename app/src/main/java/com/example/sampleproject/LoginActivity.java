@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            Intent mainscreen = new Intent(LoginActivity.this, MapActivity.class);
+                            Intent mainscreen = new Intent(LoginActivity.this, CustomActivity.class);
                             startActivity(mainscreen);
                             finish();
                         }

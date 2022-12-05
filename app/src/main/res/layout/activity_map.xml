@@ -1,37 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/dlayout"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
-    <LinearLayout
+    tools:context=".MapActivity">
+
+
+    <org.osmdroid.views.MapView
+        android:id="@+id/uitMap"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:clickable="true"
+        android:focusable="true"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    </org.osmdroid.views.MapView>
 
-
-            <org.osmdroid.views.MapView
-                android:id="@+id/uitMap"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clickable="true"
-                android:focusable="true"
-                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck">
-
-
-            </org.osmdroid.views.MapView>
-
-
-        </RelativeLayout>
-    </LinearLayout>
-
-
-</androidx.drawerlayout.widget.DrawerLayout>
+</RelativeLayout>
