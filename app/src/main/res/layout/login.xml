@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
     <com.github.captain_miao.optroundcardview.OptRoundCardView
@@ -14,24 +14,23 @@
         app:optRoundCardCornerRadius="50dp"
         app:optRoundCardLeftBottomCorner="false"
         app:optRoundCardRightBottomCorner="false">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Log in"
-            android:textSize="50dp"
-            android:textColor="@color/two"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="25dp"
             android:fontFamily="@font/mulish_extrabold"
-            android:layout_gravity="center"
-            android:layout_marginBottom="170dp"
-            >
-        </TextView>
+            android:text="Sign in"
+            android:textColor="@color/custom_blue"
+            android:textSize="40dp"></TextView>
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="200dp"
-            android:background="@drawable/textbackground"
             android:layout_gravity="center"
             android:layout_marginHorizontal="20dp"
-            >
+            android:background="@drawable/textbackground">
 
             <EditText
                 android:id="@+id/usernametext"
@@ -40,7 +39,9 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/textborder"
-                android:hint="Your username"
+                android:drawableLeft="@drawable/ic_baseline_person_outline_24"
+                android:drawablePadding="20dp"
+                android:hint="Username"
                 android:inputType="text"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="20dp"
@@ -56,38 +57,39 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/textborder"
-                android:fontFamily="@font/mulish_extrabold"
+                android:drawableLeft="@drawable/ic_baseline_key_24"
+                android:drawablePadding="20dp"
                 android:hint="Password"
                 android:inputType="text"
                 android:padding="20dp"
-                android:textColorHint="#757575"
-                >
+                android:textColorHint="#757575">
 
             </EditText>
         </RelativeLayout>
+
         <Button
+            android:id="@+id/btn_continue"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="40dp"
             android:background="@drawable/signinbuttonbg"
-            android:layout_gravity="center"
-            android:text="Continue"
-            android:textColor="@color/white"
-            android:textAllCaps="false"
             android:fontFamily="@font/mulish_light"
+            android:text="Log in"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
             android:textSize="25dp"
-            android:layout_marginTop="150dp"
-            android:id="@+id/btn_continue"
-            />
+            android:textStyle="bold" />
 
 
     </com.github.captain_miao.optroundcardview.OptRoundCardView>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
+        android:contentDescription="TODO"
         android:paddingLeft="100dp"
-        android:src="@drawable/back"
-        android:contentDescription="TODO">
-    </ImageView>
+        android:scaleType="centerCrop"
+        android:src="@drawable/back"></ImageView>
 
 </RelativeLayout>

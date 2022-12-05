@@ -1,119 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-<com.github.captain_miao.optroundcardview.OptRoundCardView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="250dp"
-    app:cardBackgroundColor="@color/one"
-    app:optRoundCardCornerRadius="50dp"
-    app:optRoundCardLeftBottomCorner="false"
-    app:optRoundCardRightBottomCorner="false"
-    >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:textSize="50dp"
-        android:textColor="@color/two"
-        android:fontFamily="@font/mulish_extrabold"
-        android:layout_gravity="center"
-        android:layout_marginBottom="200dp"
-        >
-    </TextView>
+    android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="310dp"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="20dp"
-        android:background="@drawable/textbackground">
+    <com.github.captain_miao.optroundcardview.OptRoundCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="250dp"
+        app:cardBackgroundColor="@color/one"
+        app:optRoundCardCornerRadius="50dp"
+        app:optRoundCardLeftBottomCorner="false"
+        app:optRoundCardRightBottomCorner="false">
 
-        <EditText
-            android:id="@+id/usernametext"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/mulish_extrabold"
+            android:text="Sign up"
+            android:textColor="@color/custom_blue"
+            android:textSize="40dp"></TextView>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="310dp"
+            android:layout_gravity="center"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/textborder"
-            android:hint="Your username"
-            android:inputType="text"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="20dp">
+            android:background="@drawable/textbackground">
 
-        </EditText>
+            <EditText
+                android:id="@+id/username_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/textborder"
+                android:drawableLeft="@drawable/ic_baseline_person_outline_24"
+                android:drawablePadding="20dp"
+                android:hint="Your username"
+                android:inputType="text"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="20dp">
 
-        <EditText
-            android:id="@+id/emailtext"
-            android:layout_width="match_parent"
+            </EditText>
+
+            <EditText
+                android:id="@+id/email_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/username_edittext"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/textborder"
+                android:drawableLeft="@drawable/ic_baseline_email_24"
+                android:drawablePadding="20dp"
+                android:hint="Email right here !"
+                android:inputType="text"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="20dp">
+
+            </EditText>
+
+            <EditText
+                android:id="@+id/password_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/email_edittext"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/textborder"
+                android:drawableLeft="@drawable/ic_baseline_key_24"
+                android:drawablePadding="20dp"
+                android:hint="Password"
+                android:inputType="text"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="20dp">
+
+            </EditText>
+
+            <EditText
+                android:id="@+id/re_password_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/password_edittext"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/textborder"
+                android:drawableLeft="@drawable/ic_baseline_key_24"
+                android:drawablePadding="20dp"
+                android:hint="Re-password"
+                android:inputType="text"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="20dp">
+
+            </EditText>
+
+        </RelativeLayout>
+
+        <Button
+            android:layout_width="205dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/usernametext"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/textborder"
-            android:hint="Email right here !"
-            android:inputType="text"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="20dp">
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/signinbuttonbg"
+            android:fontFamily="@font/mulish_light"
+            android:text="Register"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:id="@+id/btn_register"
+            />
 
-        </EditText>
+    </com.github.captain_miao.optroundcardview.OptRoundCardView>
 
-        <EditText
-            android:id="@+id/passwordtext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/emailtext"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/textborder"
-            android:hint="And password"
-            android:inputType="text"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="20dp">
-
-        </EditText>
-
-        <EditText
-            android:id="@+id/retypepasswordtext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/passwordtext"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/textborder"
-            android:hint="Still password..."
-            android:inputType="text"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="20dp">
-
-        </EditText>
-
-    </RelativeLayout>
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/signinbuttonbg"
-        android:layout_gravity="center"
-        android:text="Continue"
-        android:textColor="@color/white"
-        android:textAllCaps="false"
-        android:fontFamily="@font/mulish_light"
-        android:textSize="25dp"
-        android:layout_marginTop="200dp"
-
-        >
-
-    </Button>
-</com.github.captain_miao.optroundcardview.OptRoundCardView>
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
         android:scaleType="centerCrop"
-        android:paddingLeft="100dp"
-        android:src="@drawable/back">
-    </ImageView>
+        android:src="@drawable/back"></ImageView>
 
 </RelativeLayout>

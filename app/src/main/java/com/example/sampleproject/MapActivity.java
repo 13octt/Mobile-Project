@@ -72,13 +72,13 @@ public class MapActivity extends AppCompatActivity{
                 GeoPoint startPoint = new GeoPoint(latitude, longitude);
                 mapController.setCenter(startPoint);
                 Marker marker = new org.osmdroid.views.overlay.Marker(mapView);
-                Drawable d = ResourcesCompat.getDrawable(getResources(), R.drawable.cloud, null);
+                Drawable d = ResourcesCompat.getDrawable(getResources(), R.drawable.marker, null);
                 Bitmap bitmap = ((BitmapDrawable) d).getBitmap();
                 Drawable dr = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, (int) (13.0f * getResources().getDisplayMetrics().density), (int) (13.0f * getResources().getDisplayMetrics().density), true));
                 marker.setIcon(dr);
                 marker.setPosition(startPoint);
                 mapView.getOverlays().add(marker);
-                marker.setTitle("Nhà xe Nhân văn :V");
+                marker.setTitle("UIT");
                 marker.setAnchor(org.osmdroid.views.overlay.Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
             }
 
