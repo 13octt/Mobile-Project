@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/one"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/one">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/img"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        app:cardCornerRadius="40dp"
         android:layout_margin="10dp"
         android:elevation="20dp"
-        android:id="@+id/img"
-        >
+        app:cardCornerRadius="40dp">
 
         <ImageView
             android:id="@+id/roundedImageView"
@@ -33,7 +32,7 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/mulish_extrabold"
-        android:text="Discover our                     New features here"
+        android:text="UIT OPENREMOTE"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30dp">
@@ -48,7 +47,8 @@
         android:layout_centerVertical="true"
         android:layout_marginTop="9dp"
         android:fontFamily="@font/mulish_light"
-        android:text="We have some new features added to satisfy your expectations"
+        android:text="Discover our Uit Iot Devices"
+        android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20dp">
@@ -59,46 +59,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/smallfont"
-        android:layout_marginTop="30dp"
         android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/relativeborder"
         android:backgroundTint="@color/grey"
         android:backgroundTintMode="screen"
-        android:background="@drawable/relativeborder"
-        android:paddingHorizontal="5dp"
-        >
+        android:paddingHorizontal="5dp">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/signinbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:cornerRadius="10dp"
-            android:paddingVertical="20dp"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/mulish_light"
             android:paddingHorizontal="50dp"
+            android:paddingVertical="20dp"
+            android:stateListAnimator="@null"
             android:text="Sign in"
+            android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="15dp"
-            android:textAllCaps="false"
-            android:fontFamily="@font/mulish_light"
-            android:backgroundTint="@color/white"
-            android:stateListAnimator="@null">
+            android:textStyle="bold"
+            app:cornerRadius="10dp">
 
         </com.google.android.material.button.MaterialButton>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/registerbtn"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:cornerRadius="10dp"
             android:layout_toRightOf="@id/signinbtn"
-            android:paddingVertical="20dp"
+            android:backgroundTint="@color/grey"
+            android:fontFamily="@font/mulish_light"
             android:paddingHorizontal="50dp"
-            android:text="Register"
+            android:paddingVertical="20dp"
+            android:text="Sign up"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="15dp"
-            android:fontFamily="@font/mulish_light"
-            android:backgroundTint="@color/grey"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored">
-        </com.google.android.material.button.MaterialButton>
+            android:textStyle="bold"
+            app:cornerRadius="10dp"></com.google.android.material.button.MaterialButton>
     </RelativeLayout>
 
 </RelativeLayout>
