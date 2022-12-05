@@ -90,13 +90,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".CustomActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".AssetDescriptorActivity"
             android:exported="false">
             <meta-data
