@@ -1,6 +1,7 @@
 package com.example.sampleproject;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
@@ -10,7 +11,11 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.sampleproject.Model.Asset;
 import com.example.sampleproject.Model.Attributes;
@@ -19,6 +24,8 @@ import com.example.sampleproject.Model.Location;
 import com.example.sampleproject.Model.LocationValue;
 import com.example.sampleproject.Model.Map;
 import com.example.sampleproject.Model.Options;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 
@@ -40,7 +47,8 @@ public class MapActivity extends AppCompatActivity{
     APIInterface apiInterface;
     private MapView mapView;
     private IMapController mapController;
-
+    LinearLayout layoutBottomSheet;
+    BottomSheetBehavior bottomSheetBehavior;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,6 +129,35 @@ public class MapActivity extends AppCompatActivity{
                 mapView.getOverlays().add(marker);
                 marker.setTitle("WeatherAsset1");
                 marker.setAnchor(org.osmdroid.views.overlay.Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+
+                  marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
+                    @Override
+                    public boolean onMarkerClick(Marker marker, MapView mapView) {
+                        clickOpenBottomSheetDialog();
+//                        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(MapActivity.this, com.google.android.material.R.style.Base_Theme_Material3_Dark_BottomSheetDialog);
+//                        layoutBottomSheet = (LinearLayout)findViewById(R.id.bottom_dialog);
+//                        bottomSheetBehavior = BottomSheetBehavior.from(layoutBottomSheet);
+//                        if(bottomSheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED){
+//                            bottomSheetBehavior.setState(bottomSheetBehavior.STATE_EXPANDED);
+//                        }
+//                        else{
+//                            bottomSheetBehavior.setState(bottomSheetBehavior.STATE_COLLAPSED);
+//                        }
+//                        View view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.bottom_sheet, layoutBottomSheet);
+//
+//                        TextView id = (TextView) findViewById(R.id.asset_id);
+//                        TextView version = (TextView) findViewById(R.id.asset_version);
+//                        TextView createdOn = (TextView) findViewById(R.id.asset_created_on);
+//                        id.setText(asset.id);
+////                        version.setText(asset.version);
+////                        createdOn.setText(asset.createdOn);
+
+//                        bottomSheetDialog.setContentView(view);
+//                        bottomSheetDialog.show();
+                        return true;
+
+                    }
+                });
 
             }
 
@@ -205,6 +242,12 @@ public class MapActivity extends AppCompatActivity{
 
             }
         });
+    }
+    void clickOpenBottomSheetDialog(){
+        View view = getLayoutInflater().inflate(R.layout.bottom_sheet, null);
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+        bottomSheetDialog.setContentView(view);
+        bottomSheetDialog.show();
     }
 
 }
