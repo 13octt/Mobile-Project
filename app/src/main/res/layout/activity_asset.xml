@@ -1,91 +1,273 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".AssetActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BACK"
-        android:id="@+id/btn_back_from_asset"/>
 
-    <TextView
-        android:id="@+id/asset_id"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        >
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleX="2"
+            android:scaleY="2"
+            android:paddingTop="5dp"
+            android:src="@drawable/logo_nhom"/>
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/asset_version"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="87dp" />
-
-    <TextView
-        android:id="@+id/asset_created_on"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="122dp" />
-
-    <TextView
-        android:id="@+id/asset_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="122dp" />
-
-    <TextView
-        android:id="@+id/asset_access_public_read"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="52dp" />
-
-    <TextView
-        android:id="@+id/asset_parent_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="52dp" />
-
-    <TextView
-        android:id="@+id/asset_realm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="52dp" />
-
-    <TextView
-        android:id="@+id/asset_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="52dp" />
+        android:layout_height="wrap_content">
 
         <TextView
-        android:id="@+id/asset_path"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="52dp" />
+            android:id="@+id/title1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ID AND VERSION"
+            android:paddingVertical="5dp"
+            android:fontFamily="@font/mulish_semibold"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:background="@color/teal_200"
+            />
+        <ImageView
+            android:id="@+id/imgid"
+            android:layout_width="30dp"
+            android:layout_height="39dp"
+            android:src="@drawable/id"
+            android:layout_below="@id/title1"
+            />
+        <TextView
+            android:id="@+id/asset_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_below="@id/title1"
+            android:paddingVertical="10dp"
+            android:layout_toRightOf="@id/imgversion"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp"
+            >
+        </TextView>
+        <ImageView
+            android:id="@+id/imgversion"
+            android:layout_width="30dp"
+            android:layout_height="39dp"
+            android:src="@drawable/version"
+            android:layout_below="@id/asset_id"
+            android:layout_marginRight="10dp"
+            />
+
+        <TextView
+            android:id="@+id/asset_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_toRightOf="@id/imgversion"
+            android:paddingVertical="10dp"
+            android:layout_below="@id/asset_id"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="87dp" />
 
 
-  </LinearLayout>
+        <TextView
+            android:id="@+id/title2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DATE AND NAME"
+            android:fontFamily="@font/mulish_semibold"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            android:paddingVertical="5dp"
+            android:layout_below="@id/asset_version"
+            android:paddingLeft="10dp"
+            android:background="@color/teal_200"
+            />
+        <ImageView
+            android:id="@+id/imgdate"
+            android:layout_width="30dp"
+            android:layout_height="39dp"
+            android:src="@drawable/calendar"
+            android:layout_below="@id/title2"
+            android:layout_marginRight="10dp"
+            />
+
+        <TextView
+            android:id="@+id/asset_created_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp"
+            android:text="TextView"
+            android:layout_toRightOf="@id/imgdate"
+            android:layout_below="@id/title2"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="122dp" />
+
+        <ImageView
+            android:id="@+id/imgname"
+            android:layout_width="30dp"
+            android:layout_height="39dp"
+            android:src="@drawable/name"
+            android:layout_below="@id/asset_created_on"
+            android:layout_marginRight="10dp"
+            />
+
+        <TextView
+            android:id="@+id/asset_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:paddingVertical="10dp"
+            android:layout_below="@id/asset_created_on"
+            tools:layout_editor_absoluteX="16dp"
+            android:layout_toRightOf="@id/imgname"
+            tools:layout_editor_absoluteY="122dp" />
+
+
+        <TextView
+            android:id="@+id/title3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PUBLIC READ AND PARENT ID"
+            android:fontFamily="@font/mulish_semibold"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            android:paddingVertical="5dp"
+            android:layout_below="@id/asset_name"
+            android:paddingLeft="10dp"
+            android:background="@color/teal_200"
+            />
+
+        <ImageView
+            android:id="@+id/imgbook"
+            android:layout_width="30dp"
+            android:layout_height="39dp"
+            android:src="@drawable/book"
+            android:layout_below="@id/title3"
+            android:layout_marginRight="10dp"
+            />
+
+        <TextView
+            android:id="@+id/asset_access_public_read"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_below="@id/title3"
+            android:layout_toRightOf="@id/imgbook"
+            android:paddingVertical="10dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="52dp" />
+
+        <ImageView
+            android:id="@+id/imgparentid"
+            android:layout_width="30dp"
+            android:layout_height="39dp"
+            android:src="@drawable/id"
+            android:layout_below="@id/asset_access_public_read"
+            android:layout_marginRight="10dp"
+            />
+
+        <TextView
+            android:id="@+id/asset_parent_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_below="@id/asset_access_public_read"
+            tools:layout_editor_absoluteX="16dp"
+            android:paddingVertical="10dp"
+            android:layout_toRightOf="@id/imgparentid"
+            tools:layout_editor_absoluteY="52dp" />
+
+
+        <TextView
+            android:id="@+id/title4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="REALM, TYPE AND PATH"
+            android:fontFamily="@font/mulish_semibold"
+            android:textSize="10dp"
+            android:textStyle="bold"
+            android:paddingVertical="5dp"
+            android:layout_below="@id/asset_parent_id"
+            android:paddingLeft="10dp"
+            android:background="@color/teal_200"
+            />
+
+        <ImageView
+            android:id="@+id/imgrealm"
+            android:layout_width="30dp"
+            android:layout_height="39dp"
+            android:src="@drawable/realm"
+            android:layout_below="@id/title4"
+            android:layout_marginRight="10dp"
+            />
+
+        <TextView
+            android:id="@+id/asset_realm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_below="@id/title4"
+            android:layout_toRightOf="@id/imgrealm"
+            tools:layout_editor_absoluteX="16dp"
+            android:paddingVertical="10dp"
+            tools:layout_editor_absoluteY="52dp" />
+
+        <ImageView
+            android:id="@+id/imgtype"
+            android:layout_width="30dp"
+            android:layout_height="39dp"
+            android:src="@drawable/type"
+            android:layout_below="@id/asset_realm"
+            android:layout_marginRight="10dp"
+            />
+
+        <TextView
+            android:id="@+id/asset_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:paddingVertical="10dp"
+            android:layout_toRightOf="@id/imgtype"
+            android:layout_below="@id/asset_realm"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="52dp" />
+
+        <ImageView
+            android:id="@+id/imgpath"
+            android:layout_width="30dp"
+            android:layout_height="39dp"
+            android:src="@drawable/path"
+            android:layout_below="@id/imgtype"
+            android:layout_marginRight="10dp"
+            />
+
+        <TextView
+            android:id="@+id/asset_path"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp"
+            android:text="TextView"
+            android:layout_toRightOf="@id/imgpath"
+            android:layout_below="@id/asset_type"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="52dp" />
+
+
+    </RelativeLayout>
+
+
+
+
+
+</LinearLayout>
