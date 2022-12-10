@@ -4,14 +4,14 @@ package com.example.sampleproject.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Location {
+public class Rainfall {
 
     @SerializedName("type")
     @Expose
     private String type;
     @SerializedName("value")
     @Expose
-    private Value__1 value;
+    private Object value;
     @SerializedName("name")
     @Expose
     private String name;
@@ -27,11 +27,11 @@ public class Location {
         this.type = type;
     }
 
-    public Value__1 getValue() {
+    public Object getValue() {
         return value;
     }
 
-    public void setValue(Value__1 value) {
+    public void setValue(Object value) {
         this.value = value;
     }
 

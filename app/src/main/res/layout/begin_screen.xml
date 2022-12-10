@@ -8,5 +8,6 @@
         android:src="@drawable/logo_nhom"
         android:layout_gravity="center"
         android:contentDescription="logo"
+        android:id="@+id/logo"
         />
 </LinearLayout>

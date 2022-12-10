@@ -2,15 +2,20 @@ package com.example.sampleproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sampleproject.Model.Asset;
+import com.example.sampleproject.Model.Attributes;
 import com.example.sampleproject.Model.Main;
 import com.example.sampleproject.Model.Sys;
+import com.example.sampleproject.Model.Value;
 import com.example.sampleproject.Model.Weather;
+import com.example.sampleproject.Model.WeatherData;
 import com.example.sampleproject.Model.Wind;
 
 import java.text.SimpleDateFormat;
@@ -26,11 +31,11 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class WeatherActivity extends AppCompatActivity {
-String url = "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}";
-String apikey="c3ecbf09be5267cd280676a01acd3360";
-String lon="105.8544441";
-String lat="21.0294498";
-TextView txtTemp,txtWind, txtHumi, txtSunrise,txtSunset;
+String apikey="";
+
+APIInterface apiInterface;
+
+    TextView txtTemp,txtWind, txtHumi, txtSunrise,txtSunset,txtMain,txtDes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,37 +45,46 @@ TextView txtTemp,txtWind, txtHumi, txtSunrise,txtSunset;
         txtHumi = (TextView) findViewById(R.id.tvHumi);
         txtSunrise = (TextView) findViewById(R.id.tvSR);
         txtSunset = (TextView) findViewById(R.id.tvSS);
+        txtMain = (TextView) findViewById(R.id.tvMain);
+        txtDes = (TextView) findViewById(R.id.tvDes);
 
+        Intent intent = getIntent();
+        apikey = intent.getStringExtra("Key");
+        getweather(apikey);
 
-        getweather();
     }
-    public void getweather(){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.openweathermap.org/data/2.5/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        APIInterface myapi = retrofit.create(APIInterface.class);
-        Call<Weather> weather = myapi.getweather(lat,lon,apikey);
-        weather.enqueue(new Callback<Weather>() {
+    public void getweather(String appid){
+        apiInterface = APIClient.getClient().create(APIInterface.class);
+
+
+        Call<Asset> weather = apiInterface.getAsset(appid);
+        weather.enqueue(new Callback<Asset>() {
             @Override
-            public void onResponse(Call<Weather> call, Response<Weather> response) {
-                Weather mydata = response.body();
-                Main main = mydata.getMain();
-                Sys sys = mydata.getSys();
+            public void onResponse(Call<Asset> call, Response<Asset> response) {
+                Asset asset = response.body();
+                Attributes attributes = asset.attributes;
+                WeatherData weatherData = attributes.getWeatherData();
+                Main main = weatherData.getValue().getMain();
+                Value value = weatherData.getValue();
+                Sys sys = value.getSys();
                 Double temp = main.getTemp();
-                Integer temperature = (int)(temp-273.15);
-                Wind wind = mydata.getWind();
+                Integer temperature = (int)(temp-0);
+                Wind wind = value.getWind();
                 Double winspeed = wind.getSpeed();
                 Integer humidity = main.getHumidity();
                 String sunrise =covertUnixToHour(sys.getSunrise()) ;
                 String sunset = covertUnixToHour(sys.getSunset());
-
-
-                txtTemp.setText(String.valueOf(temperature)+"°C");
+                Weather weather1[] = value.getWeather().toArray(new Weather[0]);
+                String str = weather1[0].getDescription();
+                String cap = str.substring(0, 1).toUpperCase() + str.substring(1);
+                txtTemp.setText(String.valueOf(temperature)+"°");
                 txtHumi.setText(String.valueOf(humidity)+"%");
                 txtSunrise.setText(String.valueOf(sunset));
                 txtSunset.setText(String.valueOf(sunrise));
                 txtWind.setText(String.valueOf(winspeed)+"km/h");
+                txtDes.setText(String.valueOf(cap));
+                txtMain.setText(String.valueOf(weather1[0].getMain()));
+
 
 
 
@@ -78,7 +92,7 @@ TextView txtTemp,txtWind, txtHumi, txtSunrise,txtSunset;
             }
 
             @Override
-            public void onFailure(Call<Weather> call, Throwable t) {
+            public void onFailure(Call<Asset> call, Throwable t) {
                 Log.d("API CALL ASSET", t.getMessage());
 
             }

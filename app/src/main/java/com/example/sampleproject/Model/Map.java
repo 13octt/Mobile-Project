@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 public class Map {
     @SerializedName("options")
     @Expose
-    public Object options;
+    public Options options;
     @SerializedName("version")
     @Expose
     public Integer version;
@@ -22,10 +22,10 @@ public class Map {
     @SerializedName("layers")
     @Expose
     public Object layers[];
-    public Object getoptions() {
+    public Options getoptions() {
         return options;
     }
-    public void setoptions(Object options) {
+    public void setoptions(Options options) {
         this.options = options;
     }
 

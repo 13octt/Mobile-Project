@@ -6,21 +6,29 @@ import com.google.gson.annotations.SerializedName;
 
 public class Sys {
 
-    @SerializedName("type")
-    @Expose
-    private Integer type;
     @SerializedName("id")
     @Expose
     private Integer id;
+    @SerializedName("type")
+    @Expose
+    private Integer type;
+    @SerializedName("sunset")
+    @Expose
+    private Integer sunset;
     @SerializedName("country")
     @Expose
     private String country;
     @SerializedName("sunrise")
     @Expose
     private Integer sunrise;
-    @SerializedName("sunset")
-    @Expose
-    private Integer sunset;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getType() {
         return type;
@@ -30,12 +38,12 @@ public class Sys {
         this.type = type;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getSunset() {
+        return sunset;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setSunset(Integer sunset) {
+        this.sunset = sunset;
     }
 
     public String getCountry() {
@@ -52,14 +60,6 @@ public class Sys {
 
     public void setSunrise(Integer sunrise) {
         this.sunrise = sunrise;
-    }
-
-    public Integer getSunset() {
-        return sunset;
-    }
-
-    public void setSunset(Integer sunset) {
-        this.sunset = sunset;
     }
 
 }

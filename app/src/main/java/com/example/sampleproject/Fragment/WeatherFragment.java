@@ -13,10 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.sampleproject.APIClient;
 import com.example.sampleproject.APIInterface;
+import com.example.sampleproject.Model.Asset;
+import com.example.sampleproject.Model.Attributes;
 import com.example.sampleproject.Model.Main;
 import com.example.sampleproject.Model.Sys;
+import com.example.sampleproject.Model.Value;
 import com.example.sampleproject.Model.Weather;
+import com.example.sampleproject.Model.WeatherData;
 import com.example.sampleproject.Model.Wind;
 import com.example.sampleproject.R;
 
@@ -44,10 +49,10 @@ public class WeatherFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    String url = "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}";
+    APIInterface apiInterface;
+
     String apikey="c3ecbf09be5267cd280676a01acd3360";
-    String lon="105.8544441";
-    String lat="21.0294498";
+
     TextView txtTemp,txtWind, txtHumi, txtSunrise,txtSunset;
     public WeatherFragment() {
         // Required empty public constructor
@@ -108,32 +113,33 @@ public class WeatherFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        getweather();
+        getweather(apikey);
     }
 
-    public void getweather(){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.openweathermap.org/data/2.5/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        APIInterface myapi = retrofit.create(APIInterface.class);
-        Call<Weather> weather = myapi.getweather(lat,lon,apikey);
-        weather.enqueue(new Callback<Weather>() {
+    public void getweather(String appid){
+        apiInterface = APIClient.getClient().create(APIInterface.class);
+
+
+        Call<Asset> weather = apiInterface.getAsset(appid);
+        weather.enqueue(new Callback<Asset>() {
             @Override
-            public void onResponse(Call<Weather> call, Response<Weather> response) {
-                Weather mydata = response.body();
-                Main main = mydata.getMain();
-                Sys sys = mydata.getSys();
+            public void onResponse(Call<Asset> call, Response<Asset> response) {
+                Asset asset = response.body();
+                Attributes attributes = asset.attributes;
+                WeatherData weatherData = attributes.getWeatherData();
+                Main main = weatherData.getValue().getMain();
+                Value value = weatherData.getValue();
+                Sys sys = value.getSys();
                 Double temp = main.getTemp();
                 Integer temperature = (int)(temp-273.15);
-                Wind wind = mydata.getWind();
+                Wind wind = value.getWind();
                 Double winspeed = wind.getSpeed();
                 Integer humidity = main.getHumidity();
                 String sunrise =covertUnixToHour(sys.getSunrise()) ;
                 String sunset = covertUnixToHour(sys.getSunset());
 
 
-                txtTemp.setText(String.valueOf(temperature)+"°");
+                txtTemp.setText(String.valueOf(temperature)+"°C");
                 txtHumi.setText(String.valueOf(humidity)+"%");
                 txtSunrise.setText(String.valueOf(sunset));
                 txtSunset.setText(String.valueOf(sunrise));
@@ -145,7 +151,7 @@ public class WeatherFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<Weather> call, Throwable t) {
+            public void onFailure(Call<Asset> call, Throwable t) {
                 Log.d("API CALL ASSET", t.getMessage());
 
             }
