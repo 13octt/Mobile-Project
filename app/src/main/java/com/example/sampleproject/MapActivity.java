@@ -107,9 +107,9 @@ public class MapActivity extends AppCompatActivity{
                 Gson gson = new Gson();
                 String json = gson.toJson(asset.attributes);
                 Attributes attr = gson.fromJson(json,Attributes.class);
-                json = gson.toJson(attr.location);
+                json = gson.toJson(attr.getLocation());
                 Location location = gson.fromJson(json, Location.class);
-                json = gson.toJson(location.value);
+                json = gson.toJson(location.getValue());
                 LocationValue lvalue = gson.fromJson(json,LocationValue.class);
 
 
@@ -174,9 +174,9 @@ public class MapActivity extends AppCompatActivity{
                 Gson gson = new Gson();
                 String json = gson.toJson(asset.attributes);
                 Attributes attr = gson.fromJson(json,Attributes.class);
-                json = gson.toJson(attr.location);
+                json = gson.toJson(attr.getLocation());
                 Location location = gson.fromJson(json, Location.class);
-                json = gson.toJson(location.value);
+                json = gson.toJson(location.getValue());
                 LocationValue lvalue = gson.fromJson(json,LocationValue.class);
 
 
@@ -212,9 +212,9 @@ public class MapActivity extends AppCompatActivity{
                 Gson gson = new Gson();
                 String json = gson.toJson(asset.attributes);
                 Attributes attr = gson.fromJson(json,Attributes.class);
-                json = gson.toJson(attr.location);
+                json = gson.toJson(attr.getLocation());
                 Location location = gson.fromJson(json, Location.class);
-                json = gson.toJson(location.value);
+                json = gson.toJson(location.getValue());
                 LocationValue lvalue = gson.fromJson(json,LocationValue.class);
 
 
