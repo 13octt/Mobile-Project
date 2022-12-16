@@ -65,6 +65,7 @@ dependencies {
     implementation 'org.osmdroid:osmdroid-android:6.1.14'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.makeramen:roundedimageview:2.3.0'
+    implementation 'com.jjoe64:graphview:4.2.2'
 
 
 
