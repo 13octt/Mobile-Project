@@ -6,6 +6,7 @@ import androidx.core.content.res.ResourcesCompat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -57,11 +58,15 @@ public class MapActivity extends AppCompatActivity{
     APIInterface apiInterface;
     private MapView mapView;
     private IMapController mapController;
+    private Broadcast mBroadcast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        mBroadcast = new Broadcast();
+        IntentFilter intent = new IntentFilter(".Insight");
+        registerReceiver(mBroadcast,intent);
 
 
 
@@ -189,9 +194,9 @@ public class MapActivity extends AppCompatActivity{
 
 
             @Override
-            public void onFailure(Call<Asset> call, Throwable t) {
-
-            }
+                public void onFailure(Call<Asset> call, Throwable t) {
+    
+                }
         });
 
 

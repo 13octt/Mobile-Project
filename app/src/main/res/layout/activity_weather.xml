@@ -16,6 +16,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         tools:ignore="MissingConstraints">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_ins"
+            android:background="@drawable/diagram"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/white"></Button>
         <TextView
 
             android:layout_width="match_parent"
@@ -120,7 +127,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="70dp">
+        android:layout_marginBottom="30dp">
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="210dp"
