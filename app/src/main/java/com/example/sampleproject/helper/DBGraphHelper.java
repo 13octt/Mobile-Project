@@ -2,6 +2,7 @@ package com.example.sampleproject.helper;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -11,7 +12,6 @@ public class DBGraphHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "graph.db";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_GRAPH = "graph";
-
     private static final String KEY_ID = "id";
     private static final String KEY_TEMP = "tempurate";
     private static final String KEY_HUMIDITY = "humidity";
@@ -28,13 +28,12 @@ public class DBGraphHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String sqLite = "CREATE TABLE " + TABLE_GRAPH + "("
-                + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + KEY_TEMP + " TEXT,"
                 + KEY_HUMIDITY + " TEXT,"
-                + KEY_PRESSURE + " TEXT,"
-                + KEY_TEMP_MAX + " TEXT,"
-                + KEY_TEMP_MIN + " TEXT,"
-                + KEY_SEA_LEVEL + " TEXT"
+                + KEY_PRESSURE + " TEXT "
+//                + KEY_TEMP_MAX + " TEXT,"
+//                + KEY_TEMP_MIN + " TEXT,"
+//                + KEY_SEA_LEVEL + " TEXT"
                 + ")";
         sqLiteDatabase.execSQL(sqLite);
     }
@@ -42,25 +41,55 @@ public class DBGraphHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_GRAPH);
-        //
         onCreate(sqLiteDatabase);
     }
 
-    public Boolean insertData(String id, String ver, String name) {
+    public void insertData(Double temp, Double humidity, Double pressure) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("id", id);
-        values.put("version", ver);
-        values.put("name", name);
-        long results = db.insert("graph", null, values);
-        if (results == 1)
+        values.put(KEY_TEMP, temp);
+        values.put(KEY_HUMIDITY, humidity);
+        values.put(KEY_PRESSURE, pressure);
+//        long results =
+        db.insert(TABLE_GRAPH, null, values);
+        db.close();
+
+//        if (results == 1)
+//            return true;
+//        else
+//            return false;
+    }
+
+    public Boolean checkHumidity(Double humidity){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM graph WHERE humidity = ?", new String []{humidity.toString()});
+        if(cursor.getCount() > 0){
             return true;
+        }
         else
             return false;
     }
 
+    public Boolean checkTemp(Double temp){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM graph WHERE tempurature = ?", new String []{temp.toString()});
+        if(cursor.getCount() > 0){
+            return true;
+        }
+        else
+            return false;
+    }
 
-//    public Boolean checkGraph(String abc, ...){}
+    public Boolean checkPressure(Double pressure){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM graph WHERE pressure = ?", new String []{pressure.toString()});
+        if(cursor.getCount() > 0){
+            return true;
+        }
+        else
+            return false;
+    }
+
 
 
 }
