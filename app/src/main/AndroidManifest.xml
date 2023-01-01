@@ -21,6 +21,26 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".custom"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".TimeTableActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".BroadcastActivity"
             android:exported="false">
             <meta-data
@@ -28,7 +48,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".insight_activity"
+            android:name=".InsightActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -64,12 +84,7 @@
         </activity>
         <activity
             android:name=".LoadingActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -178,9 +193,10 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <receiver android:name=".Broadcast"
-            android:exported="true"
-            android:enabled="true">
+        <receiver
+            android:name=".Broadcast"
+            android:enabled="true"
+            android:exported="true">
             <intent-filter>
                 <action android:name=".Insight" />
             </intent-filter>

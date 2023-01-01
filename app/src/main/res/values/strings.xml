@@ -2,4 +2,35 @@
     <string name="app_name">sampleproject</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="want_to_take_note_for_your_daily_routines">Want to take note for your daily routines ?</string>
+    <string name="notes">Notes</string>
+    <string name="edit">Edit</string>
+    <string name="img">img</string>
+    <string name="uit_openremote">UIT OPENREMOTE</string>
+    <string name="discover_our_uit_iot_devices">Discover our Uit Iot Devices</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="your_username">Your username</string>
+    <string name="register">Register</string>
+    <string name="re_password">Re-password</string>
+    <string name="password">Password</string>
+    <string name="email_right_here">Email right here !</string>
+    <string name="username">Username</string>
+    <string name="log_in">Log in</string>
+    <string name="weather_fragment">Weather_fragment</string>
+    <string name="map_fragment">Map_fragment</string>
+    <string name="home_fragment">home_fragment</string>
+    <string name="logo">logo</string>
+    <string name="id_and_version">ID AND VERSION</string>
+
+    <string-array name="planets_array">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
 </resources>
