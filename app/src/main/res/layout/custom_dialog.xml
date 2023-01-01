@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".TimeTableActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter your subject:"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter name"
+        />
+
+    <EditText
+        android:id="@+id/et_subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Subject"
+        android:inputType="none"
+        android:minHeight="48dp">
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/et_start_period"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter start period"
+        />
+
+    <EditText
+        android:id="@+id/et_end_period"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter start period"
+        />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="142dp"
+        android:layout_height="match_parent"
+
+
+        />
+
+
+</LinearLayout>

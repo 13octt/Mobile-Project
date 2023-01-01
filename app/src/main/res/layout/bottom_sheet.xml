@@ -251,14 +251,6 @@
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="52dp" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/asset_path"
-            android:layout_alignParentRight="true"
-            android:text="More Details"
-            android:id="@+id/btn_more"
-            ></Button>
 
     </RelativeLayout>
 
