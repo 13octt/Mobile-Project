@@ -25,7 +25,8 @@ import org.w3c.dom.Text;
 
 public class TimeTableActivity extends AppCompatActivity {
 
-    DBTimeTableHelper dbTimeTableHelper;
+    DBTimeTableHelper dbTimeTableHelper ;
+
     SQLiteDatabase sqLiteDatabase;
     Button addSubject, deleteSubject;
     TableLayout tableLayout;
@@ -47,7 +48,7 @@ public class TimeTableActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_table);
-
+        dbTimeTableHelper = new DBTimeTableHelper(this);
         TextView tt = (TextView) findViewById(R.id.txt_time_table);
         //button add
         addSubject = (Button) findViewById(R.id.button_add) ;
@@ -91,34 +92,30 @@ public class TimeTableActivity extends AppCompatActivity {
 //                spinner.setAdapter(adapter);
 
 //                etMon1 = (TextView) findViewById(R.id.et_name);
+                final EditText usrname = (EditText) customDialogView.findViewById(R.id.et_name);
+                final EditText day = (EditText) customDialogView.findViewById(R.id.et_day);
+                final EditText period_begin = (EditText) customDialogView.findViewById(R.id.et_start_period);
+                final EditText period_end = (EditText) customDialogView.findViewById(R.id.et_end_period);
+                final EditText subject = (EditText) customDialogView.findViewById(R.id.et_subject);
 
-
-                alertDialog.setCancelable(false);
-                alertDialog.setPositiveButton("ADD", new DialogInterface.OnClickListener() {
+                alertDialog.setCancelable(false)
+                .setPositiveButton("ADD", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int id) {
-                        final EditText usrname = (EditText) customDialogView.findViewById(R.id.et_name);
-                        final EditText day = (EditText) customDialogView.findViewById(R.id.et_day);
-                        final EditText period_begin = (EditText) customDialogView.findViewById(R.id.et_start_period);
-                        final EditText period_end = (EditText) customDialogView.findViewById(R.id.et_end_period);
-                        final EditText subject = (EditText) customDialogView.findViewById(R.id.et_subject);
+
 
                         String usr = usrname.getText().toString().trim();
                         String date = day.getText().toString().trim();
                         String sub = subject.getText().toString().trim();
                         Integer begin = Integer.parseInt(period_begin.getText().toString());
                         Integer end = Integer.parseInt(period_end.getText().toString());
-
                         if (TextUtils.isEmpty(sub) || TextUtils.isEmpty(date) || TextUtils.isEmpty(usr) || TextUtils.isEmpty(begin.toString()) || TextUtils.isEmpty(end.toString()))
                             Toast.makeText(TimeTableActivity.this, "All fields is required", Toast.LENGTH_SHORT).show();
                         else {
-                           dbTimeTableHelper.insertData(usr, date, sub, begin, end);
-////                                     Toast.makeText(TimeTableActivity.this,usr,Toast.LENGTH_SHORT).show();
-                            Log.e("insert",usr);
-                            Log.e("insert",date);
-                            Log.e("insert",sub);
-                            Log.e("insert",begin.toString());
-                            Log.e("insert",end.toString());
+//                            dbTimeTableHelper.insert("math");
+                          dbTimeTableHelper.insertData(usr,date, sub, begin, end);
+//                                     Toast.makeText(TimeTableActivity.this,usr,Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 });
@@ -128,8 +125,8 @@ public class TimeTableActivity extends AppCompatActivity {
                         dialogInterface.cancel();
                     }
                 });
-                AlertDialog dialog = alertDialog.create();
-                dialog.show();
+                alertDialog.create();
+                alertDialog.show();
             }
         });
 

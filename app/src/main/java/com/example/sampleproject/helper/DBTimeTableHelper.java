@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -30,8 +31,10 @@ public class DBTimeTableHelper extends SQLiteOpenHelper {
     public static final String KEY_SUBJECT = "SUBJECT";
     public static final int DATABASE_VERSION = 1;
     DBTimeTableHelper dbTimeTableHelper;
-    public DBTimeTableHelper(@Nullable Context context) {
+    public DBTimeTableHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        Log.d("SQL", "SQLite dbhelper");
+        db = getWritableDatabase();
     }
 
     @Override
@@ -40,10 +43,11 @@ public class DBTimeTableHelper extends SQLiteOpenHelper {
                 + KEY_USER_ACCOUNT + " TEXT,"
                 + KEY_SUBJECT + " TEXT,"
                 + KEY_DAY + " TEXT,"
-                + KEY_PERIOD_BEGIN + " INTEGER,"
-                + KEY_PERIOD_END + " INTEGER"
+                + KEY_PERIOD_BEGIN + " TEXT,"
+                + KEY_PERIOD_END + " TEXT "
                 + ")";
         sqLiteDatabase.execSQL(sqLite);
+        Log.d("SQL", "SQLite onCreate");
     }
 
     @Override
@@ -61,6 +65,13 @@ public class DBTimeTableHelper extends SQLiteOpenHelper {
         values.put(KEY_PERIOD_BEGIN, period_begin);
         values.put(KEY_PERIOD_END, period_end);
 
+        db.insert(TABLE_TIMETABLE, null, values);
+        db.close();
+    }
+    public void insert(String subject){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_SUBJECT, subject);
         db.insert(TABLE_TIMETABLE, null, values);
         db.close();
     }
