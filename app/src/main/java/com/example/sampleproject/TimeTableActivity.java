@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,13 +25,14 @@ import org.w3c.dom.Text;
 
 public class TimeTableActivity extends AppCompatActivity {
 
-    DBTimeTableHelper dbTimeTableHelper;
+    DBTimeTableHelper dbTimeTableHelper ;
+
     SQLiteDatabase sqLiteDatabase;
     Button addSubject, deleteSubject;
     TableLayout tableLayout;
     public String edit;
     public TextView etMon1;
-
+//    EditText usrname, day , period_begin,period_end,subject,password, repassword;
     TextView mon1, tue1, wed1, thu1, fri1, sat1, sun1,
             mon2, tue2, wed2, thu2, fri2, sat2, sun2,
             mon3, tue3, wed3, thu3, fri3, sat3, sun3,
@@ -46,9 +48,10 @@ public class TimeTableActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_table);
-
+        dbTimeTableHelper = new DBTimeTableHelper(this);
         TextView tt = (TextView) findViewById(R.id.txt_time_table);
-
+        //button add
+        addSubject = (Button) findViewById(R.id.button_add) ;
         //Mon
         mon1 = (TextView) findViewById(R.id.mon_1);
         mon2 = (TextView) findViewById(R.id.mon_2);
@@ -72,11 +75,11 @@ public class TimeTableActivity extends AppCompatActivity {
         String mo9 = mon9.getText().toString().trim();
         String mo10 = mon10.getText().toString().trim();
 
-        mon1.setOnClickListener(new View.OnClickListener() {
+        addSubject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 LayoutInflater layoutInflater = LayoutInflater.from(TimeTableActivity.this);
-                View customDialogView = layoutInflater.inflate(R.layout.activity_custom2, null);
+                View customDialogView = layoutInflater.inflate(R.layout.custom_dialog, null);
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(TimeTableActivity.this);
                 alertDialog.setView(customDialogView);
 
@@ -88,25 +91,42 @@ public class TimeTableActivity extends AppCompatActivity {
 //                // Apply the adapter to the spinner
 //                spinner.setAdapter(adapter);
 
-                etMon1 = (TextView) findViewById(R.id.et_name);
-                alertDialog.setCancelable(false).setPositiveButton("ADD", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int id) {
-                                edit = etMon1.getText().toString();
-                                mon1.setText(edit);
-//                                Toast.makeText(TimeTableActivity.this, mon1.setText(tt.);, Toast.LENGTH_SHORT).show();
-//                                Toast.makeText(TimeTableActivity.this, sdf.trim(), Toast.LENGTH_SHORT).show();
-//                                Log.d("abc", sdf);
-                            }
-                        })
-                        .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.cancel();
-                            }
-                        });
-                AlertDialog dialog = alertDialog.create();
-                dialog.show();
+//                etMon1 = (TextView) findViewById(R.id.et_name);
+                final EditText usrname = (EditText) customDialogView.findViewById(R.id.et_name);
+                final EditText day = (EditText) customDialogView.findViewById(R.id.et_day);
+                final EditText period_begin = (EditText) customDialogView.findViewById(R.id.et_start_period);
+                final EditText period_end = (EditText) customDialogView.findViewById(R.id.et_end_period);
+                final EditText subject = (EditText) customDialogView.findViewById(R.id.et_subject);
+
+                alertDialog.setCancelable(false)
+                .setPositiveButton("ADD", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int id) {
+
+
+                        String usr = usrname.getText().toString().trim();
+                        String date = day.getText().toString().trim();
+                        String sub = subject.getText().toString().trim();
+                        Integer begin = Integer.parseInt(period_begin.getText().toString());
+                        Integer end = Integer.parseInt(period_end.getText().toString());
+                        if (TextUtils.isEmpty(sub) || TextUtils.isEmpty(date) || TextUtils.isEmpty(usr) || TextUtils.isEmpty(begin.toString()) || TextUtils.isEmpty(end.toString()))
+                            Toast.makeText(TimeTableActivity.this, "All fields is required", Toast.LENGTH_SHORT).show();
+                        else {
+//                            dbTimeTableHelper.insert("math");
+                          dbTimeTableHelper.insertData(usr,date, sub, begin, end);
+//                                     Toast.makeText(TimeTableActivity.this,usr,Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+                alertDialog.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                alertDialog.create();
+                alertDialog.show();
             }
         });
 
