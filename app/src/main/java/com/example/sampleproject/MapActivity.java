@@ -178,10 +178,10 @@ public class MapActivity extends AppCompatActivity{
                             @Override
                             public void onClick(View view) {
 
-                                    Intent intent = new Intent(MapActivity.this, WeatherActivity.class);
-                                    intent.putExtra("Key", appid);
-                                    startActivity(intent);
-                                    finish();
+                                Intent intent = new Intent(MapActivity.this, WeatherActivity.class);
+                                intent.putExtra("Key", appid);
+                                startActivity(intent);
+                                finish();
                             }
                         });
                         return true;
@@ -189,14 +189,14 @@ public class MapActivity extends AppCompatActivity{
 
                     }
 
-            });}
+                });}
 
 
 
             @Override
-                public void onFailure(Call<Asset> call, Throwable t) {
-    
-                }
+            public void onFailure(Call<Asset> call, Throwable t) {
+
+            }
         });
 
 

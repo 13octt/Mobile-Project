@@ -18,7 +18,12 @@
 
         android:text="TIME TABLE"
         />
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/button_add">
 
+    </Button>
     <TableLayout
         android:layout_below="@+id/txt_time_table"
         android:layout_width="match_parent"
