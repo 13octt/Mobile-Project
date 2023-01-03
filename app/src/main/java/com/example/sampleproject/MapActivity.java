@@ -3,6 +3,9 @@ package com.example.sampleproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,28 +57,81 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MapActivity extends AppCompatActivity{
+public class MapActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     APIInterface apiInterface;
     private MapView mapView;
     private IMapController mapController;
     private Broadcast mBroadcast;
+    DrawerLayout drawerLayout;
+    ImageView imgMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+        drawerLayout = findViewById(R.id.layout_dialog);
+        imgMenu = findViewById(R.id.ic_menu);
+
+        imgMenu.setOnClickListener(view -> {
+            drawerLayout.openDrawer(GravityCompat.START);
+        });
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        if (navigationView != null) {
+            navigationView.setNavigationItemSelectedListener(this);
+        }
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.it_map:
+                        Intent map = new Intent(MapActivity.this, MapActivity.class);
+                        startActivity(map);
+                        break;
+                    case R.id.it_weather:
+                        Intent weather = new Intent(MapActivity.this, WeatherActivity.class);
+                        startActivity(weather);
+                        break;
+                    case R.id.it_user_role:
+                        Intent userRoles = new Intent(MapActivity.this, UserRolesActivity.class);
+                        startActivity(userRoles);
+                        break;
+                    case R.id.it_asset_descriptor:
+                        Intent des = new Intent(MapActivity.this, AssetDescriptorActivity.class);
+                        startActivity(des);
+                        break;
+                    case R.id.it_time_table:
+                        Intent timeTable = new Intent(MapActivity.this, TimeTableActivity.class);
+                        startActivity(timeTable);
+                        break;
+
+                    case R.id.it_log_out:
+                        Intent logout = new Intent(MapActivity.this, SigninRegActivity.class);
+                        startActivity(logout);
+                        break;
+                }
+                return true;
+            }
+
+        });
+
         mBroadcast = new Broadcast();
         IntentFilter intent = new IntentFilter(".Insight");
-        registerReceiver(mBroadcast,intent);
-
-
+        registerReceiver(mBroadcast, intent);
 
         Context ctx = getApplicationContext();
         org.osmdroid.config.Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
         apiInterface = APIClient.getClient().create(APIInterface.class);
-//        NavigationView nv = findViewById(R.id.navi);
-//        nv.setNavigationItemSelectedListener(this);
+
+//        NavigationView nv = findViewById(R.id.bottom_nav_bar);
+//        nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                return true;
+//            }
+//        });
+
         Call<Map> mapCall = apiInterface.getMap();
         mapCall.enqueue(new Callback<Map>() {
             @Override
@@ -111,12 +168,12 @@ public class MapActivity extends AppCompatActivity{
             }
         });
 
-        addMarker("4cdWlxEvmDRBBDEc2HRsaF","1");
-        addMarker("2UZPM2Mvu11Xyq5jCWNMX1","2");
-        addMarker("6H4PeKLRMea1L0WsRXXWp9","3");
-
+        addMarker("4cdWlxEvmDRBBDEc2HRsaF", "1");
+        addMarker("2UZPM2Mvu11Xyq5jCWNMX1", "2");
+        addMarker("6H4PeKLRMea1L0WsRXXWp9", "3");
     }
-    public  void  addMarker(String appid, String s){
+
+    public void addMarker(String appid, String s) {
 
         Call<Asset> assetloca1 = apiInterface.getAsset(appid);
         assetloca1.enqueue(new Callback<Asset>() {
@@ -128,9 +185,8 @@ public class MapActivity extends AppCompatActivity{
                 Value__1 value = location.getValue();
                 Double cord[] = value.getCoordinates().toArray(new Double[0]);
 
-
-                Double lon =cord[0];
-                Double lat =cord[1];
+                Double lon = cord[0];
+                Double lat = cord[1];
                 GeoPoint startPoint2 = new GeoPoint(lat, lon);
                 mapView = findViewById(R.id.uitMap);
                 mapController = mapView.getController();
@@ -158,8 +214,8 @@ public class MapActivity extends AppCompatActivity{
                         TextView name = (TextView) view.findViewById(R.id.asset_name);
                         TextView public_read = (TextView) view.findViewById(R.id.asset_access_public_read);
                         TextView realm = (TextView) view.findViewById(R.id.asset_realm);
-                        TextView type   = (TextView) view.findViewById(R.id.asset_type);
-                        TextView path  = (TextView) view.findViewById(R.id.asset_path);
+                        TextView type = (TextView) view.findViewById(R.id.asset_type);
+                        TextView path = (TextView) view.findViewById(R.id.asset_path);
                         String crea = formatDate(Long.valueOf(asset.createdOn));
                         id.setText(asset.getId());
                         version.setText(String.valueOf(asset.getVersion()));
@@ -177,30 +233,24 @@ public class MapActivity extends AppCompatActivity{
                         btn_more.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-
                                 Intent intent = new Intent(MapActivity.this, WeatherActivity.class);
                                 intent.putExtra("Key", appid);
                                 startActivity(intent);
-                                finish();
                             }
                         });
+
                         return true;
-
-
                     }
-
-                });}
-
-
+                });
+            }
 
             @Override
             public void onFailure(Call<Asset> call, Throwable t) {
 
             }
         });
-
-
     }
+
     private String formatDate(long milliseconds) /* This is your topStory.getTime()*1000 */ {
         DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy' 'HH:mm:ss");
         sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
@@ -210,10 +260,9 @@ public class MapActivity extends AppCompatActivity{
         sdf.setTimeZone(tz);
         return sdf.format(calendar.getTime());
     }
-    void clickOpenBottomSheetDialog(){
-        View view = getLayoutInflater().inflate(R.layout.bottom_sheet, null);
-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        bottomSheetDialog.setContentView(view);
-        bottomSheetDialog.show();
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
     }
 }

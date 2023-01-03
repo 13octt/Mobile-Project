@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import com.example.sampleproject.Fragment.HomeFragment;
 import com.example.sampleproject.Fragment.MapFragment;
 import com.example.sampleproject.Fragment.NotificationFragment;
-import com.example.sampleproject.Fragment.SettingFragment;
 import com.example.sampleproject.Fragment.WeatherFragment;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
@@ -28,8 +27,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
                 return new WeatherFragment();
             case 3:
                 return new NotificationFragment();
-            case 4:
-                return new SettingFragment();
+
             default:
                 return new HomeFragment();
         }

@@ -32,28 +32,22 @@ public class CustomActivity extends AppCompatActivity implements NavigationBarVi
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.action_home:
-                        viewPager.setCurrentItem(0);
-                        break;
                     case R.id.action_map:
-//                        viewPager.setCurrentItem(1);
-                        Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent mapScreen = new Intent(CustomActivity.this, MapActivity.class);
-                                startActivity(mapScreen);
-                                finish();
-                            }
-                        }, 1);
+                        viewPager.setCurrentItem(0);
+//                        Handler handler = new Handler();
+//                        handler.postDelayed(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                Intent mapScreen = new Intent(CustomActivity.this, MapActivity.class);
+//                                startActivity(mapScreen);
+//                            }
+//                        }, 1);
                         break;
                     case R.id.action_weather:
-                        viewPager.setCurrentItem(2);
+                        viewPager.setCurrentItem(1);
                         break;
-                    case R.id.action_notification:
-                        viewPager.setCurrentItem(3);
-                    case R.id. action_setting:
-                        viewPager.setCurrentItem(4);
+                    case R.id.action_personal:
+                        viewPager.setCurrentItem(2);
                 }
                 return true;
             }
@@ -75,19 +69,14 @@ public class CustomActivity extends AppCompatActivity implements NavigationBarVi
             public void onPageSelected(int position) {
                 switch (position) {
                     case 0:
-                        bottomNavigationView.getMenu().findItem(R.id.action_home).setChecked(true);
-                        break;
-                    case 1:
                         bottomNavigationView.getMenu().findItem(R.id.action_map).setChecked(true);
                         break;
-                    case 2:
+                    case 1:
                         bottomNavigationView.getMenu().findItem(R.id.action_weather).setChecked(true);
                         break;
-                    case 3:
-                        bottomNavigationView.getMenu().findItem(R.id.action_notification).setChecked(true);
+                    case 2:
+                        bottomNavigationView.getMenu().findItem(R.id.action_personal).setChecked(true);
                         break;
-                    case 4:
-                        bottomNavigationView.getMenu().findItem(R.id.action_setting).setChecked(true);
                 }
             }
 

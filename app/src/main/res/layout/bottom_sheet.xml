@@ -32,7 +32,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/teal_200"
-            android:fontFamily="@font/mulish_semibold"
             android:paddingVertical="5dp"
             android:paddingLeft="10dp"
             android:text="ID AND VERSION"
@@ -83,7 +82,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/asset_version"
             android:background="@color/teal_200"
-            android:fontFamily="@font/mulish_semibold"
             android:paddingVertical="5dp"
             android:paddingLeft="10dp"
             android:text="DATE AND NAME"
@@ -135,7 +133,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/asset_name"
             android:background="@color/teal_200"
-            android:fontFamily="@font/mulish_semibold"
             android:paddingVertical="5dp"
             android:paddingLeft="10dp"
             android:text="PUBLIC READ AND PARENT ID"
@@ -187,7 +184,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/asset_parent_id"
             android:background="@color/teal_200"
-            android:fontFamily="@font/mulish_semibold"
             android:paddingVertical="5dp"
             android:paddingLeft="10dp"
             android:text="REALM, TYPE AND PATH"
@@ -257,8 +253,7 @@
             android:layout_below="@+id/asset_path"
             android:layout_alignParentRight="true"
             android:text="More Details"
-            android:id="@+id/btn_more"
-            ></Button>
+            android:id="@+id/btn_more"/>
 
     </RelativeLayout>
 

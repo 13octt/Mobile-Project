@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/it_map"
+        android:icon="@drawable/ic_baseline_location_on_24"
+        android:title="@string/map_location" />
+    <item
+        android:id="@+id/it_weather"
+        android:icon="@drawable/wind"
+        android:title="@string/weather_assets" />
+
+    <item
+        android:id="@+id/it_user_role"
+        android:icon="@drawable/ic_baseline_user_role_24"
+        android:title="@string/user_roles" />
+
+    <item
+        android:id="@+id/it_asset_descriptor"
+        android:icon="@drawable/ic_baseline_description_24"
+        android:title="@string/asset_descriptors" />
+
+    <item
+        android:id="@+id/it_time_table"
+        android:icon="@drawable/ic_baseline_calendar_month_24"
+        android:title="@string/time_table" />
+
+    <item
+        android:id="@+id/it_log_out"
+        android:icon="@drawable/ic_baseline_logout_24"
+        android:title="@string/log_out" />
+
+</menu>
