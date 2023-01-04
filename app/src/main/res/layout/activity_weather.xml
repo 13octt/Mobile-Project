@@ -14,7 +14,7 @@
             android:id="@+id/tool_bar_1"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@color/custom_blue"
+            android:background="@color/extra_blue"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingStart="15dp"
@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:text="@string/menu"
+                android:text="WEATHER"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />

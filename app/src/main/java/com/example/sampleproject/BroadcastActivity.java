@@ -1,6 +1,9 @@
 package com.example.sampleproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
@@ -15,6 +18,8 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.sampleproject.Model.Asset;
@@ -26,6 +31,7 @@ import com.example.sampleproject.Model.Weather;
 import com.example.sampleproject.Model.WeatherData;
 import com.example.sampleproject.Model.Wind;
 import com.example.sampleproject.helper.DBGraphHelper;
+import com.google.android.material.navigation.NavigationView;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.LegendRenderer;
@@ -44,7 +50,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BroadcastActivity extends AppCompatActivity {
+public class BroadcastActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private MyReceiver mBroadcast = new MyReceiver();
     String humi,wind,temp;
     APIInterface apiInterface;
@@ -54,13 +60,14 @@ public class BroadcastActivity extends AppCompatActivity {
     SQLiteDatabase sqLiteDatabase;
     private ArrayList<Main> mains;
     Cursor cursor;
+    DrawerLayout drawerLayout;
+    ImageView imgMenu;
 
     LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[0]);
     LineGraphSeries<DataPoint> seriesTemp = new LineGraphSeries<>(new DataPoint[0]);
     LineGraphSeries<DataPoint> seriesPressure = new LineGraphSeries<>(new DataPoint[0]);
 
     //    BarGraphSeries<DataPoint> series;
-
 
     List<Double> humilist = new ArrayList<>();
     List<Double> templist = new ArrayList<>();
@@ -70,6 +77,52 @@ public class BroadcastActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insight);
+
+        drawerLayout = findViewById(R.id.layout_insight);
+        imgMenu = findViewById(R.id.ic_menu_insight);
+
+        imgMenu.setOnClickListener(view -> drawerLayout.openDrawer(GravityCompat.START));
+        NavigationView navigationView = findViewById(R.id.nav_view_insight);
+        if (navigationView != null) {
+            navigationView.setNavigationItemSelectedListener(this);
+        }
+
+        assert navigationView != null;
+        navigationView.setNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.it_map:
+                    Intent map = new Intent(BroadcastActivity.this, MapActivity.class);
+                    startActivity(map);
+                    break;
+                case R.id.it_weather:
+                    Intent weather = new Intent(BroadcastActivity.this, WeatherActivity.class);
+                    startActivity(weather);
+                    break;
+                case R.id.it_user_role:
+                    Intent userRoles = new Intent(BroadcastActivity.this, UserRolesActivity.class);
+                    startActivity(userRoles);
+                    break;
+                case R.id.it_asset_descriptor:
+                    Intent des = new Intent(BroadcastActivity.this, AssetDescriptorActivity.class);
+                    startActivity(des);
+                    break;
+                case R.id.it_graph:
+                    Intent graph = new Intent(BroadcastActivity.this, BroadcastActivity.class);
+                    startActivity(graph);
+                    break;
+                case R.id.it_time_table:
+                    Intent timeTable = new Intent(BroadcastActivity.this, TimeTableActivity.class);
+                    startActivity(timeTable);
+                    break;
+
+                case R.id.it_log_out:
+                    Intent logout = new Intent(BroadcastActivity.this, SigninRegActivity.class);
+                    startActivity(logout);
+                    break;
+            }
+            return true;
+        });
+
 //        IntentFilter filter = new IntentFilter("com.example.sampleproject.MY_BC");
 //        registerReceiver(mBroadcast,filter);
         Intent intentService = new Intent (this,BackgroundService.class);
@@ -218,4 +271,8 @@ public class BroadcastActivity extends AppCompatActivity {
         return users;
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
+    }
 }

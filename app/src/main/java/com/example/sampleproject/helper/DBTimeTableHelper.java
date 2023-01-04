@@ -123,6 +123,11 @@ public class DBTimeTableHelper extends SQLiteOpenHelper {
         db = this.getWritableDatabase();
         return null;
         //
+    }
 
+    public Cursor getDataFromDay(String day){
+        db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_TIMETABLE + "WHERE " + KEY_DAY + " = " + day, new String[]{day});
+        return cursor;
     }
 }

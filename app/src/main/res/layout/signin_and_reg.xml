@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:contentDescription="@string/img"
             android:layout_height="match_parent"
-            android:background="@drawable/foreground"
+            android:background="@drawable/back"
             android:scaleType="fitXY"
             android:scaleX="1"
             android:scaleY="1" />

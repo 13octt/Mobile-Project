@@ -5,8 +5,7 @@
     android:id="@+id/layout_user_roles"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/foreground">
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,7 +15,7 @@
             android:id="@+id/tool_bar_ur"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@color/custom_blue"
+            android:background="@color/extra_blue"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingStart="15dp"
@@ -33,10 +32,10 @@
 
             <TextView
                 android:id="@+id/txt_menu"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:text="MENU"
+                android:text="USER ROLES"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -47,16 +46,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tool_bar_ur"
             android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="18dp"
-                android:text="USER ROLES"
-                android:textColor="@color/white"
-                android:textSize="30sp"
-                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv_user_roles"

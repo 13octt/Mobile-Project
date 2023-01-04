@@ -71,6 +71,10 @@ public class UserRolesActivity extends AppCompatActivity implements NavigationVi
                         Intent des = new Intent(UserRolesActivity.this, AssetDescriptorActivity.class);
                         startActivity(des);
                         break;
+                    case R.id.it_graph:
+                        Intent graph = new Intent(UserRolesActivity.this, BroadcastActivity.class);
+                        startActivity(graph);
+                        break;
                     case R.id.it_time_table:
                         Intent timeTable = new Intent(UserRolesActivity.this, TimeTableActivity.class);
                         startActivity(timeTable);

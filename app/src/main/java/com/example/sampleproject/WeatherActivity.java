@@ -39,7 +39,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class WeatherActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    String apikey = "";
+    String apikey = "4cdWlxEvmDRBBDEc2HRsaF";
     ViewPager viewPager;
     DrawerLayout drawerLayout;
     ImageView imgMenu;
@@ -84,6 +84,10 @@ public class WeatherActivity extends AppCompatActivity implements NavigationView
                         Intent des = new Intent(WeatherActivity.this, AssetDescriptorActivity.class);
                         startActivity(des);
                         break;
+                    case R.id.it_graph:
+                        Intent graph = new Intent(WeatherActivity.this, BroadcastActivity.class);
+                        startActivity(graph);
+                        break;
                     case R.id.it_time_table:
                         Intent timeTable = new Intent(WeatherActivity.this, TimeTableActivity.class);
                         startActivity(timeTable);
@@ -109,6 +113,8 @@ public class WeatherActivity extends AppCompatActivity implements NavigationView
 
         Intent intent = getIntent();
         apikey = intent.getStringExtra("Key");
+        if(apikey==null)
+            apikey = "4cdWlxEvmDRBBDEc2HRsaF";
         getweather(apikey);
 
     }

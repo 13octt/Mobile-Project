@@ -21,6 +21,11 @@
         android:title="@string/asset_descriptors" />
 
     <item
+        android:id="@+id/it_graph"
+        android:icon="@drawable/ic_insight"
+        android:title="Insight" />
+
+    <item
         android:id="@+id/it_time_table"
         android:icon="@drawable/ic_baseline_calendar_month_24"
         android:title="@string/time_table" />

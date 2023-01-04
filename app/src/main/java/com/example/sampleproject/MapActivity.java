@@ -101,6 +101,10 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
                         Intent des = new Intent(MapActivity.this, AssetDescriptorActivity.class);
                         startActivity(des);
                         break;
+                    case R.id.it_graph:
+                        Intent graph = new Intent(MapActivity.this, BroadcastActivity.class);
+                        startActivity(graph);
+                        break;
                     case R.id.it_time_table:
                         Intent timeTable = new Intent(MapActivity.this, TimeTableActivity.class);
                         startActivity(timeTable);
@@ -215,7 +219,7 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
                         TextView public_read = (TextView) view.findViewById(R.id.asset_access_public_read);
                         TextView realm = (TextView) view.findViewById(R.id.asset_realm);
                         TextView type = (TextView) view.findViewById(R.id.asset_type);
-                        TextView path = (TextView) view.findViewById(R.id.asset_path);
+//                        TextView path = (TextView) view.findViewById(R.id.asset_path);
                         String crea = formatDate(Long.valueOf(asset.createdOn));
                         id.setText(asset.getId());
                         version.setText(String.valueOf(asset.getVersion()));

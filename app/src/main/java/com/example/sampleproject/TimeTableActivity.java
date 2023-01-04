@@ -47,10 +47,10 @@ public class TimeTableActivity extends AppCompatActivity implements NavigationVi
                     Intent userRoles = new Intent(TimeTableActivity.this, UserRolesActivity.class);
                     startActivity(userRoles);
                     break;
-//                case R.id.it_asset_descriptor:
-//                    Intent des = new Intent(TimeTableActivity.this, AssetDescriptorActivity.class);
-//                    startActivity(des);
-//                    break;
+                case R.id.it_asset_descriptor:
+                    Intent des = new Intent(TimeTableActivity.this, AssetDescriptorActivity.class);
+                    startActivity(des);
+                    break;
                 case R.id.it_time_table:
                     Intent timeTable = new Intent(TimeTableActivity.this, TimeTableActivity.class);
                     startActivity(timeTable);

@@ -69,6 +69,10 @@ public class AssetDescriptorActivity extends AppCompatActivity implements Naviga
                     Intent des = new Intent(AssetDescriptorActivity.this, AssetDescriptorActivity.class);
                     startActivity(des);
                     break;
+                case R.id.it_graph:
+                    Intent graph = new Intent(AssetDescriptorActivity.this, BroadcastActivity.class);
+                    startActivity(graph);
+                    break;
                 case R.id.it_time_table:
                     Intent timeTable = new Intent(AssetDescriptorActivity.this, TimeTableActivity.class);
                     startActivity(timeTable);
