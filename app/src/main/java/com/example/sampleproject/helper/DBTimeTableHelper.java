@@ -40,7 +40,6 @@ public class DBTimeTableHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String sqLite = "CREATE TABLE " + TABLE_TIMETABLE + "("
-                + KEY_USER_ACCOUNT + " TEXT,"
                 + KEY_SUBJECT + " TEXT,"
                 + KEY_DAY + " TEXT,"
                 + KEY_PERIOD_BEGIN + " TEXT,"
@@ -56,10 +55,10 @@ public class DBTimeTableHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public void insertData(String usrname,String day, String subject, Integer period_begin,Integer period_end) {
+    public void insertData(String day, String subject, String period_begin,String period_end) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_USER_ACCOUNT,usrname);
+
         values.put(KEY_DAY, day);
         values.put(KEY_SUBJECT, subject);
         values.put(KEY_PERIOD_BEGIN, period_begin);
@@ -125,6 +124,22 @@ public class DBTimeTableHelper extends SQLiteOpenHelper {
         //
     }
 
+    public Cursor getDataFromDay(String day){
+        db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_TIMETABLE + "WHERE " + KEY_DAY + " = " + day, new String[]{day});
+        return cursor;
+    }
+//
+//    public int updateStudent(Student student) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put(KEY_NAME, student.getName());
+//        values.put(KEY_CLASS, student.getClassName());
+//        String whereClause = KEY_ID + "=?";
+//        String[] whereArgs = {String.valueOf(student.getId())};
+//        return db.update(TB_STUDENT, values, whereClause, whereArgs);
+//    }
+//    9
     public Cursor getDataFromDay(String day){
         db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_TIMETABLE + "WHERE " + KEY_DAY + " = " + day, new String[]{day});

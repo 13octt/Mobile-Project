@@ -69,14 +69,17 @@ public class BackgroundService extends Service {
 
                         while (true) {
                             getweather();
-                            Intent intent = new Intent("com.example.sampleproject.MY_BC");
+                            Intent intent1 = new Intent("com.example.sampleproject.MY_BC");
                             intent.putExtra("temp", temp);
                             intent.putExtra("humi", humi);
                             intent.putExtra("wind", wind);
+                            if(currentTime=="03:10")
+                                Log.e("time",wind.toString());
+
 
                             try {
-                                sendBroadcast(intent);
-                                Thread.sleep(20000);
+                                sendBroadcast(intent1);
+                                Thread.sleep(2000);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
