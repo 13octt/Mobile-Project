@@ -37,5 +37,6 @@
     <string name="weather_assets">Weather Assets</string>
     <string name="map_location">Map location</string>
     <string name="account">Account</string>
+    <string name="more_details">More Details</string>
 
 </resources>
