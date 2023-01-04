@@ -8,7 +8,7 @@ public class UserRoles {
     private String composite;
     private String assigned;
 
-    public UserRoles(String id, String name, String description, String  composite, String assigned) {
+    public UserRoles(String id, String name, String description, String composite, String assigned) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -57,7 +57,7 @@ public class UserRoles {
     }
 
     @Override
-    public String   toString() {
+    public String toString() {
         return "UserRoles{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +

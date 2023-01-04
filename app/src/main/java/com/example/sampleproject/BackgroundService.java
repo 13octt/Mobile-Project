@@ -43,20 +43,16 @@ import retrofit2.Response;
 public class BackgroundService extends Service {
     private MyReceiver mBroadcast = new MyReceiver();
     String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
-    Double humi,wind,temp;
+    Double humi, wind, temp;
     APIInterface apiInterface;
-
-
-
-
 
 
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.e("Service","onCreate");
+        Log.e("Service", "onCreate");
         IntentFilter filter = new IntentFilter("com.example.sampleproject.MY_BC");
-        registerReceiver(mBroadcast,filter);
+        registerReceiver(mBroadcast, filter);
 
     }
 
@@ -92,21 +88,22 @@ public class BackgroundService extends Service {
 
 
                 }
-                ).start();
-        final String CHANNEL_ID ="Channel Service";
+        ).start();
+        final String CHANNEL_ID = "Channel Service";
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID,CHANNEL_ID, NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, CHANNEL_ID, NotificationManager.IMPORTANCE_DEFAULT);
             Notification.Builder notificate = new Notification.Builder(this, CHANNEL_ID);
-               notificate.setContentText("App is running");
-                   notificate .setContentTitle("UIT get Asset");
+            notificate.setContentText("App is running");
+            notificate.setContentTitle("UIT get Asset");
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
-            startForeground(1001,notificate.build());
+            startForeground(1001, notificate.build());
         }
-        return super.onStartCommand(intent,flags,startId);
+        return super.onStartCommand(intent, flags, startId);
 
     }
-    public void getweather(){
+
+    public void getweather() {
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
 
@@ -121,10 +118,10 @@ public class BackgroundService extends Service {
                 Value value = weatherData.getValue();
                 Sys sys = value.getSys();
                 temp = main.getTemp();
-                Integer texmperature = (int)(temp-0);
+                Integer texmperature = (int) (temp - 0);
                 Wind winde = value.getWind();
                 wind = winde.getSpeed();
-                humi = (double)main.getHumidity();
+                humi = (double) main.getHumidity();
 //                Weather weather1[] = value.getWeather().toArray(new Weather[0]);
 //                String str = weather1[0].getDescription();
 //                String cap = str.substring(0, 1).toUpperCase() + str.substring(1);
@@ -135,8 +132,6 @@ public class BackgroundService extends Service {
 //            txtWind.setText(String.valueOf(winspeed)+"km/h");
 //            txtDes.setText(String.valueOf(cap));
 //            txtMain.setText(String.valueOf(weather1[0].getMain()));
-
-
 
 
             }
@@ -155,6 +150,7 @@ public class BackgroundService extends Service {
     public IBinder onBind(Intent intent) {
         return null;
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

@@ -1,48 +1,180 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="20dp"
+    android:background="@drawable/border"
     android:orientation="vertical">
 
-<!--        private String id;-->
-<!--    private String name;-->
-<!--    private String description;-->
-<!--    private String composite;-->
-<!--    private String assigned;-->
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ID"
-        android:id="@+id/usroles_id"
-        />
+        android:layout_height="200dp"
+        android:layout_margin="3dp"
+        android:background="@drawable/roundedbutton"
+        android:orientation="vertical"
+        android:gravity="center">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/logouser"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_baseline_person_pin_circle_24" />
+
+            <TextView
+                android:id="@+id/nametitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name_and_roles"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/usroles_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo_bhaina"
+                android:textStyle="bold"
+                android:text="@string/user"
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/idlayout"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/logoid"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="20dp"
+            android:contentDescription="@string/img"
+            android:src="@drawable/id" />
 
         <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:id="@+id/usroles_name"
-        />
+            android:id="@+id/textid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_toEndOf="@id/logoid"
+            android:text="@string/id"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <TextView
-        android:layout_width="match_parent"
+            android:id="@+id/usroles_id"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textid"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/baloo_bhaina"
+            android:text="@string/id"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Description"
-        android:id="@+id/usroles_description"
-        />
+        android:layout_margin="12dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/gray">
 
         <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Composite"
-        android:id="@+id/usroles_composite"
-        />
+            android:id="@+id/descriptiontitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/description"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <TextView
-        android:layout_width="match_parent"
+            android:id="@+id/usroles_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/descriptiontitle"
+            android:fontFamily="@font/baloo_bhaina"
+            app:drawableStartCompat="@drawable/ic_baseline_description_24"
+            android:drawablePadding="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/description"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/composite"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Assigned"
-        android:id="@+id/usroles_assigned"
-        />
+        android:layout_margin="12dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray">
+
+        <TextView
+            android:id="@+id/compostietitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/composite"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/usroles_composite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/compostietitle"
+            app:drawableStartCompat="@drawable/ic_baseline_settings_input_composite_24"
+            android:drawablePadding="20dp"
+            android:fontFamily="@font/baloo_bhaina"
+            android:layout_marginStart="20dp"
+            android:text="@string/composite"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/assigned"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/gray">
+
+        <TextView
+            android:id="@+id/assignedtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/assigned"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/usroles_assigned"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/assignedtitle"
+            android:fontFamily="@font/baloo_bhaina"
+            app:drawableStartCompat="@drawable/ic_baseline_assignment_turned_in_24"
+            android:drawablePadding="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/assigned"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
 
 </LinearLayout>

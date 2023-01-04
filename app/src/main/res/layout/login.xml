@@ -20,51 +20,63 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
             android:layout_marginTop="25dp"
-            android:fontFamily="@font/mulish_extrabold"
-            android:text="Sign in"
+            android:text="@string/sign_in"
             android:textColor="@color/custom_blue"
-            android:textSize="40dp"></TextView>
+            android:textSize="40sp"
+            android:textStyle="bold" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_height="250dp"
             android:layout_gravity="center"
             android:layout_marginHorizontal="20dp"
             android:background="@drawable/textbackground">
 
             <EditText
-                android:id="@+id/usernametext"
+                android:id="@+id/username_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
+                android:autofillHints="username"
                 android:background="@drawable/textborder"
-                android:drawableLeft="@drawable/ic_baseline_person_outline_24"
+                android:drawableStart="@drawable/ic_baseline_person_outline_24"
                 android:drawablePadding="20dp"
-                android:hint="Username"
+                android:hint="@string/username"
                 android:inputType="text"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="20dp"
-                android:textColorHint="#757575">
-
-            </EditText>
+                android:textColor="@color/black"
+                android:textColorHint="#757575" />
 
             <EditText
-                android:id="@+id/passwordtext"
+                android:id="@+id/password_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/usernametext"
+                android:layout_below="@id/username_et"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="30dp"
+                android:autofillHints="123"
                 android:background="@drawable/textborder"
-                android:drawableLeft="@drawable/ic_baseline_key_24"
+                android:drawableStart="@drawable/ic_baseline_key_24"
                 android:drawablePadding="20dp"
-                android:hint="Password"
-                android:inputType="text"
+                android:hint="@string/password"
+                android:inputType="textPassword"
                 android:padding="20dp"
-                android:textColorHint="#757575">
+                android:textColor="@color/black"
+                android:textColorHint="#757575" />
 
-            </EditText>
+            <TextView
+                android:id="@+id/txt_no_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/password_et"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:text="@string/don_t_have_an_account_yet"
+                android:textSize="18sp"
+                android:textStyle="italic|bold" />
+
         </RelativeLayout>
 
         <Button
@@ -74,11 +86,10 @@
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="40dp"
             android:background="@drawable/signinbuttonbg"
-            android:fontFamily="@font/mulish_light"
-            android:text="Log in"
+            android:text="@string/log_in"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:textStyle="bold" />
 
 
@@ -87,9 +98,8 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="TODO"
-        android:paddingLeft="100dp"
+        android:contentDescription="@string/img"
         android:scaleType="centerCrop"
-        android:src="@drawable/back"></ImageView>
+        android:src="@drawable/back" />
 
 </RelativeLayout>
