@@ -11,16 +11,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="20dp"
+            android:background="@drawable/roundedbutton"
+            android:id="@+id/btn_add_class"
+            android:text="+"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            />
+
         <LinearLayout
             android:id="@+id/tool_bar_tt"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@color/custom_blue"
+            android:background="@color/extra_blue"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             app:layout_constraintTop_toTopOf="parent">
+
+
 
             <ImageView
                 android:id="@+id/ic_menu_tt"

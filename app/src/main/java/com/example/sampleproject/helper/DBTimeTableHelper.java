@@ -140,9 +140,5 @@ public class DBTimeTableHelper extends SQLiteOpenHelper {
 //        return db.update(TB_STUDENT, values, whereClause, whereArgs);
 //    }
 //    9
-    public Cursor getDataFromDay(String day){
-        db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_TIMETABLE + "WHERE " + KEY_DAY + " = " + day, new String[]{day});
-        return cursor;
-    }
+
 }

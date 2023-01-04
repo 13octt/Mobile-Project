@@ -7,12 +7,13 @@
     tools:context=".TimeTableActivity"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp">
+
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:scaleType="fitCenter"
+        android:layout_width="133dp"
+        android:layout_height="128dp"
         android:layout_gravity="center"
-        android:background="@drawable/schedule"></ImageView>
+        android:background="@drawable/schedule"
+        android:scaleType="fitCenter"></ImageView>
     <TextView
         android:layout_marginTop="20dp"
         android:textSize="40dp"
@@ -27,13 +28,13 @@
 
     <TextView
         android:textSize="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Enter your Subject:"
         android:textStyle="bold"/>
     <EditText
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/et_subject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,7 +58,7 @@
 
 
     <Spinner
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:textSize="20dp"
         android:id="@+id/spinner_date"
         android:layout_width="match_parent"
@@ -72,7 +73,7 @@
         android:text="Enter Begin Period:"
         android:textStyle="bold"/>
     <Spinner
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:textSize="20dp"
         android:id="@+id/spinner_start"
         android:layout_width="match_parent"

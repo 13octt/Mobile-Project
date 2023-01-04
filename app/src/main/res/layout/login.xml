@@ -74,6 +74,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="25dp"
                 android:text="@string/don_t_have_an_account_yet"
+                android:textColor="@color/gray"
                 android:textSize="18sp"
                 android:textStyle="italic|bold" />
 

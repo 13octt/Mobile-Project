@@ -144,6 +144,14 @@ public class BroadcastActivity extends AppCompatActivity implements NavigationVi
                 dbGraphHelper.KEY_TEMP,
                 dbGraphHelper.KEY_PRESSURE
         };
+        dbGraphHelper.insertData(15.98,31.0,6.4);
+        dbGraphHelper.insertData(15.96,61.7,6.8);
+        dbGraphHelper.insertData(16.96,32.7,7.8);
+        dbGraphHelper.insertData(15.6,51.0,6.0);
+        dbGraphHelper.insertData(14.9,30.7,5.8);
+        dbGraphHelper.insertData(17.5,60.6,4.3);
+        dbGraphHelper.insertData(18.98,37.52,3.75);
+        dbGraphHelper.insertData(15.96,67.7,6.8);
 
         while (cursor.moveToNext()) {
             String str = cursor.getString(0);
@@ -178,7 +186,7 @@ public class BroadcastActivity extends AppCompatActivity implements NavigationVi
         String donvi;
         if(name == "Humidity")
         {
-            series1.setColor(Color.BLUE);
+            series1.setColor(Color.BLACK);
             GridLabelRenderer gridLabelRenderer = graph.getGridLabelRenderer();
             gridLabelRenderer.setHorizontalAxisTitle("Time (Hour)");
             gridLabelRenderer.setHorizontalAxisTitleTextSize(20);
@@ -188,7 +196,7 @@ public class BroadcastActivity extends AppCompatActivity implements NavigationVi
         else
             if(name == "Temperature")
             {
-                series1.setColor(Color.BLUE);
+                series1.setColor(Color.BLACK);
                 GridLabelRenderer gridLabelRenderer1 = graph.getGridLabelRenderer();
                 gridLabelRenderer1.setHorizontalAxisTitle("Time (Hour)");
                 gridLabelRenderer1.setHorizontalAxisTitleTextSize(20);
@@ -197,7 +205,7 @@ public class BroadcastActivity extends AppCompatActivity implements NavigationVi
             }
             else
             {
-                series1.setColor(Color.BLUE);
+                series1.setColor(Color.BLACK);
                 GridLabelRenderer gridLabelRenderer = graph.getGridLabelRenderer();
                 gridLabelRenderer.setHorizontalAxisTitle("Time (Hour)");
                 gridLabelRenderer.setHorizontalAxisTitleTextSize(20);
