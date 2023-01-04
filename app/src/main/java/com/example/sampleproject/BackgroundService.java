@@ -64,12 +64,6 @@ public class BackgroundService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
 //        Intent intent_1 = new Intent("com.example.sampleproject.MY_BC");
 //            sendBroadcast(intent_1);
-        getweather();
-        Intent intent1 = new Intent("com.example.sampleproject.MY_BC");
-        intent.putExtra("temp", temp);
-        intent.putExtra("humi", humi);
-        intent.putExtra("wind", wind);
-
 
 
         new Thread(
@@ -78,6 +72,13 @@ public class BackgroundService extends Service {
                     public void run() {
 
                         while (true) {
+                            getweather();
+                            Intent intent1 = new Intent("com.example.sampleproject.MY_BC");
+                            intent.putExtra("temp", temp);
+                            intent.putExtra("humi", humi);
+                            intent.putExtra("wind", wind);
+                            if(currentTime=="03:10")
+                                Log.e("time",wind.toString());
 
 
                             try {

@@ -1,1146 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_tt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TimeTableActivity">
 
-    <TextView
-        android:id="@+id/txt_time_table"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="40dp"
-        android:textStyle="bold"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"
-        android:layout_centerHorizontal="true"
-
-        android:text="TIME TABLE"
-        />
-    <Button
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/button_add">
-
-    </Button>
-    <TableLayout
-        android:layout_below="@+id/txt_time_table"
+    <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/tool_bar_tt"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/custom_blue"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ic_menu_tt"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_baseline_menu_24"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/txt_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="@string/menu"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tool_bar_tt">
+
+            <!--   code time table -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".TimeTableActivity">
+
+                <TextView
+                    android:id="@+id/texttimetable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginVertical="30dp"
+                    android:text="STUDENT SCHEDULE"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="30dp" />
+
+                <LinearLayout
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/texttimetable"
+                    android:layout_centerHorizontal="true">
+
+                    <Button
+                        android:id="@+id/mondaybtn"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:background="@drawable/roundedbutton1"
+                        android:text="M" />
+
+                    <Button
+                        android:id="@+id/tuesdaybtn"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_toRightOf="@id/mondaybtn"
+                        android:background="@drawable/roundedbutton1"
+                        android:text="TU" />
+
+                    <Button
+                        android:id="@+id/wednesdaybtn"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_toRightOf="@id/tuesdaybtn"
+                        android:background="@drawable/roundedbutton1"
+                        android:text="W" />
+
+                    <Button
+                        android:id="@+id/thursday"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_toRightOf="@id/wednesdaybtn"
+                        android:background="@drawable/roundedbutton1"
+                        android:text="Th" />
+
+                    <Button
+                        android:id="@+id/fridaybtn"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_toRightOf="@id/thursday"
+                        android:background="@drawable/roundedbutton1"
+                        android:text="F" />
+
+                    <Button
+                        android:id="@+id/saturday"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_toRightOf="@id/fridaybtn"
+                        android:background="@drawable/roundedbutton1"
+                        android:text="S" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/date"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/grey" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/morning"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:layout_below="@id/grey"
+                    android:layout_marginTop="5dp">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <ImageView
+                    android:id="@+id/grey2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/morning"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/grey" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view_tt"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="@color/gray"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_weight="1"
-
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@color/custom_blue"
-                android:text="Thứ 2"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@color/custom_blue"
-                android:text="Thứ 3"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@color/custom_blue"
-                android:text="Thứ 4"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@color/custom_blue"
-                android:text="Thứ 5"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@color/custom_blue"
-                android:gravity="center"
-                android:text="Thứ 6"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@color/custom_blue"
-                android:text="Thứ 7"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@color/custom_blue"
-                android:text="C. Nhật"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_weight="1"
-
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@color/custom_blue"
-                android:text="Tiết 1"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/mon_1"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="Mon1"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tue_1"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="tue1"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/wed_1"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="wed1"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/thu_1"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="thu_1"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/fri_1"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="fri1"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sat_1"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sat_1"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sun_1"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sun_1"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_weight="1"
-
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@color/custom_blue"
-                android:text="Tiết 2"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/mon_2"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Mon2"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tue_2"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="tue2"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/wed_2"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="wed2"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/thu_2"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="thu_2"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/fri_2"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="fri2"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sat_2"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sat_2"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sun_2"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sun_2"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_weight="1"
-
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@color/custom_blue"
-                android:text="Tiết 3"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/mon_3"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="Mon3"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tue_3"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="tue3"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/wed_3"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="wed3"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/thu_3"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="thu_3"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/fri_3"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="fri3"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sat_3"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sat_3"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sun_3"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sun_3"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_weight="1"
-
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@color/custom_blue"
-                android:text="Tiết 4"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/mon_4"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="Mon4"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tue_4"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="tue4"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/wed_4"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="wed4"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/thu_4"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="thu_4"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/fri_4"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="fri4"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sat_4"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sat_4"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sun_4"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sun_4"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_weight="1"
-
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@color/custom_blue"
-                android:text="Tiết 5"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/mon_5"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="Mon5"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tue_5"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="tue5"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/wed_5"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="wed5"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/thu_5"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="thu_5"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/fri_5"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="fri5"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sat_5"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sat_5"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sun_5"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sun_5"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_weight="1"
-
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@color/custom_blue"
-                android:text="Tiết 6"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/mon_6"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="Mon6"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tue_6"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="tue6"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/wed_6"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="wed6"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/thu_6"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="thu_6"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/fri_6"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="fri6"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sat_6"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sat_6"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sun_6"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sun_6"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_weight="1"
-
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@color/custom_blue"
-                android:text="Tiết 7"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/mon_7"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="Mon7"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tue_7"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="tue7"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/wed_7"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="wed7"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/thu_7"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="thu_7"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/fri_7"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="fri7"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sat_7"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sat_7"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sun_7"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sun_7"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_weight="1"
-
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@color/custom_blue"
-                android:text="Tiết 8"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/mon_8"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="Mon8"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tue_8"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="tue8"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/wed_8"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="wed8"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/thu_8"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="thu_8"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/fri_8"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="fri8"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sat_8"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sat_8"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sun_8"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sun_8"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_weight="1"
-
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@color/custom_blue"
-                android:text="Tiết 9"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/mon_9"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="Mon9"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tue_9"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="tue9"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/wed_9"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="wed9"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/thu_9"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="thu_9"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/fri_9"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="fri3"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sat_9"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sat_9"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sun_9"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sun_9"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_weight="1"
-
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:background="@color/custom_blue"
-                android:text="Tiết 10"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/mon_10"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="Mon10"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tue_10"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="tue`0`"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/wed_10"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="wed10"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/thu_10"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="thu_10"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/fri_10"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="fri10"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sat_10"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sat_10"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/sun_10"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="sun_10"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-
-        </TableRow>
-    </TableLayout>
-</RelativeLayout>
+        android:layout_gravity="start"
+        app:headerLayout="@layout/navigation_header"
+        app:menu="@menu/navigation_menu" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

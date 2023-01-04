@@ -4,10 +4,18 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".TimeTableActivity">
-
+    tools:context=".TimeTableActivity"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:scaleType="fitCenter"
+        android:layout_gravity="center"
+        android:background="@drawable/schedule"></ImageView>
     <TextView
-
+        android:layout_marginTop="20dp"
+        android:textSize="40dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter your subject"
@@ -16,31 +24,30 @@
         android:layout_gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <EditText
-        android:id="@+id/et_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter name"
-        />
+
     <TextView
-        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Enter your Subject:"
         android:textStyle="bold"/>
     <EditText
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/et_subject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Subject"
         android:inputType="none"
-        android:minHeight="48dp">
+        android:minHeight="48dp"
+        android:textSize="20dp"
+        >
 
         <requestFocus />
     </EditText>
     <TextView
-        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Enter your Weekday:"
@@ -50,40 +57,60 @@
 
 
     <Spinner
-        android:layout_marginTop="10dp"
-
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
         android:id="@+id/spinner_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:spinnerMode="dropdown"
         />
     <TextView
-        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Enter Begin Period:"
         android:textStyle="bold"/>
     <Spinner
-        android:layout_marginTop="10dp"
-
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
         android:id="@+id/spinner_start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:spinnerMode="dropdown"
         />
     <TextView
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Enter End Period:"
+        android:textSize="20dp"
         android:textStyle="bold"/>
     <Spinner
-        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/spinner_end"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:spinnerMode="dropdown"
         />
 <!--    </LinearLayout>-->
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <Button
+        android:id="@+id/btn_insert"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/signinbuttonbg"
+        android:text="Insert"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        />
+    </RelativeLayout>
 </LinearLayout>

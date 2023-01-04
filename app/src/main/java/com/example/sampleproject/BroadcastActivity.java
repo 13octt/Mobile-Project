@@ -121,17 +121,37 @@ public class BroadcastActivity extends AppCompatActivity {
     private void graphCustom(GraphView graph, String name, LineGraphSeries<DataPoint> series1) {
         series1.setTitle(name);
         series1.setColor(Color.BLACK);
-//        GridLabelRenderer gridLR = graph.getGridLabelRenderer();
-//        String donvi;
-//        if(name == "Temperature")
-//            donvi = "°C";
-//        else
-//            if(name == "Humidity")
-//                donvi = "%";
-//            else
-//                donvi = "atm";
-//        gridLR.setVerticalAxisTitle(donvi);
-//        gridLR.setVerticalAxisTitleTextSize(70);
+        GridLabelRenderer gridLR = graph.getGridLabelRenderer();
+        String donvi;
+        if(name == "Humidity")
+        {
+            series1.setColor(Color.BLUE);
+            GridLabelRenderer gridLabelRenderer = graph.getGridLabelRenderer();
+            gridLabelRenderer.setHorizontalAxisTitle("Time (Hour)");
+            gridLabelRenderer.setHorizontalAxisTitleTextSize(20);
+            gridLabelRenderer.setVerticalAxisTitle(" Percentage (%)");
+            gridLabelRenderer.setVerticalAxisTitleTextSize(20);
+        }
+        else
+            if(name == "Temperature")
+            {
+                series1.setColor(Color.BLUE);
+                GridLabelRenderer gridLabelRenderer1 = graph.getGridLabelRenderer();
+                gridLabelRenderer1.setHorizontalAxisTitle("Time (Hour)");
+                gridLabelRenderer1.setHorizontalAxisTitleTextSize(20);
+                gridLabelRenderer1.setVerticalAxisTitle(" Degree (.)");
+                gridLabelRenderer1.setVerticalAxisTitleTextSize(20);
+            }
+            else
+            {
+                series1.setColor(Color.BLUE);
+                GridLabelRenderer gridLabelRenderer = graph.getGridLabelRenderer();
+                gridLabelRenderer.setHorizontalAxisTitle("Time (Hour)");
+                gridLabelRenderer.setHorizontalAxisTitleTextSize(20);
+                gridLabelRenderer.setVerticalAxisTitle(" Km per Hour");
+                gridLabelRenderer.setVerticalAxisTitleTextSize(20);
+            }
+        gridLR.setVerticalAxisTitleTextSize(70);
 
         series1.setThickness(10);
         graph.setTitleColor(Color.BLUE);

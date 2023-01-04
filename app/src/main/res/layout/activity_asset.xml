@@ -100,7 +100,7 @@
             android:layout_height="39dp"
             android:layout_below="@id/title2"
             android:layout_marginRight="10dp"
-            android:src="@drawable/calendar" />
+            android:src="@drawable/schedule" />
 
         <TextView
             android:id="@+id/asset_created_on"
