@@ -29,7 +29,7 @@ public class DBUserHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put("username", user);
+        values.put("s", user);
         values.put("password", pass);
         long result = db.insert("users", null, values);
         if (result == 1)

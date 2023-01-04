@@ -210,10 +210,5 @@ public class MapActivity extends AppCompatActivity{
         sdf.setTimeZone(tz);
         return sdf.format(calendar.getTime());
     }
-    void clickOpenBottomSheetDialog(){
-        View view = getLayoutInflater().inflate(R.layout.bottom_sheet, null);
-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        bottomSheetDialog.setContentView(view);
-        bottomSheetDialog.show();
-    }
+
 }

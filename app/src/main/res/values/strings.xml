@@ -23,7 +23,7 @@
     <string name="logo">logo</string>
     <string name="id_and_version">ID AND VERSION</string>
 
-    <string-array name="planets_array">
+    <string-array name="day">
         <item>Monday</item>
         <item>Tuesday</item>
         <item>Wednesday</item>
@@ -32,5 +32,29 @@
         <item>Saturday</item>
         <item>Sunday</item>
     </string-array>
+    <string-array name="start">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
 
+    </string-array>
+    <string-array name="end">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
 </resources>

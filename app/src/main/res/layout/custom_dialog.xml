@@ -10,7 +10,10 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter your subject:"
+        android:text="Enter your subject"
+        android:textStyle="bold"
+        android:textColor="@color/design_default_color_primary_variant"
+        android:layout_gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <EditText
@@ -19,8 +22,14 @@
         android:layout_height="wrap_content"
         android:hint="Enter name"
         />
-
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter your Subject:"
+        android:textStyle="bold"/>
     <EditText
+        android:layout_marginTop="10dp"
         android:id="@+id/et_subject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,33 +39,51 @@
 
         <requestFocus />
     </EditText>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter your Weekday:"
+        android:textStyle="bold"/>
 
-    <EditText
-        android:id="@+id/et_start_period"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter start period"
-        />
 
-    <EditText
-        android:id="@+id/et_end_period"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter start period"
-        />
-    <EditText
-        android:id="@+id/et_day"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter Day"
-        />
+
+
     <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="142dp"
-        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
 
-
+        android:id="@+id/spinner_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
         />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter Begin Period:"
+        android:textStyle="bold"/>
+    <Spinner
+        android:layout_marginTop="10dp"
 
+        android:id="@+id/spinner_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        />
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter End Period:"
+        android:textStyle="bold"/>
+    <Spinner
+        android:layout_marginTop="10dp"
+        android:id="@+id/spinner_end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        />
+<!--    </LinearLayout>-->
 
 </LinearLayout>

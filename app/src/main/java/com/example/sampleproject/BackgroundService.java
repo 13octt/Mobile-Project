@@ -64,7 +64,11 @@ public class BackgroundService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
 //        Intent intent_1 = new Intent("com.example.sampleproject.MY_BC");
 //            sendBroadcast(intent_1);
-
+        getweather();
+        Intent intent1 = new Intent("com.example.sampleproject.MY_BC");
+        intent.putExtra("temp", temp);
+        intent.putExtra("humi", humi);
+        intent.putExtra("wind", wind);
 
 
 
@@ -74,15 +78,11 @@ public class BackgroundService extends Service {
                     public void run() {
 
                         while (true) {
-                            getweather();
-                            Intent intent = new Intent("com.example.sampleproject.MY_BC");
-                            intent.putExtra("temp", temp);
-                            intent.putExtra("humi", humi);
-                            intent.putExtra("wind", wind);
+
 
                             try {
-                                sendBroadcast(intent);
-                                Thread.sleep(20000);
+                                sendBroadcast(intent1);
+                                Thread.sleep(2000);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
