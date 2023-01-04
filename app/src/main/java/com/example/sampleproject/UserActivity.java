@@ -34,14 +34,6 @@ public class UserActivity extends AppCompatActivity {
         TextView service = (TextView) findViewById(R.id.tv_service_account);
         TextView username = (TextView) findViewById(R.id.tv_username);
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent back = new Intent(UserActivity.this, MainActivity.class);
-                startActivity(back);
-            }
-        });
-
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
         Call<User> callUser = apiInterface.getUser();
