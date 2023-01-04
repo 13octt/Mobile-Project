@@ -203,7 +203,7 @@
             android:fontFamily="@font/mulish_semibold"
             android:paddingVertical="5dp"
             android:layout_marginStart="12dp"
-            android:text="@string/realm_type_and_path"
+            android:text="@string/realm_and_type"
             android:textSize="12sp"
             android:textStyle="bold" />
 

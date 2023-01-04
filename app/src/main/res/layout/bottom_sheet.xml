@@ -192,7 +192,7 @@
             android:background="@color/teal_200"
             android:paddingVertical="5dp"
             android:layout_marginStart="10dp"
-            android:text="@string/realm_type_and_path"
+            android:text="@string/realm_and_type"
             android:textSize="12sp"
             android:textStyle="bold" />
 
@@ -236,30 +236,30 @@
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="52dp" />
 
-        <ImageView
-            android:contentDescription="@string/img"
-            android:id="@+id/imgpath"
-            android:layout_width="30dp"
-            android:layout_height="39dp"
-            android:layout_below="@id/imgtype"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/path" />
+<!--        <ImageView-->
+<!--            android:contentDescription="@string/img"-->
+<!--            android:id="@+id/imgpath"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="39dp"-->
+<!--            android:layout_below="@id/imgtype"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:src="@drawable/path" />-->
 
-        <TextView
-            android:id="@+id/asset_path"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/asset_type"
-            android:layout_toEndOf="@id/imgpath"
-            android:paddingVertical="10dp"
-            android:text="@string/textview"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="52dp" />
+<!--        <TextView-->
+<!--            android:id="@+id/asset_path"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/asset_type"-->
+<!--            android:layout_toEndOf="@id/imgpath"-->
+<!--            android:paddingVertical="10dp"-->
+<!--            android:text="@string/textview"-->
+<!--            tools:layout_editor_absoluteX="16dp"-->
+<!--            tools:layout_editor_absoluteY="52dp" />-->
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/asset_path"
+            android:layout_below="@+id/asset_type"
             android:layout_alignParentEnd="true"
             android:text="@string/more_details"
             android:id="@+id/btn_more"/>

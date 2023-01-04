@@ -27,7 +27,7 @@
     <string name="textview">TextView</string>
     <string name="date_and_name">DATE AND NAME</string>
     <string name="public_read_and_parent_id">PUBLIC READ AND PARENT ID</string>
-    <string name="realm_type_and_path">REALM, TYPE AND PATH</string>
+    <string name="realm_and_type">REALM AND TYPE</string>
     <string name="logo_img">logo_img</string>
     <string name="menu">MENU</string>
     <string name="log_out">Log out</string>
@@ -46,5 +46,15 @@
     <string name="humidity">Humidity</string>
     <string name="sunrise">Sunrise</string>
     <string name="sunset">Sunset</string>
+    <string name="name">Name</string>
+    <string name="type">Type:</string>
+    <string name="icon">Icon:</string>
+    <string name="colour">Colour:</string>
+    <string name="name_and_roles">Name and Roles:</string>
+    <string name="user">User</string>
+    <string name="id">ID</string>
+    <string name="description">Description:</string>
+    <string name="composite">Composite:</string>
+    <string name="assigned">Assigned:</string>
 
 </resources>
