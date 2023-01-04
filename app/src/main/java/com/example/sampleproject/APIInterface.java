@@ -3,7 +3,6 @@ package com.example.sampleproject;
 import com.example.sampleproject.Model.Asset;
 import com.example.sampleproject.Model.AssetDescriptor;
 import com.example.sampleproject.Model.AssetUserCurrent;
-import com.example.sampleproject.Model.Flow;
 import com.example.sampleproject.Model.Info;
 import com.example.sampleproject.Model.Map;
 import com.example.sampleproject.Model.MetaItemDescriptor;
@@ -42,9 +41,6 @@ public interface APIInterface {
 
     @GET("api/master/asset/user/current")
     Call<List<AssetUserCurrent>> getAssetUserCurrent();
-
-    @GET("api/master/flow")
-    Call<List<Flow>> getFlow();
 
     @GET("api/master/user/user")
     Call<User> getUser();
