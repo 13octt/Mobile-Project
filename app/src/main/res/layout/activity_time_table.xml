@@ -60,11 +60,12 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginVertical="30dp"
                     android:text="STUDENT SCHEDULE"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="30dp" />
+                    android:textColor="@color/extra_blue"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
 
                 <LinearLayout
+
                     android:id="@+id/date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -76,7 +77,7 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_marginHorizontal="5dp"
-                        android:background="@drawable/roundedbutton1"
+                        android:background="@drawable/roundedbutton"
                         android:text="M" />
 
                     <Button
@@ -85,7 +86,7 @@
                         android:layout_height="50dp"
                         android:layout_marginHorizontal="5dp"
                         android:layout_toRightOf="@id/mondaybtn"
-                        android:background="@drawable/roundedbutton1"
+                        android:background="@drawable/roundedbutton"
                         android:text="TU" />
 
                     <Button
@@ -94,7 +95,7 @@
                         android:layout_height="50dp"
                         android:layout_marginHorizontal="5dp"
                         android:layout_toRightOf="@id/tuesdaybtn"
-                        android:background="@drawable/roundedbutton1"
+                        android:background="@drawable/roundedbutton"
                         android:text="W" />
 
                     <Button
@@ -103,7 +104,7 @@
                         android:layout_height="50dp"
                         android:layout_marginHorizontal="5dp"
                         android:layout_toRightOf="@id/wednesdaybtn"
-                        android:background="@drawable/roundedbutton1"
+                        android:background="@drawable/roundedbutton"
                         android:text="Th" />
 
                     <Button
@@ -112,7 +113,7 @@
                         android:layout_height="50dp"
                         android:layout_marginHorizontal="5dp"
                         android:layout_toRightOf="@id/thursday"
-                        android:background="@drawable/roundedbutton1"
+                        android:background="@drawable/roundedbutton"
                         android:text="F" />
 
                     <Button
@@ -121,7 +122,7 @@
                         android:layout_height="50dp"
                         android:layout_marginHorizontal="5dp"
                         android:layout_toRightOf="@id/fridaybtn"
-                        android:background="@drawable/roundedbutton1"
+                        android:background="@drawable/roundedbutton"
                         android:text="S" />
                 </LinearLayout>
 
@@ -131,24 +132,223 @@
                     android:layout_height="20dp"
                     android:layout_below="@id/date"
                     android:layout_marginTop="5dp"
-                    android:background="@color/grey" />
+                    android:background="@color/white" />
 
-                <androidx.recyclerview.widget.RecyclerView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/morning"
                     android:layout_width="match_parent"
-                    android:layout_height="400dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/grey"
                     android:layout_marginTop="5dp">
 
-                </androidx.recyclerview.widget.RecyclerView>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/grey2"
+                        <RelativeLayout
+                            android:id="@+id/class1"
+                            android:layout_width="match_parent"
+                            android:layout_height="180dp"
+                            android:background="@color/white"
+                            android:layout_alignParentTop="true"
+                            >
+
+                            <TextView
+                                android:id="@+id/usroles_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginTop="5dp"
+                                android:text="Name"
+                                android:textColor="@color/white"
+                                android:textSize="30dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/idimg"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/usroles_name"
+                                android:layout_marginLeft="30dp"
+                                android:src="@drawable/id"
+                                android:text="Subject:"
+                                android:textColor="@color/white"
+                                android:textSize="20dp" />
+
+
+                            <TextView
+                                android:id="@+id/uses"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/idimg"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginTop="5dp"
+                                android:text="Pedriod Start: "
+                                android:textColor="@color/white"
+                                android:textSize="20dp" />
+
+                            <TextView
+                                android:id="@+id/usroles_id"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/usroles_name"
+                                android:layout_marginLeft="15dp"
+                                android:layout_toRightOf="@id/idimg"
+                                android:text="ID"
+                                android:textColor="@color/white"
+                                android:textSize="20dp" />
+
+                            <TextView
+                                android:id="@+id/usroles_description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/idimg"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_toRightOf="@id/uses"
+                                android:text="Description"
+                                android:textColor="@color/white"
+                                android:textSize="20dp" />
+
+                            <TextView
+                                android:id="@+id/compositesite"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/usroles_description"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginTop="5dp"
+                                android:text="Period End: "
+                                android:textColor="@color/white"
+                                android:textSize="20dp" />
+
+                            <TextView
+                                android:id="@+id/usroles_composite"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/usroles_description"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_toRightOf="@id/compositesite"
+                                android:text="Status"
+                                android:textColor="@color/white"
+                                android:textSize="20dp" />
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/afternoon"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/morning"
-                    android:layout_marginTop="5dp"
-                    android:background="@color/grey" />
+                    android:layout_marginTop="30dp">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RelativeLayout
+                            android:id="@+id/class2"
+                            android:layout_width="match_parent"
+                            android:layout_height="180dp"
+                            android:background="@color/white"
+                            android:layout_alignParentTop="true"
+                            >
+
+                            <TextView
+                                android:id="@+id/usroles_name2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginTop="5dp"
+                                android:text="Name"
+                                android:textColor="@color/white"
+                                android:textSize="30dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+
+                                android:id="@+id/idimg2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/usroles_name2"
+                                android:layout_marginLeft="30dp"
+                                android:src="@drawable/id"
+                                android:text="Subject:"
+                                android:textColor="@color/white"
+                                android:textSize="20dp" />
+                            <TextView
+                                android:id="@+id/uses2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/idimg2"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginTop="5dp"
+                                android:text="Pedriod Start: "
+                                android:textColor="@color/white"
+                                android:textSize="20dp" />
+
+                            <TextView
+                                android:id="@+id/usroles_id2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/usroles_name2"
+                                android:layout_marginLeft="15dp"
+                                android:layout_toRightOf="@id/idimg2"
+                                android:text="ID"
+                                android:textColor="@color/white"
+                                android:textSize="20dp" />
+
+                            <TextView
+                                android:id="@+id/usroles_description2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/idimg2"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_toRightOf="@id/uses2"
+                                android:text="Description"
+                                android:textColor="@color/white"
+                                android:textSize="20dp" />
+
+                            <TextView
+                                android:id="@+id/compositesite2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/usroles_description2"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginTop="5dp"
+                                android:text="Period End: "
+                                android:textColor="@color/white"
+                                android:textSize="20dp" />
+
+                            <TextView
+                                android:id="@+id/usroles_composite2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/usroles_description2"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_toRightOf="@id/compositesite2"
+                                android:text="Status"
+                                android:textColor="@color/white"
+                                android:textSize="20dp" />
+
+
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
 
             </RelativeLayout>
         </LinearLayout>

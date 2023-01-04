@@ -215,7 +215,6 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
                         TextView public_read = (TextView) view.findViewById(R.id.asset_access_public_read);
                         TextView realm = (TextView) view.findViewById(R.id.asset_realm);
                         TextView type = (TextView) view.findViewById(R.id.asset_type);
-                        TextView path = (TextView) view.findViewById(R.id.asset_path);
                         String crea = formatDate(Long.valueOf(asset.createdOn));
                         id.setText(asset.getId());
                         version.setText(String.valueOf(asset.getVersion()));

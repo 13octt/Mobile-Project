@@ -49,18 +49,18 @@ public class custom extends AppCompatActivity {
         spinner_start.setAdapter(adapter_start);
         spinner_end.setAdapter(adapter_end);
         Button insert = (Button) findViewById(R.id.btn_insert);
-        cursor = dbTimeTableHelper.getData("SELECT * FROM time_table WHERE day ="+"'Tuesday'");
-        while (cursor.moveToNext()) {
-            String str = cursor.getString(0);
-            String str1 = cursor.getString(1);
-            String str2 = cursor.getString(2);
-            String str3 = cursor.getString(3);
-//                    humilist.add(Double.parseDouble(str1));
-//                    templist.add(Double.parseDouble(str));
-//                    pressurelist.add(Double.parseDouble(str2));
-
-            Toast.makeText(custom.this, str + " " + str1 + " " + str2, Toast.LENGTH_LONG).show();
-        }
+//        cursor = dbTimeTableHelper.getData("SELECT * FROM time_table WHERE day ="+"'Tuesday'");
+//        while (cursor.moveToNext()) {
+//            String str = cursor.getString(0);
+//            String str1 = cursor.getString(1);
+//            String str2 = cursor.getString(2);
+//            String str3 = cursor.getString(3);
+////                    humilist.add(Double.parseDouble(str1));
+////                    templist.add(Double.parseDouble(str));
+////                    pressurelist.add(Double.parseDouble(str2));
+//
+//    Toast.makeText(custom.this, str + " " + str1 + " " + str2, Toast.LENGTH_LONG).show();
+//        }
         insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

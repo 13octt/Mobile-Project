@@ -6,7 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -14,6 +18,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -24,6 +29,7 @@ import com.example.sampleproject.helper.DBTimeTableHelper;
 public class TimeTableActivity extends AppCompatActivity {
 
     DBTimeTableHelper dbTimeTableHelper ;
+    Cursor cursor;
 
     SQLiteDatabase sqLiteDatabase;
     Button addSubject, deleteSubject;
@@ -37,74 +43,71 @@ public class TimeTableActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_table);
         dbTimeTableHelper = new DBTimeTableHelper(this);
-        TextView tt = (TextView) findViewById(R.id.txt_time_table);
-        //button add
-        addSubject = (Button) findViewById(R.id.button_add) ;
+//        TextView tt = (TextView) findViewById(R.id.txt_time_table);
+//        //button add
+//        addSubject = (Button) findViewById(R.id.button_add) ;
+    Button btn_mon = (Button) findViewById(R.id.mondaybtn);
+    Button btn_tue = (Button) findViewById(R.id.tuesdaybtn);
+    Button btn_wed = (Button) findViewById(R.id.wednesdaybtn);
+    Button btn_thur = (Button) findViewById(R.id.thursday);
+    Button btn_fri = (Button) findViewById(R.id.fridaybtn);
+    Button btn_sat = (Button) findViewById(R.id.saturday);
+    click_listener(btn_mon,"Monday");
+    click_listener(btn_tue,"Tuesday");
+    click_listener(btn_wed,"Wednesday");
+    click_listener(btn_thur,"Thursday");
+    click_listener(btn_fri,"Friday");
+    click_listener(btn_sat,"Saturday");
 
 
-        addSubject.setOnClickListener(new View.OnClickListener() {
+
+    }
+    public void click_listener(Button button, String string){
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LayoutInflater layoutInflater = LayoutInflater.from(TimeTableActivity.this);
-                View customDialogView = layoutInflater.inflate(R.layout.custom_dialog, null);
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(TimeTableActivity.this);
-                alertDialog.setView(customDialogView);
-                Spinner spinner = (Spinner) findViewById(R.id.spinner_start);
-// Create an ArrayAdapter using the string array and a default spinner layout
-                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(),
-                        R.array.day, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
-                spinner.setAdapter(adapter);
-//                Spinner spinner = (Spinner) findViewById(R.id.spinner);
-//                // Create an ArrayAdapter using the string array and a default spinner layout
-//                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(TimeTableActivity.this, R.array.planets_array, android.R.layout.simple_spinner_item);
-//                // Specify the layout to use when the list of choices appears
-//                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                // Apply the adapter to the spinner
-//                spinner.setAdapter(adapter);
+                TextView name = (TextView) findViewById(R.id.usroles_name);
+                TextView name1 = (TextView) findViewById(R.id.usroles_name2);
+                TextView sub = (TextView) findViewById(R.id.usroles_id);
+                TextView sub1 = (TextView) findViewById(R.id.usroles_id2);
+                TextView begin = (TextView) findViewById(R.id.usroles_description);
+                TextView begin1 = (TextView) findViewById(R.id.usroles_description2);
+                TextView end = (TextView) findViewById(R.id.usroles_composite);
+                TextView end1 = (TextView) findViewById(R.id.usroles_composite2);
 
-//                etMon1 = (TextView) findViewById(R.id.et_name);
-//                final EditText usrname = (EditText) customDialogView.findViewById(R.id.et_name);
-//                final EditText day = (EditText) customDialogView.findViewById(R.id.et_day);
-//                final EditText period_begin = (EditText) customDialogView.findViewById(R.id.et_start_period);
-//                final EditText period_end = (EditText) customDialogView.findViewById(R.id.et_end_period);
-//                final EditText subject = (EditText) customDialogView.findViewById(R.id.et_subject);
-
-                alertDialog.setCancelable(false)
-                .setPositiveButton("ADD", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int id) {
-
-
-//                        String usr = usrname.getText().toString().trim();
-//                        String date = day.getText().toString().trim();
-//                        String sub = subject.getText().toString().trim();
-//                        Integer begin = Integer.parseInt(period_begin.getText().toString());
-//                        Integer end = Integer.parseInt(period_end.getText().toString());
-//                        if (TextUtils.isEmpty(sub) || TextUtils.isEmpty(date) || TextUtils.isEmpty(usr) || TextUtils.isEmpty(begin.toString()) || TextUtils.isEmpty(end.toString()))
-//                            Toast.makeText(TimeTableActivity.this, "All fields is required", Toast.LENGTH_SHORT).show();
-//                        else {
-////                            dbTimeTableHelper.insert("math");
-//                          dbTimeTableHelper.insertData(usr,date, sub, begin, end);
-//                                     Toast.makeText(TimeTableActivity.this,usr,Toast.LENGTH_SHORT).show();
-//
-//                        }
+                RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.class1);
+                RelativeLayout relativeLayout1 = (RelativeLayout) findViewById(R.id.class2);
+                int i = 0;
+                cursor = dbTimeTableHelper.getData("SELECT * FROM time_table WHERE day =" + "'" + string + "'");
+                while (cursor.moveToNext()) {
+                    String str = cursor.getString(0);
+                    String str1 = cursor.getString(1);
+                    String str2 = cursor.getString(2);
+                    String str3 = cursor.getString(3);
+                    if (i == 0) {
+                        name.setText(str);
+                        sub.setText(str1);
+                        begin.setText(str2);
+                        end.setText(str3);
+                        i++;
+                        Toast.makeText(TimeTableActivity.this, "done", Toast.LENGTH_SHORT).show();
+                        relativeLayout.setBackgroundColor(Color.rgb(30,42,65));
                     }
-                });
-                alertDialog.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
+                    if (i == 1) {
+                        name1.setText(str);
+                        sub1.setText(str1);
+                        begin1.setText(str2);
+                        end1.setText(str3);
+                        relativeLayout.setBackgroundColor(Color.rgb(30,42,65));
+
+                        i++;
+
+                    } else {
+                        i = 0;
                     }
-                });
-                alertDialog.create();
-                alertDialog.show();
+
+                }
             }
         });
-
-
-
     }
 }
