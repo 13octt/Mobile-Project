@@ -38,5 +38,13 @@
     <string name="map_location">Map location</string>
     <string name="account">Account</string>
     <string name="more_details">More Details</string>
+    <string name="_27">27</string>
+    <string name="cloudy">Cloudy</string>
+    <string name="overcast_clouds">Overcast clouds</string>
+    <string name="_34_km_h">34 km/h</string>
+    <string name="wind">Wind</string>
+    <string name="humidity">Humidity</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunset">Sunset</string>
 
 </resources>

@@ -11,6 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:id="@+id/tool_bar_1"
             android:layout_width="match_parent"
@@ -35,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:text="MENU"
+                android:text="@string/menu"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -52,220 +53,224 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_below="@id/tvTemp"
-                android:layout_centerHorizontal="true"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="0dp"
-                android:src="@drawable/ic_sunny"/>
+                android:contentDescription="@string/img"
+                android:src="@drawable/ic_sunny" />
 
             <TextView
+                android:id="@+id/tvTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#2D3141"
                 android:layout_gravity="center_horizontal"
-                android:text="27"
-                android:textSize="100dp"
-                android:textStyle="bold"
-                android:id="@+id/tvTemp"/>
+                android:text="@string/_27"
+                android:textColor="#2D3141"
+                android:textSize="100sp"
+                android:textStyle="bold" />
 
             <LinearLayout
-                android:gravity="center_horizontal"
-                android:layout_below="@+id/temp"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
                 android:orientation="vertical">
+
                 <TextView
+                    android:id="@+id/tvMain"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/cloudy"
                     android:textColor="#2D3141"
-                    android:text="Cloudy"
-                    android:textSize="34dp"
-                    android:textStyle="bold"
-                    android:id="@+id/tvMain"
-                    />
+                    android:textSize="34sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvDes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Overcast clouds"
+                    android:text="@string/overcast_clouds"
                     android:textColor="#345981"
-                    android:textSize="24dp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_marginBottom="30dp">
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="210dp"
+                    android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@color/white"
+                    android:backgroundTint="#4D6BA6"
                     android:elevation="6dp"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="0dp"
                     app:cardPreventCornerOverlap="true">
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#4D6BA6">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_centerInParent="true">
-                            <LinearLayout
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginBottom="26dp"
+                                android:background="@drawable/wind"
+                                android:contentDescription="@string/img" />
+
+                            <TextView
+                                android:id="@+id/tvWind"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
-                                android:layout_marginTop="20dp"
-                                android:orientation="vertical"
-                                >
+                                android:text="@string/_34_km_h"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
 
-                                <ImageView
-                                    android:layout_width="45dp"
-                                    android:layout_height="45dp"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginBottom="26dp"
-                                    android:background="@drawable/wind"
-                                    />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="34 km/h"
-                                    android:textColor="@color/white"
-                                    android:textSize="16dp"
-                                    android:id="@+id/tvWind"
+                                />
 
-                                    />
-                                <TextView
-                                    android:layout_gravity="center"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:text="Wind"
-                                    android:textColor="#B2B2B2"
-                                    android:textSize="16dp" />
-                            </LinearLayout>
-                            <LinearLayout
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
-                                android:layout_marginTop="20dp"
-                                android:orientation="vertical">
-                                <ImageView
-                                    android:layout_width="45dp"
-                                    android:layout_height="45dp"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginBottom="26dp"
-                                    android:background="@drawable/humidity"
-                                    />
-
-                                <TextView
-                                    android:id="@+id/tvHumi"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="34 km/h"
-                                    android:textColor="@color/white"
-                                    android:textSize="16dp"
-                                    android:layout_gravity="center"
-                                    />
-                                <TextView
-                                    android:layout_gravity="center"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:text="Humidity"
-                                    android:textColor="#B2B2B2"
-
-                                    android:textSize="16dp" />
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
-                                android:layout_marginTop="20dp"
-                                android:orientation="vertical">
-                                <ImageView
-                                    android:layout_width="45dp"
-                                    android:layout_height="45dp"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginBottom="26dp"
-                                    android:background="@drawable/sunrise"
-                                    />
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="34 km/h"
-                                    android:textColor="@color/white"
-                                    android:textSize="16dp"
-                                    android:id="@+id/tvSR"
-
-                                    />
-                                <TextView
-                                    android:layout_gravity="center"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="10dp"
-                                    android:text="Sunrise"
-                                    android:textColor="#B2B2B2"
-                                    android:textSize="16dp"
-                                    />
-                            </LinearLayout>
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
-                                android:layout_marginTop="20dp"
-                                android:orientation="vertical">
-                                <ImageView
-                                    android:layout_width="45dp"
-                                    android:layout_height="45dp"
-                                    android:layout_gravity="center_vertical"
-                                    android:layout_marginBottom="26dp"
-                                    android:background="@drawable/sea"
-                                    />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="34 km/h"
-                                    android:textColor="@color/white"
-                                    android:textSize="16dp"
-                                    android:id="@+id/tvSS"
-                                    />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginTop="10dp"
-                                    android:text="Sunset"
-                                    android:textColor="#B2B2B2"
-                                    android:textSize="16dp"
-                                    />
-                            </LinearLayout>
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:text="@string/wind"
+                                android:textColor="#B2B2B2"
+                                android:textSize="16sp" />
                         </LinearLayout>
-                    </RelativeLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginBottom="26dp"
+                                android:background="@drawable/humidity"
+                                android:contentDescription="@string/img" />
+
+                            <TextView
+                                android:id="@+id/tvHumi"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/_34_km_h"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:text="@string/humidity"
+                                android:textColor="#B2B2B2"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginBottom="26dp"
+                                android:background="@drawable/sunrise"
+                                android:contentDescription="@string/img" />
+
+                            <TextView
+                                android:id="@+id/tvSR"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/_34_km_h"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:text="@string/sunrise"
+                                android:textColor="#B2B2B2"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginBottom="26dp"
+                                android:background="@drawable/sea"
+                                android:contentDescription="@string/img" />
+
+                            <TextView
+                                android:id="@+id/tvSS"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/_34_km_h"
+                                android:textColor="@color/white"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:text="@string/sunset"
+                                android:textColor="#B2B2B2"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view_weather"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:menu="@menu/navigation_menu"
+        android:layout_gravity="start"
         app:headerLayout="@layout/navigation_header"
-        android:id="@+id/nav_view_weather"
-        android:layout_gravity="start" />
+        app:menu="@menu/navigation_menu" />
 </androidx.drawerlayout.widget.DrawerLayout>
