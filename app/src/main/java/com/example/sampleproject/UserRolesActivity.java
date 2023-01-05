@@ -11,7 +11,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +24,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,12 +36,13 @@ public class UserRolesActivity extends AppCompatActivity implements NavigationVi
     APIInterface apiInterface;
 
     DrawerLayout drawerLayout;
-    ImageView imgMenu;
+    ImageView imgMenu, randomImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_roles);
+
 
         drawerLayout = findViewById(R.id.layout_user_roles);
         imgMenu = findViewById(R.id.ic_menu);
@@ -46,6 +50,7 @@ public class UserRolesActivity extends AppCompatActivity implements NavigationVi
         imgMenu.setOnClickListener(view -> {
             drawerLayout.openDrawer(GravityCompat.START);
         });
+
         NavigationView navigationView = findViewById(R.id.nav_view_ur);
         if (navigationView != null) {
             navigationView.setNavigationItemSelectedListener(this);
@@ -87,7 +92,6 @@ public class UserRolesActivity extends AppCompatActivity implements NavigationVi
                 }
                 return true;
             }
-
         });
 
         rcvUserRoles = findViewById(R.id.rcv_user_roles);
@@ -98,7 +102,6 @@ public class UserRolesActivity extends AppCompatActivity implements NavigationVi
         rcvUserRoles.addItemDecoration(dividerItemDecoration);
         apiInterface = APIClient.getClient().create(APIInterface.class);
         callApiGetUserRoles();
-        
     }
      private void callApiGetUserRoles() {
         apiInterface.getUserRoles().enqueue(new Callback<List<UserRoles>>() {

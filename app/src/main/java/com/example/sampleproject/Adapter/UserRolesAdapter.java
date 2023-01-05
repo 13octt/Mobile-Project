@@ -3,6 +3,7 @@ package com.example.sampleproject.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,10 +13,10 @@ import com.example.sampleproject.Model.UserRoles;
 import com.example.sampleproject.R;
 
 import java.util.List;
+import java.util.Random;
 
 public class UserRolesAdapter extends RecyclerView.Adapter<UserRolesAdapter.UserRolesViewHolder> {
     private final List<UserRoles> listUserRoles;
-
     public UserRolesAdapter(List<UserRoles> listUserRoles) {
         this.listUserRoles = listUserRoles;
     }
@@ -24,6 +25,7 @@ public class UserRolesAdapter extends RecyclerView.Adapter<UserRolesAdapter.User
     @Override
     public UserRolesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user_roles, parent, false);
+
         return new UserRolesViewHolder(view);
     }
 
@@ -33,11 +35,12 @@ public class UserRolesAdapter extends RecyclerView.Adapter<UserRolesAdapter.User
                 if(userRoles == null){
                     return;
                 }
-                // int: String.valueOf()
-                holder.id.setText(userRoles.getId());
+
+        // int: String.valueOf()
+//                holder.id.setText(userRoles.getId());
                 holder.name.setText(userRoles.getName());
                 holder.description.setText(userRoles.getDescription());
-                holder.composite.setText(userRoles.getComposite());
+//                holder.composite.setText(userRoles.getComposite());
                 holder.assigned.setText(userRoles.getAssigned());
     }
 
@@ -49,15 +52,16 @@ public class UserRolesAdapter extends RecyclerView.Adapter<UserRolesAdapter.User
     }
 
     public static class UserRolesViewHolder extends RecyclerView.ViewHolder{
-        TextView id, name, description, composite, assigned;
+        TextView id, name, description, composite, assigned, userImg;
 
         public UserRolesViewHolder(@NonNull View itemView) {
             super(itemView);
-            id = itemView.findViewById(R.id.usroles_id);
+//            id = itemView.findViewById(R.id.usroles_id);
             name = itemView.findViewById(R.id.usroles_name);
             description = itemView.findViewById(R.id.usroles_description);
-            composite = itemView.findViewById(R.id.usroles_composite);
+//            composite = itemView.findViewById(R.id.usroles_composite);
             assigned = itemView.findViewById(R.id.usroles_assigned);
+
         }
     }
 }
