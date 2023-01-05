@@ -61,6 +61,9 @@
     <string name="enter_your_weekday">Enter your Weekday:</string>
     <string name="enter_begin_period">Enter Begin Period:</string>
     <string name="insert">Insert</string>
+    <string name="weather">WEATHER</string>
+    <string name="user_role">USER ROLES</string>
+    <string name="map">MAP</string>
     <string-array name="day">
         <item>Monday</item>
         <item>Tuesday</item>
