@@ -161,7 +161,8 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
                 mapController = mapView.getController();
                 mapController.setZoom(20);
                 mapView.setTileSource(TileSourceFactory.MAPNIK);
-
+                mapController.zoomIn((long) 0.8);
+                mapController.zoomOut((long) 0.8);
                 GeoPoint startPoint = new GeoPoint(latitude, longitude);
                 mapController.setCenter(startPoint);
                 Marker marker = new Marker(mapView);
@@ -210,6 +211,7 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
                 Double lat = cord[1];
                 GeoPoint startPoint2 = new GeoPoint(lat, lon);
                 mapView = findViewById(R.id.uitMap);
+                mapView.setBuiltInZoomControls(false);
                 mapController = mapView.getController();
                 mapController.setZoom(20);
                 mapController.setCenter(startPoint2);
