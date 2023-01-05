@@ -147,7 +147,6 @@ public class WeatherActivity extends AppCompatActivity implements NavigationView
 
             }
         });
-
     }
 
     public static String covertUnixToHour(int sunrise) {

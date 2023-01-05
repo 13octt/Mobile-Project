@@ -65,6 +65,7 @@
             <!--   code time table -->
 
             <RelativeLayout
+                android:background="@drawable/one"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:context=".TimeTableActivity">
@@ -94,8 +95,10 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_marginHorizontal="5dp"
-                        android:background="@drawable/roundedbutton"
-                        android:text="M" />
+                        android:background="@drawable/whitebutton"
+                        android:text="M"
+                        android:textColor="@color/colour"
+                        />
 
                     <Button
                         android:id="@+id/tuesdaybtn"
@@ -103,7 +106,8 @@
                         android:layout_height="50dp"
                         android:layout_marginHorizontal="5dp"
                         android:layout_toRightOf="@id/mondaybtn"
-                        android:background="@drawable/roundedbutton"
+                        android:background="@drawable/whitebutton"
+                        android:textColor="@color/colour"
                         android:text="TU" />
 
                     <Button
@@ -112,7 +116,8 @@
                         android:layout_height="50dp"
                         android:layout_marginHorizontal="5dp"
                         android:layout_toRightOf="@id/tuesdaybtn"
-                        android:background="@drawable/roundedbutton"
+                        android:background="@drawable/whitebutton"
+                        android:textColor="@color/colour"
                         android:text="W" />
 
                     <Button
@@ -121,7 +126,9 @@
                         android:layout_height="50dp"
                         android:layout_marginHorizontal="5dp"
                         android:layout_toRightOf="@id/wednesdaybtn"
-                        android:background="@drawable/roundedbutton"
+                        android:background="@drawable/whitebutton"
+                        android:textColor="@color/colour"
+
                         android:text="Th" />
 
                     <Button
@@ -130,7 +137,9 @@
                         android:layout_height="50dp"
                         android:layout_marginHorizontal="5dp"
                         android:layout_toRightOf="@id/thursday"
-                        android:background="@drawable/roundedbutton"
+                        android:background="@drawable/whitebutton"
+                        android:textColor="@color/colour"
+
                         android:text="F" />
 
                     <Button
@@ -139,7 +148,9 @@
                         android:layout_height="50dp"
                         android:layout_marginHorizontal="5dp"
                         android:layout_toRightOf="@id/fridaybtn"
-                        android:background="@drawable/roundedbutton"
+                        android:background="@drawable/whitebutton"
+                        android:textColor="@color/colour"
+
                         android:text="S" />
                 </LinearLayout>
 
