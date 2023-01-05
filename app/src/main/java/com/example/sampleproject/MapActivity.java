@@ -157,10 +157,11 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
                 Float longitude = defaultObj.center[0];
                 Float latitude = defaultObj.center[1];
                 mapView = findViewById(R.id.uitMap);
-                mapView.setTileSource(TileSourceFactory.MAPNIK);
                 mapView.setMultiTouchControls(true);
                 mapController = mapView.getController();
                 mapController.setZoom(20);
+                mapView.setTileSource(TileSourceFactory.MAPNIK);
+
                 GeoPoint startPoint = new GeoPoint(latitude, longitude);
                 mapController.setCenter(startPoint);
                 Marker marker = new Marker(mapView);
@@ -170,7 +171,7 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
                 marker.setIcon(dr);
                 marker.setPosition(startPoint);
                 mapView.getOverlays().add(marker);
-                marker.setTitle("StartPoint");
+                marker.setTitle("Nhân Văn nè");
                 marker.setAnchor(org.osmdroid.views.overlay.Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
             }
 
@@ -293,11 +294,12 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
                                     addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
                                     Double latitude = addresses.get(0).getLatitude();
                                     Double longitude = addresses.get(0).getLongitude();
-                                    ArrayList<Double> addr = new ArrayList<Double>();
-                                    addr.add(latitude);
-                                    addr.add(longitude);
-                                    Log.e("Location",latitude.toString());
-                                    Log.e("Location",longitude.toString());
+
+                                    GeoPoint startPoint2 = new GeoPoint(latitude, longitude);
+                                    mapView = findViewById(R.id.uitMap);
+                                    mapController = mapView.getController();
+                                    mapController.setZoom(20);
+                                    mapController.setCenter(startPoint2);
 //                                    return addr;
 
                                 } catch (IOException e) {
