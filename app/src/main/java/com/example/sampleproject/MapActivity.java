@@ -300,7 +300,7 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
                                     GeoPoint startPoint2 = new GeoPoint(latitude, longitude);
                                     mapView = findViewById(R.id.uitMap);
                                     mapController = mapView.getController();
-                                    mapController.setZoom(20);
+                                    mapController.setZoom(19);
                                     mapController.setCenter(startPoint2);
                                     Marker marker = new Marker(mapView);
                                     Drawable d = ResourcesCompat.getDrawable(getResources(), R.drawable.location_pin, null);
