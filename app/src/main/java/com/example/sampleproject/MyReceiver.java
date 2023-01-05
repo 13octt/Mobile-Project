@@ -34,8 +34,7 @@ public class MyReceiver extends BroadcastReceiver {
             wind = intent.getDoubleExtra("wind",0.00);
 
         String actionString = intent.getAction();
-        if(currentTime.equals("00:00")||currentTime.equals("12:00"))
-        if(temp!=0&&humi!=0&&wind!=0)
+
         dbGraphHelper.insertData(temp,humi,wind);
 ////        Toast.makeText(context, actionString, Toast.LENGTH_SHORT).show();
 //            ;

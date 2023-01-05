@@ -43,10 +43,10 @@ import retrofit2.Response;
 public class BackgroundService extends Service {
     private MyReceiver mBroadcast = new MyReceiver();
     String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
-    Double humi, wind, temp;
+    Double humi=0.0, wind=0.0, temp=0.0;
     APIInterface apiInterface;
     DBGraphHelper dbGraphHelper;
-
+    int flag;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -54,6 +54,7 @@ public class BackgroundService extends Service {
         IntentFilter filter = new IntentFilter("com.example.sampleproject.MY_BC");
         registerReceiver(mBroadcast, filter);
         dbGraphHelper = new DBGraphHelper(this);
+        getweather();
     }
 
     @Override
@@ -64,24 +65,34 @@ public class BackgroundService extends Service {
 
         new Thread(
                 new Runnable() {
+
                     @Override
                     public void run() {
-
                         while (true) {
-                            getweather();
-                            Intent intent1 = new Intent("com.example.sampleproject.MY_BC");
-                            intent1.putExtra("temp", temp);
-                            intent1.putExtra("humi", humi);
-                            intent1.putExtra("wind", wind);
-                            if(currentTime=="03:10")
-                                Log.e("time",wind.toString());
 
-                            try {
-                                sendBroadcast(intent1);
-                                Thread.sleep(30000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
+                            Intent intent1 = new Intent("com.example.sampleproject.MY_BC");
+
+
+                            flag = 0;
+                            while (currentTime.equals("12:00") || currentTime.equals("00:00")){
+                                getweather();
+                                if (temp != 0 && humi != 0 && wind != 0 && flag == 0) {
+                                    intent1.putExtra("temp", temp);
+                                    intent1.putExtra("humi", humi);
+                                    intent1.putExtra("wind", wind);
+
+                                    sendBroadcast(intent1);
+
+                                    flag++;
+
+                                }
+                                try {
+                                    Thread.sleep(10000);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
                             }
+
                         }
                     }
 
