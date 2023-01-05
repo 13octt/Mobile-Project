@@ -31,7 +31,6 @@ public class AssetDescriptorActivity extends AppCompatActivity implements Naviga
     private RecyclerView rcvAssetDescriptor;
     private List<AssetDescriptor> listAssetDescriptor;
     APIInterface apiInterface;
-
     DrawerLayout drawerLayout;
     ImageView imgMenu;
 
@@ -92,6 +91,7 @@ public class AssetDescriptorActivity extends AppCompatActivity implements Naviga
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         rcvAssetDescriptor.addItemDecoration(dividerItemDecoration);
+
         apiInterface = APIClient.getClient().create(APIInterface.class);
         callApiGetAssetDescriptor();
     }

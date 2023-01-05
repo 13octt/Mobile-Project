@@ -1,41 +1,29 @@
 package com.example.sampleproject;
 
-import static com.google.android.material.internal.ContextUtils.getActivity;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.sampleproject.helper.DBTimeTableHelper;
 import com.google.android.material.navigation.NavigationView;
 
 public class TimeTableActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    DBTimeTableHelper dbTimeTableHelper ;
+    DBTimeTableHelper dbTimeTableHelper;
     Cursor cursor;
 
     SQLiteDatabase sqLiteDatabase;
@@ -43,7 +31,6 @@ public class TimeTableActivity extends AppCompatActivity implements NavigationVi
     TableLayout tableLayout;
     public String edit;
     public TextView etMon1;
-//    EditText usrname, day , period_begin,period_end,subject,password, repassword;
     Button insertTable;
     DrawerLayout drawerLayout;
     ImageView imgMenu;
@@ -103,9 +90,7 @@ public class TimeTableActivity extends AppCompatActivity implements NavigationVi
                 }
                 return true;
             }
-
         });
-
 
         insertTable = findViewById(R.id.btn_add_class);
         insertTable.setOnClickListener(new View.OnClickListener() {
@@ -118,23 +103,21 @@ public class TimeTableActivity extends AppCompatActivity implements NavigationVi
 //        TextView tt = (TextView) findViewById(R.id.txt_time_table);
 //        //button add
 //        addSubject = (Button) findViewById(R.id.button_add) ;
-    Button btn_mon = (Button) findViewById(R.id.mondaybtn);
-    Button btn_tue = (Button) findViewById(R.id.tuesdaybtn);
-    Button btn_wed = (Button) findViewById(R.id.wednesdaybtn);
-    Button btn_thur = (Button) findViewById(R.id.thursday);
-    Button btn_fri = (Button) findViewById(R.id.fridaybtn);
-    Button btn_sat = (Button) findViewById(R.id.saturday);
-    click_listener(btn_mon,"Monday");
-    click_listener(btn_tue,"Tuesday");
-    click_listener(btn_wed,"Wednesday");
-    click_listener(btn_thur,"Thursday");
-    click_listener(btn_fri,"Friday");
-    click_listener(btn_sat,"Saturday");
-
-
-
+        Button btn_mon = (Button) findViewById(R.id.mondaybtn);
+        Button btn_tue = (Button) findViewById(R.id.tuesdaybtn);
+        Button btn_wed = (Button) findViewById(R.id.wednesdaybtn);
+        Button btn_thur = (Button) findViewById(R.id.thursday);
+        Button btn_fri = (Button) findViewById(R.id.fridaybtn);
+        Button btn_sat = (Button) findViewById(R.id.saturday);
+        click_listener(btn_mon, "Monday");
+        click_listener(btn_tue, "Tuesday");
+        click_listener(btn_wed, "Wednesday");
+        click_listener(btn_thur, "Thursday");
+        click_listener(btn_fri, "Friday");
+        click_listener(btn_sat, "Saturday");
     }
-    public void click_listener(Button button, String string){
+
+    public void click_listener(Button button, String string) {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -162,22 +145,19 @@ public class TimeTableActivity extends AppCompatActivity implements NavigationVi
                         begin.setText(str2);
                         end.setText(str3);
                         i++;
-                        Toast.makeText(TimeTableActivity.this, "done", Toast.LENGTH_SHORT).show();
-                        relativeLayout.setBackgroundColor(Color.rgb(30,42,65));
+//                        Toast.makeText(TimeTableActivity.this, "done", Toast.LENGTH_SHORT).show();
+                        relativeLayout.setBackgroundColor(Color.rgb(30, 42, 65));
                     }
                     if (i == 1) {
                         sub1.setText(str);
                         name1.setText(str1);
                         begin1.setText(str2);
                         end1.setText(str3);
-                        relativeLayout.setBackgroundColor(Color.rgb(30,42,65));
-
+                        relativeLayout.setBackgroundColor(Color.rgb(30, 42, 65));
                         i++;
-
                     } else {
                         i = 0;
                     }
-
                 }
             }
         });

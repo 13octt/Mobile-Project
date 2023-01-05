@@ -2,6 +2,7 @@ package com.example.sampleproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -16,7 +17,7 @@ import android.widget.Toast;
 import com.example.sampleproject.helper.DBTimeTableHelper;
 
 public class custom extends AppCompatActivity {
-    DBTimeTableHelper dbTimeTableHelper ;
+    DBTimeTableHelper dbTimeTableHelper;
     Cursor cursor;
 
     @Override
@@ -27,7 +28,8 @@ public class custom extends AppCompatActivity {
         Spinner spinner_day = (Spinner) findViewById(R.id.spinner_date);
         Spinner spinner_start = (Spinner) findViewById(R.id.spinner_start);
         Spinner spinner_end = (Spinner) findViewById(R.id.spinner_end);
-// Create an ArrayAdapter using the string array and a default spinner layout
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter_day = ArrayAdapter.createFromResource(getApplicationContext(),
                 R.array.day, android.R.layout.simple_spinner_item);
 
@@ -35,20 +37,23 @@ public class custom extends AppCompatActivity {
                 R.array.start, android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> adapter_end = ArrayAdapter.createFromResource(getApplicationContext(),
                 R.array.start, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
+
+        // Specify the layout to use when the list of choices appears
         adapter_day.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         adapter_start.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         adapter_end.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        EditText subject = (EditText) findViewById(R.id.et_subject);
-        Spinner day_spinner = (Spinner)findViewById(R.id.spinner_date);
-        Spinner start_spinner = (Spinner)findViewById(R.id.spinner_start);
-        Spinner end_spinner = (Spinner)findViewById(R.id.spinner_end);
 
-// Apply the adapter to the spinner
+        EditText subject = (EditText) findViewById(R.id.et_subject);
+        Spinner day_spinner = (Spinner) findViewById(R.id.spinner_date);
+        Spinner start_spinner = (Spinner) findViewById(R.id.spinner_start);
+        Spinner end_spinner = (Spinner) findViewById(R.id.spinner_end);
+
+        // Apply the adapter to the spinner
         spinner_day.setAdapter(adapter_day);
         spinner_start.setAdapter(adapter_start);
         spinner_end.setAdapter(adapter_end);
         Button insert = (Button) findViewById(R.id.btn_insert);
+
 //        cursor = dbTimeTableHelper.getData("SELECT * FROM time_table WHERE day ="+"'Tuesday'");
 //        while (cursor.moveToNext()) {
 //            String str = cursor.getString(0);
@@ -76,8 +81,9 @@ public class custom extends AppCompatActivity {
 //                    dbTimeTableHelper.onUpgrade(sqLiteDatabase,1,5);
                     Toast.makeText(custom.this, "Insert successfull", Toast.LENGTH_SHORT).show();
 
-                    dbTimeTableHelper.insertData(day_text,subject_text,start_text,end_text);
-
+                    dbTimeTableHelper.insertData(day_text, subject_text, start_text, end_text);
+                    Intent back = new Intent(custom.this, TimeTableActivity.class);
+                    startActivity(back);
                 }
             }
         });

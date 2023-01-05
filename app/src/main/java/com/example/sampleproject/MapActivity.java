@@ -59,6 +59,7 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
+
         drawerLayout = findViewById(R.id.layout_dialog);
         imgMenu = findViewById(R.id.ic_menu);
 
@@ -231,7 +232,6 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
                                 startActivity(intent);
                             }
                         });
-
                         return true;
                     }
                 });

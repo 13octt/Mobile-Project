@@ -2,15 +2,6 @@ package com.example.sampleproject.Model;
 
 public class User {
 
-    //  {
-//  "realm": "master",
-//  "realmId": "60d4ccdf-c2bb-4cf7-9285-6cc52a18861b",
-//  "id": "101dd52c-23ba-4f38-a124-b780e1b5a81b",
-//  "enabled": true,
-//  "createdOn": 1665109975667,
-//  "serviceAccount": false,
-//  "username": "user1"
-//}
     private String realm;
     private String realmId;
     private String id;

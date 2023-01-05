@@ -218,14 +218,14 @@ public class BroadcastActivity extends AppCompatActivity implements NavigationVi
     @Override
     protected void onPause() {
         super.onPause();
-        Toast.makeText(this, "pause", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "pause", Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Toast.makeText(this, "stop", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "stop", Toast.LENGTH_SHORT).show();
 
     }
 
