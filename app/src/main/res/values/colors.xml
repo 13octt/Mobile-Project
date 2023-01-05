@@ -14,4 +14,5 @@
     <color name="three">#F2F2F2</color>
     <color name ="custom_blue">#47B9E3</color>
     <color name="extra_blue">#4D6BA6</color>
+    <color name="opacitywhite">#99FFFFFFFF</color>
 </resources>

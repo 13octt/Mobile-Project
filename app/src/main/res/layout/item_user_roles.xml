@@ -1,104 +1,144 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:cardCornerRadius="20dp"
-        android:layout_margin="20dp">
-
-        <LinearLayout
+        android:layout_height="200dp"
+        app:cardCornerRadius="20dp">
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/gray"
-            android:orientation="horizontal">
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_margin="10dp"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:id="@+id/img_view"
-                android:src="@drawable/us_img"
-                android:background="@drawable/rounded_image" />
+            android:background="@drawable/demo">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/extra_blue"
-                android:orientation="vertical">
+            <TextView
+                android:id="@+id/usroles_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:text="Name"
+                android:fontFamily="@font/mulish_semibold"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/usroles_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/name"
-                    android:textColor="@color/white"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:orientation="horizontal">
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        >
+            <TextView
+                android:id="@+id/idimg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/id"
+                android:textStyle="bold"
+                android:text="ID:"
+                android:layout_below="@id/usroles_name"
+                android:textColor="@color/black"
+                android:layout_marginLeft="30dp"/>
 
-                    </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/uses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description: "
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"
+                android:layout_below="@id/idimg"
+                android:layout_marginLeft="30dp"
+                android:textSize="15dp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:text="@string/description"
-                        android:textColor="@color/white"
-                        android:textStyle="italic|bold"
-                        android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/usroles_id"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="ID"
+                android:singleLine="true"
+                android:fadingEdge="horizontal"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:layout_marginTop="5dp"
+                android:ellipsize="marquee"
+                android:layout_below="@id/usroles_name"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black"
+                android:layout_toRightOf="@id/idimg"
+                android:textSize="15dp"/>
 
-                    <TextView
-                        android:id="@+id/usroles_description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:text="@string/description"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"/>
-                </LinearLayout>
+            <TextView
+                android:id="@+id/usroles_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/idimg"
+                android:layout_toRightOf="@id/uses"
+                android:textSize="15sp"/>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+            <TextView
+                android:id="@+id/compositesite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Composite: "
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"
+                android:layout_below="@id/usroles_description"
+                android:layout_marginLeft="30dp"
+                android:textSize="15sp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:textStyle="italic|bold"
-                        android:text="@string/assigned"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/usroles_composite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:padding="5dp"
 
-                    <TextView
-                        android:id="@+id/usroles_assigned"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
-                        android:text="@string/assigned"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"/>
-                </LinearLayout>
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/usroles_description"
+                android:layout_toRightOf="@id/compositesite"
+                android:textSize="15sp"/>
 
-            </LinearLayout>
-        </LinearLayout>
+            <TextView
+                android:id="@+id/assigned"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Assigned: "
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"
+                android:layout_below="@id/compositesite"
+                android:layout_marginLeft="30dp"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/usroles_assigned"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"
+                android:padding="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/usroles_composite"
+                android:layout_toRightOf="@id/assigned"
+                android:textSize="15sp"/>
 
 
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
-</RelativeLayout>
+
+
+
+</LinearLayout>
