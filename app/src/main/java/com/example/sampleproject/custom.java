@@ -3,7 +3,6 @@ package com.example.sampleproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -18,16 +17,15 @@ import com.example.sampleproject.helper.DBTimeTableHelper;
 
 public class custom extends AppCompatActivity {
     DBTimeTableHelper dbTimeTableHelper;
-    Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.custom_dialog);
         dbTimeTableHelper = new DBTimeTableHelper(this);
-        Spinner spinner_day = (Spinner) findViewById(R.id.spinner_date);
-        Spinner spinner_start = (Spinner) findViewById(R.id.spinner_start);
-        Spinner spinner_end = (Spinner) findViewById(R.id.spinner_end);
+        Spinner spinner_day =  findViewById(R.id.spinner_date);
+        Spinner spinner_start = findViewById(R.id.spinner_start);
+        Spinner spinner_end =  findViewById(R.id.spinner_end);
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter_day = ArrayAdapter.createFromResource(getApplicationContext(),
@@ -43,16 +41,16 @@ public class custom extends AppCompatActivity {
         adapter_start.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         adapter_end.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        EditText subject = (EditText) findViewById(R.id.et_subject);
-        Spinner day_spinner = (Spinner) findViewById(R.id.spinner_date);
-        Spinner start_spinner = (Spinner) findViewById(R.id.spinner_start);
-        Spinner end_spinner = (Spinner) findViewById(R.id.spinner_end);
+        EditText subject = findViewById(R.id.et_subject);
+        Spinner day_spinner = findViewById(R.id.spinner_date);
+        Spinner start_spinner = findViewById(R.id.spinner_start);
+        Spinner end_spinner = findViewById(R.id.spinner_end);
 
         // Apply the adapter to the spinner
         spinner_day.setAdapter(adapter_day);
         spinner_start.setAdapter(adapter_start);
         spinner_end.setAdapter(adapter_end);
-        Button insert = (Button) findViewById(R.id.btn_insert);
+        Button insert = findViewById(R.id.btn_insert);
 
 //        cursor = dbTimeTableHelper.getData("SELECT * FROM time_table WHERE day ="+"'Tuesday'");
 //        while (cursor.moveToNext()) {
@@ -69,10 +67,10 @@ public class custom extends AppCompatActivity {
         insert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String subject_text = (String) subject.getText().toString();
-                String day_text = (String) day_spinner.getSelectedItem().toString();
-                String start_text = (String) start_spinner.getSelectedItem().toString();
-                String end_text = (String) end_spinner.getSelectedItem().toString();
+                String subject_text =  subject.getText().toString();
+                String day_text =  day_spinner.getSelectedItem().toString();
+                String start_text =  start_spinner.getSelectedItem().toString();
+                String end_text =  end_spinner.getSelectedItem().toString();
 
                 if (TextUtils.isEmpty(subject_text) || TextUtils.isEmpty(day_text) || TextUtils.isEmpty(start_text) || TextUtils.isEmpty(end_text))
                     Toast.makeText(custom.this, "All fields is required", Toast.LENGTH_SHORT).show();
