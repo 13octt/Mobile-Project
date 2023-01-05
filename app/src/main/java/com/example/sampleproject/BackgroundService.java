@@ -70,9 +70,9 @@ public class BackgroundService extends Service {
                         while (true) {
                             getweather();
                             Intent intent1 = new Intent("com.example.sampleproject.MY_BC");
-                            intent.putExtra("temp", temp);
-                            intent.putExtra("humi", humi);
-                            intent.putExtra("wind", wind);
+                            intent1.putExtra("temp", temp);
+                            intent1.putExtra("humi", humi);
+                            intent1.putExtra("wind", wind);
                             if(currentTime=="03:10")
                                 Log.e("time",wind.toString());
 
