@@ -3,7 +3,6 @@ package com.example.sampleproject.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,7 +12,6 @@ import com.example.sampleproject.Model.UserRoles;
 import com.example.sampleproject.R;
 
 import java.util.List;
-import java.util.Random;
 
 public class UserRolesAdapter extends RecyclerView.Adapter<UserRolesAdapter.UserRolesViewHolder> {
     private final List<UserRoles> listUserRoles;
@@ -52,7 +50,7 @@ public class UserRolesAdapter extends RecyclerView.Adapter<UserRolesAdapter.User
     }
 
     public static class UserRolesViewHolder extends RecyclerView.ViewHolder{
-        TextView id, name, description, composite, assigned, userImg;
+        TextView name, description, assigned;
 
         public UserRolesViewHolder(@NonNull View itemView) {
             super(itemView);

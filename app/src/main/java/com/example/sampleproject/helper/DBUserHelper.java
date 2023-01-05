@@ -46,6 +46,7 @@ public class DBUserHelper extends SQLiteOpenHelper {
         }
         else
             return false;
+
     }
 
     public Boolean checkUserPass (String username, String password){
