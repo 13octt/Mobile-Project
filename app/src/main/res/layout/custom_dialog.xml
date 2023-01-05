@@ -15,13 +15,14 @@
         android:layout_height="128dp"
         android:layout_gravity="center"
         android:background="@drawable/schedule"
-        android:scaleType="fitCenter"></ImageView>
+        android:contentDescription="@string/img"
+        android:scaleType="fitCenter"/>
     <TextView
         android:layout_marginTop="20dp"
-        android:textSize="40dp"
+        android:textSize="40sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter your subject"
+        android:text="@string/enter_your_subject"
         android:textStyle="bold"
         android:textColor="@color/design_default_color_primary_variant"
         android:layout_gravity="center"
@@ -29,59 +30,55 @@
 
 
     <TextView
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:textColor="@color/black"
         android:layout_height="wrap_content"
-        android:text="Enter your Subject:"
+        android:text="@string/enter_your_subject"
         android:textStyle="bold"/>
     <EditText
         android:layout_marginTop="10dp"
         android:id="@+id/et_subject"
         android:textColor="@color/black"
+        android:autofillHints="math"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:hint="Enter Subject"
+        android:hint="@string/enter_your_subject"
         android:inputType="none"
         android:minHeight="48dp"
-        android:textSize="20dp"
-        >
+        android:textSize="20sp">
 
         <requestFocus />
     </EditText>
     <TextView
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:textColor="@color/black"
         android:layout_height="wrap_content"
-        android:text="Enter your Weekday:"
+        android:text="@string/enter_your_weekday"
         android:textStyle="bold"/>
-
-
-
-
     <Spinner
         android:layout_marginTop="10dp"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:id="@+id/spinner_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:spinnerMode="dropdown"
         />
     <TextView
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:textColor="@color/black"
         android:layout_height="wrap_content"
-        android:text="Enter Begin Period:"
+        android:text="@string/enter_begin_period"
         android:textStyle="bold"/>
     <Spinner
         android:layout_marginTop="10dp"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:id="@+id/spinner_start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -91,12 +88,12 @@
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter End Period:"
+        android:text="@string/enter_begin_period"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"/>
     <Spinner
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:layout_marginTop="20dp"
         android:id="@+id/spinner_end"
         android:layout_width="match_parent"
@@ -113,10 +110,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
         android:background="@drawable/signinbuttonbg"
-        android:text="Insert"
+        android:text="@string/insert"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textStyle="bold"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"

@@ -57,6 +57,10 @@
     <string name="composite">Composite:</string>
     <string name="assigned">Assigned:</string>
     <string name="descriptor_type">Descriptor type:</string>
+    <string name="enter_your_subject">Enter your subject</string>
+    <string name="enter_your_weekday">Enter your Weekday:</string>
+    <string name="enter_begin_period">Enter Begin Period:</string>
+    <string name="insert">Insert</string>
     <string-array name="day">
         <item>Monday</item>
         <item>Tuesday</item>
