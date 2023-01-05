@@ -5,8 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     tools:context=".TimeTableActivity"
+    android:background="@color/white"
     android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp">
+    android:layout_marginRight="10dp"
+    >
 
     <ImageView
         android:layout_width="133dp"
@@ -30,14 +32,17 @@
         android:textSize="20dp"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:text="Enter your Subject:"
         android:textStyle="bold"/>
     <EditText
         android:layout_marginTop="10dp"
         android:id="@+id/et_subject"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:hint="Enter Subject"
         android:inputType="none"
         android:minHeight="48dp"
@@ -50,6 +55,7 @@
         android:textSize="20dp"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:text="Enter your Weekday:"
         android:textStyle="bold"/>
@@ -69,6 +75,7 @@
         android:textSize="20dp"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:text="Enter Begin Period:"
         android:textStyle="bold"/>
@@ -85,6 +92,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Enter End Period:"
+        android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"/>
     <Spinner

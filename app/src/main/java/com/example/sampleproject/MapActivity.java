@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,31 +13,22 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.sampleproject.Model.Asset;
 import com.example.sampleproject.Model.Attributes;
-import com.example.sampleproject.Model.Coord;
 import com.example.sampleproject.Model.Default;
 import com.example.sampleproject.Model.Location;
-import com.example.sampleproject.Model.LocationValue;
-import com.example.sampleproject.Model.Main;
 import com.example.sampleproject.Model.Map;
 import com.example.sampleproject.Model.Options;
-import com.example.sampleproject.Model.Value;
 import com.example.sampleproject.Model.Value__1;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.navigation.NavigationView;
-import com.google.gson.Gson;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
@@ -50,7 +40,6 @@ import org.osmdroid.views.overlay.Marker;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Objects;
 import java.util.TimeZone;
 
 import retrofit2.Call;
@@ -156,7 +145,7 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
                 GeoPoint startPoint = new GeoPoint(latitude, longitude);
                 mapController.setCenter(startPoint);
                 Marker marker = new Marker(mapView);
-                Drawable d = ResourcesCompat.getDrawable(getResources(), R.drawable.map, null);
+                Drawable d = ResourcesCompat.getDrawable(getResources(), R.drawable.location_pin, null);
                 Bitmap bitmap = ((BitmapDrawable) d).getBitmap();
                 Drawable dr = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, (int) (13.0f * getResources().getDisplayMetrics().density), (int) (13.0f * getResources().getDisplayMetrics().density), true));
                 marker.setIcon(dr);
@@ -197,7 +186,7 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
                 mapController.setZoom(20);
                 mapController.setCenter(startPoint2);
                 Marker marker = new Marker(mapView);
-                Drawable d = ResourcesCompat.getDrawable(getResources(), R.drawable.map, null);
+                Drawable d = ResourcesCompat.getDrawable(getResources(), R.drawable.location_pin, null);
                 Bitmap bitmap = ((BitmapDrawable) d).getBitmap();
                 Drawable dr = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, (int) (13.0f * getResources().getDisplayMetrics().density), (int) (13.0f * getResources().getDisplayMetrics().density), true));
                 marker.setIcon(dr);
@@ -210,7 +199,7 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
                     public boolean onMarkerClick(Marker marker, MapView mapView) {
                         View view = getLayoutInflater().inflate(R.layout.bottom_sheet, null);
                         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(MapActivity.this);
-
+//                        bottomSheetDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.RED));
                         TextView id = (TextView) view.findViewById(R.id.asset_id);
                         TextView version = (TextView) view.findViewById(R.id.asset_version);
                         TextView createdOn = (TextView) view.findViewById(R.id.asset_created_on);

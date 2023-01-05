@@ -144,14 +144,7 @@ public class BroadcastActivity extends AppCompatActivity implements NavigationVi
                 dbGraphHelper.KEY_TEMP,
                 dbGraphHelper.KEY_PRESSURE
         };
-        dbGraphHelper.insertData(15.98,31.0,6.4);
-        dbGraphHelper.insertData(15.96,61.7,6.8);
-        dbGraphHelper.insertData(16.96,32.7,7.8);
-        dbGraphHelper.insertData(15.6,51.0,6.0);
-        dbGraphHelper.insertData(14.9,30.7,5.8);
-        dbGraphHelper.insertData(17.5,60.6,4.3);
-        dbGraphHelper.insertData(18.98,37.52,3.75);
-        dbGraphHelper.insertData(15.96,67.7,6.8);
+
 
         while (cursor.moveToNext()) {
             String str = cursor.getString(0);
@@ -177,52 +170,30 @@ public class BroadcastActivity extends AppCompatActivity implements NavigationVi
 
         graphCustom(graphTemp, "Temperature", seriesTemp);
         graphCustom(graph, "Humidity", series);
-        graphCustom(graphPress, "Pressure", seriesPressure);
+        graphCustom(graphPress, "Win speed", seriesPressure);
     }
     private void graphCustom(GraphView graph, String name, LineGraphSeries<DataPoint> series1) {
         series1.setTitle(name);
-        series1.setColor(Color.BLACK);
+        series1.setColor(Color.rgb(53,188,255));
         GridLabelRenderer gridLR = graph.getGridLabelRenderer();
         String donvi;
-        if(name == "Humidity")
-        {
-            series1.setColor(Color.BLACK);
-            GridLabelRenderer gridLabelRenderer = graph.getGridLabelRenderer();
-            gridLabelRenderer.setHorizontalAxisTitle("Time (Hour)");
-            gridLabelRenderer.setHorizontalAxisTitleTextSize(20);
-            gridLabelRenderer.setVerticalAxisTitle(" Percentage (%)");
-            gridLabelRenderer.setVerticalAxisTitleTextSize(20);
-        }
-        else
-            if(name == "Temperature")
-            {
-                series1.setColor(Color.BLACK);
-                GridLabelRenderer gridLabelRenderer1 = graph.getGridLabelRenderer();
-                gridLabelRenderer1.setHorizontalAxisTitle("Time (Hour)");
-                gridLabelRenderer1.setHorizontalAxisTitleTextSize(20);
-                gridLabelRenderer1.setVerticalAxisTitle(" Degree (.)");
-                gridLabelRenderer1.setVerticalAxisTitleTextSize(20);
-            }
-            else
-            {
-                series1.setColor(Color.BLACK);
-                GridLabelRenderer gridLabelRenderer = graph.getGridLabelRenderer();
-                gridLabelRenderer.setHorizontalAxisTitle("Time (Hour)");
-                gridLabelRenderer.setHorizontalAxisTitleTextSize(20);
-                gridLabelRenderer.setVerticalAxisTitle(" Km per Hour");
-                gridLabelRenderer.setVerticalAxisTitleTextSize(20);
-            }
+        GridLabelRenderer gridLabelRenderer = graph.getGridLabelRenderer();
         gridLR.setVerticalAxisTitleTextSize(70);
-
         series1.setThickness(10);
-        graph.setTitleColor(Color.BLUE);
+        graph.getGridLabelRenderer().setVerticalLabelsColor(Color.BLACK);
+        graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.BLACK);
+
         graph.getLegendRenderer().setVisible(true);
         graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
         graph.getViewport().setXAxisBoundsManual(true);
+        series1.setDrawDataPoints(true);
         graph.getViewport().setYAxisBoundsManual(true);
         graph.getViewport().scrollToEnd();
         graph.getViewport().setScalable(true);
         graph.getViewport().setScalableY(true);
+        graph.getGridLabelRenderer().setGridColor(Color.BLACK);
+
+
     }
     @Override
     protected void onStart() {

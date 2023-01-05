@@ -45,7 +45,7 @@ public class BackgroundService extends Service {
     String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
     Double humi, wind, temp;
     APIInterface apiInterface;
-
+    DBGraphHelper dbGraphHelper;
 
     @Override
     public void onCreate() {
@@ -53,7 +53,7 @@ public class BackgroundService extends Service {
         Log.e("Service", "onCreate");
         IntentFilter filter = new IntentFilter("com.example.sampleproject.MY_BC");
         registerReceiver(mBroadcast, filter);
-
+        dbGraphHelper = new DBGraphHelper(this);
     }
 
     @Override
@@ -76,10 +76,9 @@ public class BackgroundService extends Service {
                             if(currentTime=="03:10")
                                 Log.e("time",wind.toString());
 
-
                             try {
                                 sendBroadcast(intent1);
-                                Thread.sleep(2000);
+                                Thread.sleep(30000);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
