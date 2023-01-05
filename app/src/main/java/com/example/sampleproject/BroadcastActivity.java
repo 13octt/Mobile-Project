@@ -7,52 +7,38 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
-import android.app.Application;
-import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
+import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.example.sampleproject.Model.Asset;
-import com.example.sampleproject.Model.Attributes;
 import com.example.sampleproject.Model.Main;
-import com.example.sampleproject.Model.Sys;
-import com.example.sampleproject.Model.Value;
-import com.example.sampleproject.Model.Weather;
-import com.example.sampleproject.Model.WeatherData;
-import com.example.sampleproject.Model.Wind;
 import com.example.sampleproject.helper.DBGraphHelper;
 import com.google.android.material.navigation.NavigationView;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.LegendRenderer;
+import com.jjoe64.graphview.ValueDependentColor;
+import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.stream.Collectors;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class BroadcastActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private MyReceiver mBroadcast = new MyReceiver();
-    String humi,wind,temp;
+    String humi, wind, temp;
     APIInterface apiInterface;
     String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
     private List<String> data;
@@ -64,7 +50,7 @@ public class BroadcastActivity extends AppCompatActivity implements NavigationVi
     ImageView imgMenu;
 
     LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[0]);
-    LineGraphSeries<DataPoint> seriesTemp = new LineGraphSeries<>(new DataPoint[0]);
+    BarGraphSeries<DataPoint> seriesTemp = new BarGraphSeries<>(new DataPoint[0]);
     LineGraphSeries<DataPoint> seriesPressure = new LineGraphSeries<>(new DataPoint[0]);
 
     //    BarGraphSeries<DataPoint> series;
@@ -72,6 +58,7 @@ public class BroadcastActivity extends AppCompatActivity implements NavigationVi
     List<Double> humilist = new ArrayList<>();
     List<Double> templist = new ArrayList<>();
     List<Double> pressurelist = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -125,7 +112,7 @@ public class BroadcastActivity extends AppCompatActivity implements NavigationVi
 
 //        IntentFilter filter = new IntentFilter("com.example.sampleproject.MY_BC");
 //        registerReceiver(mBroadcast,filter);
-        Intent intentService = new Intent (this,BackgroundService.class);
+        Intent intentService = new Intent(this, BackgroundService.class);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             startForegroundService(intentService);
         }
@@ -134,8 +121,8 @@ public class BroadcastActivity extends AppCompatActivity implements NavigationVi
         sqLiteDatabase = dbGraphHelper.getWritableDatabase();
 
         GraphView graph = (GraphView) findViewById(R.id.graph);
-        GraphView graphTemp = (GraphView)findViewById(R.id.graph2);
-        GraphView graphPress = (GraphView)findViewById(R.id.graph3);
+        GraphView graphTemp = (GraphView) findViewById(R.id.graph2);
+        GraphView graphPress = (GraphView) findViewById(R.id.graph3);
         cursor = dbGraphHelper.getData("SELECT * FROM graph");
 
         // Test graph
@@ -156,7 +143,7 @@ public class BroadcastActivity extends AppCompatActivity implements NavigationVi
             pressurelist.add(Double.parseDouble(str2));
 
 //            Toast.makeText(this, str + " " + str1 + " " + str2, Toast.LENGTH_LONG).show();
-    }
+        }
         dbGraphHelper = new DBGraphHelper(this);
         sqLiteDatabase = dbGraphHelper.getWritableDatabase();
 
@@ -168,13 +155,54 @@ public class BroadcastActivity extends AppCompatActivity implements NavigationVi
         graphTemp.addSeries(seriesTemp);
         graphPress.addSeries(seriesPressure);
 
-        graphCustom(graphTemp, "Temperature", seriesTemp);
-        graphCustom(graph, "Humidity", series);
-        graphCustom(graphPress, "Win speed", seriesPressure);
+        bargraphCustom(graphTemp, "Temperature", seriesTemp,0, 25, 0 );
+        graphCustom(graph, "Humidity", series, 0, 100, 0);
+        graphCustom(graphPress, "Wind speed", seriesPressure, 0,10,0);
     }
-    private void graphCustom(GraphView graph, String name, LineGraphSeries<DataPoint> series1) {
+
+    private void bargraphCustom(GraphView graph, String name, BarGraphSeries<DataPoint> series1, int minY, int maxY, int minX) {
         series1.setTitle(name);
-        series1.setColor(Color.rgb(53,188,255));
+        series1.setColor(Color.GREEN);
+        GridLabelRenderer gridLR = graph.getGridLabelRenderer();
+        gridLR.setVerticalAxisTitleTextSize(70);
+        graph.getGridLabelRenderer().setVerticalLabelsColor(Color.BLACK);
+        graph.getGridLabelRenderer().setHorizontalLabelsColor(Color.BLACK);
+
+        graph.getLegendRenderer().setVisible(true);
+        graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setYAxisBoundsManual(true);
+        graph.getViewport().scrollToEnd();
+        graph.getViewport().setScalable(true);
+        graph.getViewport().setScalableY(true);
+
+        graph.getViewport().setScrollable(true); // enables horizontal scrolling
+        graph.getViewport().setScrollableY(true); // enables vertical scrolling
+
+        // set manual X bounds
+        graph.getViewport().setYAxisBoundsManual(true);
+        graph.getViewport().setMinY(minY);
+        graph.getViewport().setMaxY(maxY);
+
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMinX(minX);
+
+        // styling
+        series1.setValueDependentColor(new ValueDependentColor<DataPoint>() {
+            @Override
+            public int get(DataPoint data) {
+                return Color.rgb((int) data.getX()*255/4, (int) Math.abs(data.getY()*255/6), 100);
+            }
+        });
+        series1.setSpacing(25);
+
+        graph.getGridLabelRenderer().setGridColor(Color.BLACK);
+
+    }
+
+    private void graphCustom(GraphView graph, String name, LineGraphSeries<DataPoint> series1, int minY, int maxY, int minX) {
+        series1.setTitle(name);
+        series1.setColor(Color.rgb(53, 188, 255));
         GridLabelRenderer gridLR = graph.getGridLabelRenderer();
         String donvi;
         GridLabelRenderer gridLabelRenderer = graph.getGridLabelRenderer();
@@ -186,15 +214,39 @@ public class BroadcastActivity extends AppCompatActivity implements NavigationVi
         graph.getLegendRenderer().setVisible(true);
         graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
         graph.getViewport().setXAxisBoundsManual(true);
-        series1.setDrawDataPoints(true);
         graph.getViewport().setYAxisBoundsManual(true);
         graph.getViewport().scrollToEnd();
         graph.getViewport().setScalable(true);
         graph.getViewport().setScalableY(true);
+
+        graph.getViewport().setScrollable(true); // enables horizontal scrolling
+        graph.getViewport().setScrollableY(true); // enables vertical scrolling
+
+        // set manual X bounds
+        graph.getViewport().setYAxisBoundsManual(true);
+        graph.getViewport().setMinY(minY);
+        graph.getViewport().setMaxY(maxY);
+
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setMinX(minX);
+
+        // styling series
+        series.setColor(Color.BLACK);
+        series.setDrawDataPoints(true);
+        series.setDataPointsRadius(10);
+        series.setThickness(8);
+
+// custom paint to make a dotted line
+        Paint paint = new Paint();
+        paint.setStyle(Paint.Style.FILL_AND_STROKE);
+        paint.setStrokeWidth(10);
+        paint.setPathEffect(new DashPathEffect(new float[]{8, 5}, 0));
+        series.setCustomPaint(paint);
+
+
         graph.getGridLabelRenderer().setGridColor(Color.BLACK);
-
-
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -208,7 +260,7 @@ public class BroadcastActivity extends AppCompatActivity implements NavigationVi
 //        }
 //            for(String datas : data)   {
 //            Log.e("data",datas);}
-}
+    }
 
     /**
      * {@inheritDoc}
@@ -236,29 +288,32 @@ public class BroadcastActivity extends AppCompatActivity implements NavigationVi
 //            Toast.makeText(this, currentTime, Toast.LENGTH_SHORT).show();
 //        unregisterReceiver(mBroadcast);
     }
-//    public void ReceiveData(){
+
+    //    public void ReceiveData(){
 //
 //    }
-    public boolean foregroundServiceRunning(){
+    public boolean foregroundServiceRunning() {
         ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-        for(ActivityManager.RunningServiceInfo serviceInfo : activityManager.getRunningServices(Integer.MAX_VALUE)){
-            if(MyService.class.getName().equals(serviceInfo.service.getClassName())){
+        for (ActivityManager.RunningServiceInfo serviceInfo : activityManager.getRunningServices(Integer.MAX_VALUE)) {
+            if (MyService.class.getName().equals(serviceInfo.service.getClassName())) {
                 return true;
             }
         }
         return false;
     }
+
     private DataPoint[] getDataPoint(List<Double> getdb) {
 //        String[] columns = {"TIME", "TEMP"};
         DataPoint[] dp = new DataPoint[cursor.getCount()];
         //  if(cursor.getString(1)== "6H4PeKLRMea1L0WsRXXWp9") {
         for (int i = 0; i < cursor.getCount(); i++) {
 //            cursor.moveToNext();
-            dp[i] = new DataPoint(i*2, getdb.get(i));
+            dp[i] = new DataPoint(i * 2, getdb.get(i));
         }
         //}
         return dp;
     }
+
     @SuppressLint("Range")
     private List<String> getData() {
         List<String> users = new ArrayList<>();
