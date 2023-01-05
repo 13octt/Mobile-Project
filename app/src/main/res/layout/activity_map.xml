@@ -64,6 +64,14 @@
         <!--            app:itemTextColor="@color/black"-->
         <!--            />-->
 
+        <ImageButton
+            android:id="@+id/btn_getlocation"
+            android:background="@drawable/aim"
+            android:layout_width="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/tool_bar"
+            android:layout_height="40dp"/>
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView

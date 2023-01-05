@@ -1,32 +1,45 @@
 package com.example.sampleproject;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import com.example.sampleproject.Model.Asset;
 import com.example.sampleproject.Model.Attributes;
 import com.example.sampleproject.Model.Default;
-import com.example.sampleproject.Model.Location;
+import com.example.sampleproject.Model.Location1;
 import com.example.sampleproject.Model.Map;
 import com.example.sampleproject.Model.Options;
 import com.example.sampleproject.Model.Value__1;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.navigation.NavigationView;
 
@@ -37,9 +50,13 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import retrofit2.Call;
@@ -47,14 +64,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MapActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
     APIInterface apiInterface;
     private MapView mapView;
     private IMapController mapController;
     private Broadcast mBroadcast;
     DrawerLayout drawerLayout;
     ImageView imgMenu;
-
+    ImageButton getmylocation;
+    private  final  static int REQUEST_CODE=100;
+    FusedLocationProviderClient fusedLocationProviderClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +80,7 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
 
         drawerLayout = findViewById(R.id.layout_dialog);
         imgMenu = findViewById(R.id.ic_menu);
-
+        getmylocation = (ImageButton) findViewById(R.id.btn_getlocation) ;
         imgMenu.setOnClickListener(view -> {
             drawerLayout.openDrawer(GravityCompat.START);
         });
@@ -165,6 +183,14 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
         addMarker("4cdWlxEvmDRBBDEc2HRsaF", "1");
         addMarker("2UZPM2Mvu11Xyq5jCWNMX1", "2");
         addMarker("6H4PeKLRMea1L0WsRXXWp9", "3");
+        fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(this);
+
+        getmylocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getLastLocation();
+            }
+        });
     }
 
     public void addMarker(String appid, String s) {
@@ -175,7 +201,7 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
             public void onResponse(Call<Asset> call, Response<Asset> response) {
                 Asset asset = response.body();
                 Attributes attributes = asset.getAttributes();
-                Location location = attributes.getLocation();
+                Location1 location = attributes.getLocation();
                 Value__1 value = location.getValue();
                 Double cord[] = value.getCoordinates().toArray(new Double[0]);
 
@@ -253,7 +279,70 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
         sdf.setTimeZone(tz);
         return sdf.format(calendar.getTime());
     }
+    private void getLastLocation() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
 
+            fusedLocationProviderClient.getLastLocation()
+                    .addOnSuccessListener(new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            if (location !=null){
+                                Geocoder geocoder=new Geocoder(MapActivity.this, Locale.getDefault());
+                                List<Address> addresses= null;
+                                try {
+                                    addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
+                                    Double latitude = addresses.get(0).getLatitude();
+                                    Double longitude = addresses.get(0).getLongitude();
+                                    ArrayList<Double> addr = new ArrayList<Double>();
+                                    addr.add(latitude);
+                                    addr.add(longitude);
+                                    Log.e("Location",latitude.toString());
+                                    Log.e("Location",longitude.toString());
+//                                    return addr;
+
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+
+
+
+                            }
+
+                        }
+                    });
+
+
+        }else
+        {
+
+            askPermission();
+
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        if (requestCode==REQUEST_CODE){
+            if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                getLastLocation();
+            }
+            else {
+                Toast.makeText(this, "Required Permission", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+
+
+
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    private void askPermission() {
+        ActivityCompat.requestPermissions(MapActivity.this, new String[]
+                {Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_CODE);
+    }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         return false;

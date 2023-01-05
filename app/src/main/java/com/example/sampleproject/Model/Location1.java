@@ -4,7 +4,7 @@ package com.example.sampleproject.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Location {
+public class Location1 {
 
     @SerializedName("type")
     @Expose

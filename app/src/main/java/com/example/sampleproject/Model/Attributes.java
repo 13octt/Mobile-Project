@@ -14,7 +14,7 @@ public class Attributes {
     private WeatherData weatherData;
     @SerializedName("location")
     @Expose
-    private Location location;
+    private Location1 location;
 
     public Rainfall getRainfall() {
         return rainfall;
@@ -32,11 +32,11 @@ public class Attributes {
         this.weatherData = weatherData;
     }
 
-    public Location getLocation() {
+    public Location1 getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(Location1 location) {
         this.location = location;
     }
 
