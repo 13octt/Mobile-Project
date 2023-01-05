@@ -300,6 +300,15 @@ public class MapActivity extends AppCompatActivity implements NavigationView.OnN
                                     mapController = mapView.getController();
                                     mapController.setZoom(20);
                                     mapController.setCenter(startPoint2);
+                                    Marker marker = new Marker(mapView);
+                                    Drawable d = ResourcesCompat.getDrawable(getResources(), R.drawable.location_pin, null);
+                                    Bitmap bitmap = ((BitmapDrawable) d).getBitmap();
+                                    Drawable dr = new BitmapDrawable(getResources(), Bitmap.createScaledBitmap(bitmap, (int) (13.0f * getResources().getDisplayMetrics().density), (int) (13.0f * getResources().getDisplayMetrics().density), true));
+                                    marker.setIcon(dr);
+                                    marker.setPosition(startPoint2);
+                                    mapView.getOverlays().add(marker);
+                                    marker.setTitle("Your Location");
+
 //                                    return addr;
 
                                 } catch (IOException e) {
