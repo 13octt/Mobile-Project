@@ -15,7 +15,7 @@ This project is about developing an application that can observe the weather of 
 - Monitor the weather 
 - Weather index statistics
 - Create study schedule 
-- Map 
+- Map, device information, Location
 
 
 ## Demo
