@@ -20,17 +20,15 @@ This project is about developing an application that can observe the weather of 
 
 ## Demo
 
-https://youtu.be/nJE1DsYgNAc
-#Image
+https://youtu.be/nJE1DsYgNAc 
 
-<img src ="app/src/main/res/drawable
-/weather.jpg" width ="200" height = "400">
-<img src ="app/src/main/res/drawable
-/location.jpg" width ="200" height = "400">
-<img src ="app/src/main/res/drawable
-/map.jpg" width ="200" height = "400">
-<img src ="app/src/main/res/drawable
-/insight.jpg" width ="200" height = "400">
-<img src ="app/src/main/res/drawable
-/schedule.jpg" width ="200" height = "400">
+## UI 
+
+
+<img src ="https://raw.githubusercontent.com/13octt/MobileProject/92e1598b52adc75786580723bf554b475cde233c/app/src/main/res/drawable/weather.jpg" width ="200" height = "400">
+<img src ="https://raw.githubusercontent.com/13octt/MobileProject/926ac98860073cf95607b5dfa7c24b51f1b9a8f1/app/src/main/res/drawable/map.jpg" width ="200" height = "400">
+<img src ="https://raw.githubusercontent.com/13octt/MobileProject/926ac98860073cf95607b5dfa7c24b51f1b9a8f1/app/src/main/res/drawable/location.jpg" width ="200" height = "400">
+<img src ="https://raw.githubusercontent.com/13octt/MobileProject/926ac98860073cf95607b5dfa7c24b51f1b9a8f1/app/src/main/res/drawable/insight.jpg" width ="200" height = "400">
+<img src ="https://github.com/13octt/MobileProject/blob/master/app/src/main/res/drawable/schedule.png?raw=true" width ="200" height = "400">
+<img src ="https://raw.githubusercontent.com/13octt/MobileProject/926ac98860073cf95607b5dfa7c24b51f1b9a8f1/app/src/main/res/drawable/createschedule.png" width ="200" height = "400">
 
