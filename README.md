@@ -21,4 +21,16 @@ This project is about developing an application that can observe the weather of 
 ## Demo
 
 https://youtu.be/nJE1DsYgNAc
+#Image
+
+<img src ="app/src/main/res/drawable
+/weather.jpg">
+<img src ="app/src/main/res/drawable
+/location.jpg">
+<img src ="app/src/main/res/drawable
+/map.jpg">
+<img src ="app/src/main/res/drawable
+/insight.jpg">
+<img src ="app/src/main/res/drawable
+/schedule.jpg">
 
