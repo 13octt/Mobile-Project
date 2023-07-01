@@ -24,13 +24,13 @@ https://youtu.be/nJE1DsYgNAc
 #Image
 
 <img src ="app/src/main/res/drawable
-/weather.jpg">
+/weather.jpg" width ="200" height = "400">
 <img src ="app/src/main/res/drawable
-/location.jpg">
+/location.jpg" width ="200" height = "400">
 <img src ="app/src/main/res/drawable
-/map.jpg">
+/map.jpg" width ="200" height = "400">
 <img src ="app/src/main/res/drawable
-/insight.jpg">
+/insight.jpg" width ="200" height = "400">
 <img src ="app/src/main/res/drawable
-/schedule.jpg">
+/schedule.jpg" width ="200" height = "400">
 
