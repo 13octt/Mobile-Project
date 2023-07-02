@@ -1,8 +1,7 @@
 
 # IOT of UIT 
 
-This project is about developing an application that can observe the weather of the UIT
-
+This is a project to build an application that can track the weather conditions of UIT using an API that includes weather information, IoT devices, etc., provided by OpenRemote, which is supported by the university, using SQLite is used for storing account information and data.
 
 ## Authors
 
